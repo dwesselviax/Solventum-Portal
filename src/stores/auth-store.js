@@ -2,29 +2,25 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
 const MOCK_USERS = {
-  'dr.test@hospital.org': {
+  'orthodontist@chenortho.com': {
     uid: 'user-001',
     name: 'Dr. Sarah Chen',
-    email: 'dr.test@hospital.org',
+    email: 'orthodontist@chenortho.com',
     firstName: 'Sarah',
     lastName: 'Chen',
-    role: 'medical_professional',
-    organization: 'Metro General Hospital',
-    organizationId: 'org-001',
+    role: 'orthodontist',
+    organization: 'Chen Orthodontics',
+    organizationId: 'ORG-001',
   },
-  'distributor@medequip.com': {
+  'admin@smiledso.com': {
     uid: 'user-002',
-    name: 'James Mitchell',
-    email: 'distributor@medequip.com',
-    firstName: 'James',
-    lastName: 'Mitchell',
-    role: 'distributor',
-    organization: 'MedEquip Distribution Inc.',
-    organizationId: 'org-002',
-    shipToLocations: [
-      { id: 'loc-001', name: 'Warehouse East', address: '100 Industrial Pkwy, Newark, NJ 07101' },
-      { id: 'loc-002', name: 'Warehouse West', address: '500 Commerce Dr, Los Angeles, CA 90015' },
-    ],
+    name: 'Mark Reynolds',
+    email: 'admin@smiledso.com',
+    firstName: 'Mark',
+    lastName: 'Reynolds',
+    role: 'dso',
+    organization: 'Smile DSO Group',
+    organizationId: 'ORG-002',
   },
   'salesrep@solventum.com': {
     uid: 'user-003',
@@ -34,25 +30,29 @@ const MOCK_USERS = {
     lastName: 'Rodriguez',
     role: 'sales_rep',
     organization: 'Solventum Corporation',
-    organizationId: 'org-solventum',
+    organizationId: 'ORG-SOL',
     territory: 'Northeast Region',
     territoryId: 'terr-001',
   },
-  'purchaser@memorial.org': {
+  'ar@solventum.com': {
     uid: 'user-004',
-    name: 'Michael Thompson',
-    email: 'purchaser@memorial.org',
-    firstName: 'Michael',
-    lastName: 'Thompson',
-    role: 'hospital_group',
-    organization: 'Memorial Health System',
-    organizationId: 'org-003',
-    locations: [
-      { id: 'loc-010', name: 'Memorial Main Campus', type: 'site' },
-      { id: 'loc-011', name: 'Memorial North', type: 'site' },
-      { id: 'loc-012', name: 'OR Suite A', type: 'department', parentId: 'loc-010' },
-      { id: 'loc-013', name: 'ICU Wing B', type: 'ward', parentId: 'loc-010' },
-    ],
+    name: 'Lisa Park',
+    email: 'ar@solventum.com',
+    firstName: 'Lisa',
+    lastName: 'Park',
+    role: 'ar',
+    organization: 'Solventum Corporation',
+    organizationId: 'ORG-SOL',
+  },
+  'csr@solventum.com': {
+    uid: 'user-005',
+    name: 'David Kim',
+    email: 'csr@solventum.com',
+    firstName: 'David',
+    lastName: 'Kim',
+    role: 'csr',
+    organization: 'Solventum Corporation',
+    organizationId: 'ORG-SOL',
   },
 };
 
@@ -74,7 +74,7 @@ export const useAuthStore = create(
 
         if (useMock) {
           await new Promise((r) => setTimeout(r, 800));
-          const user = MOCK_USERS[username] || MOCK_USERS['distributor@medequip.com'];
+          const user = MOCK_USERS[username] || MOCK_USERS['orthodontist@chenortho.com'];
           const now = Date.now();
           set({
             accessToken: 'mock-access-token-' + now,

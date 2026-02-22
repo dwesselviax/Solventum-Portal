@@ -53,8 +53,24 @@ export default function TrainingPage() {
             const Icon = iconMap[item.type] || GraduationCap;
             return (
               <div key={item.id} className="rounded-lg border border-[#e7e7e7] bg-white shadow-sm transition-all hover:shadow-md overflow-hidden">
-                <div className="flex h-32 items-center justify-center bg-gradient-to-br from-[#05dd4d]/10 to-[#0a7b6b]/10">
-                  <Icon className="h-12 w-12 text-[#05dd4d]" />
+                <div className="relative h-40 bg-gradient-to-br from-[#05dd4d]/10 to-[#0a7b6b]/10">
+                  {item.thumbnailUrl ? (
+                    <>
+                      <img
+                        src={item.thumbnailUrl}
+                        alt={item.title}
+                        className="h-full w-full object-cover"
+                        onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                      />
+                      <div className="hidden h-full w-full items-center justify-center absolute inset-0">
+                        <Icon className="h-12 w-12 text-[#05dd4d]" />
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                      <Icon className="h-12 w-12 text-[#05dd4d]" />
+                    </div>
+                  )}
                 </div>
                 <div className="p-4">
                   <div className="flex items-center gap-2">

@@ -28,9 +28,9 @@ const MAX_RESULTS_PER_GROUP = 5;
 
 // Role access mirrors sidebar NAV_ITEMS roles
 const SEARCH_GROUP_ROLES = {
-  orders: ['distributor', 'sales_rep', 'hospital_group'],
-  quotes: ['distributor', 'sales_rep', 'hospital_group'],
-  invoices: ['distributor', 'sales_rep', 'hospital_group'],
+  orders: ['orthodontist', 'dso', 'sales_rep', 'ar', 'csr'],
+  quotes: ['orthodontist', 'dso', 'sales_rep'],
+  invoices: ['orthodontist', 'dso', 'sales_rep', 'ar'],
   products: ['all'],
 };
 
@@ -38,7 +38,7 @@ export function SearchCommand() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const { user } = useAuthStore();
-  const userRole = user?.role || 'distributor';
+  const userRole = user?.role || 'orthodontist';
 
   const canAccess = useCallback(
     (group) => {

@@ -8,27 +8,33 @@ import { useAuthStore } from '@/stores/auth-store';
 import {
   LayoutDashboard, ShoppingCart, FileText, MessageSquareQuote, RefreshCw,
   Package, Truck, Receipt, UserCircle, HelpCircle, ChevronLeft,
-  ChevronRight, Warehouse, HardDrive, Wrench, Recycle, BookOpen,
-  GraduationCap, AlertTriangle, ClipboardList, FileSpreadsheet,
+  ChevronRight, Warehouse, HardDrive, Recycle, BookOpen,
+  GraduationCap, ClipboardList, FileSpreadsheet, FlaskConical,
+  Smile, Users,
 } from 'lucide-react';
 
 const NAV_ITEMS = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, roles: ['all'] },
-  { type: 'divider', label: 'Commerce', roles: ['distributor', 'sales_rep', 'hospital_group'] },
-  { href: '/orders', label: 'Orders', icon: ShoppingCart, roles: ['distributor', 'sales_rep', 'hospital_group'] },
-  { href: '/quotes', label: 'Quotes', icon: MessageSquareQuote, roles: ['distributor', 'sales_rep', 'hospital_group'] },
-  { href: '/invoices', label: 'Invoices', icon: Receipt, roles: ['distributor', 'sales_rep', 'hospital_group'] },
-  { href: '/subscriptions', label: 'Subscriptions', icon: RefreshCw, roles: ['sales_rep', 'hospital_group'] },
+  { type: 'divider', label: 'Commerce', roles: ['orthodontist', 'dso', 'sales_rep', 'ar', 'csr'] },
+  { href: '/orders', label: 'Orders', icon: ShoppingCart, roles: ['orthodontist', 'dso', 'sales_rep', 'ar', 'csr'] },
+  { href: '/quotes', label: 'Quotes', icon: MessageSquareQuote, roles: ['orthodontist', 'dso', 'sales_rep'] },
+  { href: '/invoices', label: 'Invoices', icon: Receipt, roles: ['orthodontist', 'dso', 'sales_rep', 'ar'] },
+  { href: '/subscriptions', label: 'Subscriptions', icon: RefreshCw, roles: ['orthodontist', 'dso', 'sales_rep'] },
   { type: 'divider', label: 'Catalog', roles: ['all'] },
   { href: '/products', label: 'Products', icon: Package, roles: ['all'] },
-  { href: '/products/price-list', label: 'Price List', icon: FileSpreadsheet, roles: ['distributor', 'sales_rep', 'hospital_group'] },
-  { type: 'divider', label: 'Inventory & Assets', roles: ['sales_rep', 'hospital_group'] },
-  { href: '/consignment', label: 'Consignment', icon: Warehouse, roles: ['sales_rep', 'hospital_group'] },
-  { href: '/assets', label: 'Assets & Devices', icon: HardDrive, roles: ['sales_rep', 'hospital_group'] },
-  { type: 'divider', label: 'Logistics', roles: ['distributor', 'sales_rep', 'hospital_group'] },
-  { href: '/shipments', label: 'Shipments', icon: Truck, roles: ['distributor', 'sales_rep', 'hospital_group'] },
-  { href: '/returns', label: 'Returns & RMA', icon: ClipboardList, roles: ['distributor', 'sales_rep', 'hospital_group'] },
-  { type: 'divider', label: 'Services', roles: ['sales_rep', 'hospital_group'] },
+  { href: '/products/price-list', label: 'Price List', icon: FileSpreadsheet, roles: ['orthodontist', 'dso', 'sales_rep', 'ar'] },
+  { href: '/samples', label: 'Samples', icon: FlaskConical, roles: ['orthodontist', 'dso', 'sales_rep'] },
+  { type: 'divider', label: 'Clinical', roles: ['orthodontist', 'dso', 'sales_rep'] },
+  { href: '/clarity', label: 'Treatment Plans', icon: Smile, roles: ['orthodontist', 'dso', 'sales_rep'] },
+  { type: 'divider', label: 'Inventory & Assets', roles: ['orthodontist', 'dso', 'sales_rep'] },
+  { href: '/consignment', label: 'Consignment', icon: Warehouse, roles: ['orthodontist', 'dso', 'sales_rep'] },
+  { href: '/assets', label: 'Assets & Devices', icon: HardDrive, roles: ['orthodontist', 'dso', 'sales_rep'] },
+  { type: 'divider', label: 'Logistics', roles: ['orthodontist', 'dso', 'sales_rep', 'csr'] },
+  { href: '/shipments', label: 'Shipments', icon: Truck, roles: ['orthodontist', 'dso', 'sales_rep', 'csr'] },
+  { href: '/returns', label: 'Returns & RMA', icon: ClipboardList, roles: ['orthodontist', 'dso', 'sales_rep', 'csr'] },
+  { type: 'divider', label: 'Customer Management', roles: ['sales_rep', 'ar', 'csr'] },
+  { href: '/customers', label: 'Customers', icon: Users, roles: ['sales_rep', 'ar', 'csr'] },
+  { type: 'divider', label: 'Resources', roles: ['all'] },
   { href: '/documentation', label: 'Documentation', icon: BookOpen, roles: ['all'] },
   { href: '/training', label: 'Training', icon: GraduationCap, roles: ['all'] },
   { type: 'divider', label: 'Account', roles: ['all'] },
@@ -40,7 +46,7 @@ export function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const pathname = usePathname();
   const { user } = useAuthStore();
-  const userRole = user?.role || 'distributor';
+  const userRole = user?.role || 'orthodontist';
 
   const filteredItems = NAV_ITEMS.filter(
     (item) => item.roles.includes('all') || item.roles.includes(userRole)
@@ -67,7 +73,7 @@ export function Sidebar() {
           }
 
           const Icon = item.icon;
-          const isActive = pathname === item.href || pathname?.startsWith(item.href + '/');
+          const isActive = pathname === item.href || (pathname?.startsWith(item.href + '/') && !NAV_ITEMS.some((n) => n.href && n.href !== item.href && n.href.startsWith(item.href) && (pathname === n.href || pathname?.startsWith(n.href + '/'))));
 
           return (
             <Link

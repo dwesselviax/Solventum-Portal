@@ -29,20 +29,20 @@ const COLUMNS = [
 ];
 
 const PRODUCT_OPTIONS = [
-  'Triathlon Total Knee System',
-  'Accolade II Femoral Hip Stem',
-  'Trident II Acetabular System',
-  'Surpass Evolve Flow Diverter',
-  'Neuro Matrix Programmable Shunt System',
-  'Tornier Perform Reversed Shoulder System',
-  'VariAx 2 Distal Radius Locking Plate System',
+  'Clarity Advanced Ceramic Brackets — Upper 5x5 Kit',
+  'Clarity Advanced Ceramic Brackets — Lower 5x5 Kit',
+  'Clarity Ultra Self-Ligating Brackets — Upper Kit',
+  'Victory Series Metal Brackets — Upper 5x5 Kit',
+  'Transbond XT Light Cure Adhesive Syringe Kit',
+  'Transbond Plus SEP Single Dose Packets (100pk)',
+  'Transbond MIP Moisture Insensitive Primer (5ml)',
 ];
 
 const FACILITY_OPTIONS = [
-  'Northwest Medical Center, Seattle, WA',
-  'Mercy West Hospital, Cincinnati, OH',
-  'Mercy Anderson Hospital, Anderson, OH',
-  'Cascade Regional Medical Center, Bend, OR',
+  'Chen Orthodontics, Seattle, WA',
+  'Bright Smiles Orthodontics, Cincinnati, OH',
+  'Lakeside Family Orthodontics, Bend, OR',
+  'Smile DSO Group, Chicago, IL',
 ];
 
 export default function ConsignmentPage() {

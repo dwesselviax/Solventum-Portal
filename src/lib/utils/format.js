@@ -33,9 +33,9 @@ export function formatCompactNumber(num) {
 
 export function getStatusColor(status) {
   const s = (status || '').toLowerCase();
-  if (['active', 'confirmed', 'delivered', 'paid', 'completed', 'processed'].includes(s)) return 'success';
-  if (['pending', 'draft', 'paused', 'submitted'].includes(s)) return 'warning';
-  if (['error', 'expired', 'cancelled', 'overdue', 'failed'].includes(s)) return 'error';
-  if (['in transit', 'in progress', 'scheduled', 'approved', 'open', 'shipped'].includes(s)) return 'info';
+  if (['active', 'confirmed', 'delivered', 'paid', 'completed', 'processed', 'platinum', 'gold'].includes(s)) return 'success';
+  if (['pending', 'draft', 'paused', 'submitted', 'planning', 'bronze', 'on hold'].includes(s)) return 'warning';
+  if (['error', 'expired', 'cancelled', 'overdue', 'failed', 'denied'].includes(s)) return 'error';
+  if (['in transit', 'in progress', 'scheduled', 'approved', 'open', 'shipped', 'silver'].includes(s)) return 'info';
   return 'neutral';
 }

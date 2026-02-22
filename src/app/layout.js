@@ -13,8 +13,8 @@ export default function RootLayout({ children }) {
       <head>
         <style>{`
           :root {
-            --font-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
-            --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+            --font-heading: "Solve Pro", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+            --font-body: "Solve Pro", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
           }
         `}</style>
       </head>

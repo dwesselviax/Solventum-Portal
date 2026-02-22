@@ -6,11 +6,12 @@ import { CardSkeleton } from '@/components/shared/loading-skeleton';
 import { FileText, Download, ExternalLink } from 'lucide-react';
 
 const TYPE_OPTIONS = [
-  { value: 'Manual', label: 'User Manual' },
   { value: 'IFU', label: 'Instructions for Use' },
-  { value: 'Guide', label: 'Surgical Guide' },
+  { value: 'SDS', label: 'Safety Data Sheet' },
+  { value: 'Technique Guide', label: 'Technique Guide' },
   { value: 'Brochure', label: 'Brochure' },
-  { value: 'Regulatory', label: 'Regulatory' },
+  { value: 'White Paper', label: 'White Paper' },
+  { value: 'User Manual', label: 'User Manual' },
 ];
 
 export default function DocumentationPage() {
@@ -25,7 +26,7 @@ export default function DocumentationPage() {
       if (typeFilter) result = result.filter((d) => d.type === typeFilter);
       if (search) {
         const s = search.toLowerCase();
-        result = result.filter((d) => d.title?.toLowerCase().includes(s) || d.productName?.toLowerCase().includes(s));
+        result = result.filter((d) => d.title?.toLowerCase().includes(s) || d.productNames?.join(', ').toLowerCase().includes(s));
       }
       setDocs(result);
       setLoading(false);
@@ -36,7 +37,7 @@ export default function DocumentationPage() {
     <div>
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Product Documentation</h1>
-        <p className="mt-1 text-sm text-[#3c3e3f]">Browse manuals, guides, IFUs, and regulatory documents</p>
+        <p className="mt-1 text-sm text-[#3c3e3f]">Browse IFUs, safety data sheets, technique guides, marketing assets, and clinical papers</p>
       </div>
 
       <FiltersBar search={search} onSearchChange={setSearch}>
@@ -54,8 +55,8 @@ export default function DocumentationPage() {
                 <div className="flex-1">
                   <span className="rounded-full bg-[#F5F5F5] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>{doc.type}</span>
                   <h3 className="mt-1 text-sm font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{doc.title}</h3>
-                  <p className="mt-0.5 text-xs text-[#3c3e3f]">{doc.productName}</p>
-                  <p className="mt-1 text-xs text-[#e7e7e7]">{doc.fileSize} • {doc.format}</p>
+                  <p className="mt-0.5 text-xs text-[#3c3e3f]">{doc.productNames?.join(', ')}</p>
+                  <p className="mt-1 text-xs text-[#3c3e3f]/50">{doc.fileSize} • {doc.fileUrl?.split('.').pop()?.toUpperCase()}</p>
                 </div>
               </div>
               <div className="mt-3 flex gap-2">

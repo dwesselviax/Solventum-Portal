@@ -26,10 +26,11 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { useProducts } from '@/hooks/use-products';
 
 const MOCK_CUSTOMERS = [
-  { id: 'ORG-001', name: 'Northwest Medical Center' },
-  { id: 'ORG-002', name: 'MedEquip Distribution Inc.' },
-  { id: 'ORG-003', name: 'Memorial Health System' },
-  { id: 'ORG-004', name: 'Cascade Regional Medical' },
+  { id: 'ORG-001', name: 'Chen Orthodontics' },
+  { id: 'ORG-002', name: 'Smile DSO Group' },
+  { id: 'ORG-003', name: 'Bright Smiles Orthodontics' },
+  { id: 'ORG-004', name: 'Metro Dental Partners' },
+  { id: 'ORG-005', name: 'Lakeside Family Orthodontics' },
 ];
 
 const EMPTY_LINE_ITEM = { productId: '', productName: '', quantity: 1, unitPrice: 0 };

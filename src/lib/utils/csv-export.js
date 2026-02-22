@@ -1,8 +1,13 @@
 /**
  * Export product price list as CSV and trigger browser download.
+ * Supports optional contract pricing columns.
  */
-export function exportProductsPriceListCSV(products, customerName) {
-  const headers = ['Product ID', 'Product Name', 'Division', 'Category', 'SKU', 'List Price', 'Your Price', 'Availability'];
+export function exportProductsPriceListCSV(products, customerName, options = {}) {
+  const { contractPricing, tierInfo } = options;
+
+  const headers = contractPricing
+    ? ['Product ID', 'Product Name', 'Category', 'Subcategory', 'SKU', 'List Price', 'Contract Price', 'Tier', 'Availability']
+    : ['Product ID', 'Product Name', 'Category', 'Subcategory', 'SKU', 'List Price', 'Your Price', 'Availability'];
 
   const escapeField = (value) => {
     const str = value == null ? '' : String(value);
@@ -12,16 +17,32 @@ export function exportProductsPriceListCSV(products, customerName) {
     return str;
   };
 
-  const rows = products.map((p) => [
-    p.maId,
-    p.maName,
-    p.division,
-    p.category,
-    p.sku,
-    p.listPrice != null ? p.listPrice.toFixed(2) : '',
-    p.price != null ? p.price.toFixed(2) : '',
-    p.availability || '',
-  ].map(escapeField).join(','));
+  const rows = products.map((p) => {
+    const contractPrice = contractPricing?.[p.maId];
+    if (contractPricing) {
+      return [
+        p.maId,
+        p.maName,
+        p.division,
+        p.category,
+        p.sku,
+        p.listPrice != null ? p.listPrice.toFixed(2) : '',
+        contractPrice != null ? contractPrice.toFixed(2) : (p.price != null ? p.price.toFixed(2) : ''),
+        tierInfo || '',
+        p.availability || '',
+      ].map(escapeField).join(',');
+    }
+    return [
+      p.maId,
+      p.maName,
+      p.division,
+      p.category,
+      p.sku,
+      p.listPrice != null ? p.listPrice.toFixed(2) : '',
+      p.price != null ? p.price.toFixed(2) : '',
+      p.availability || '',
+    ].map(escapeField).join(',');
+  });
 
   const csv = [headers.join(','), ...rows].join('\n');
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });

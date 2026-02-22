@@ -1,7 +1,8 @@
 import ProductDetailPage from './client';
+import { allProducts } from '@/lib/mock-data/products/index';
 
 export async function generateStaticParams() {
-  return [{ maId: 'PRD-014' }];
+  return allProducts.map((p) => ({ maId: p.maId }));
 }
 
 export default async function Page({ params }) {

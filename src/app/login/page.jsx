@@ -6,11 +6,15 @@ import { useAuthStore } from '@/stores/auth-store';
 import { useThemeStore } from '@/stores/theme-store';
 import { Loader2 } from 'lucide-react';
 
-const TEST_ACCOUNTS = [
-  { email: 'distributor@medequip.com', label: 'Distributor', name: 'James Mitchell' },
-  { email: 'salesrep@solventum.com', label: 'Sales Rep', name: 'Emily Rodriguez' },
-  { email: 'purchaser@memorial.org', label: 'Hospital Group', name: 'Michael Thompson' },
-  { email: 'dr.test@hospital.org', label: 'Medical Professional', name: 'Dr. Sarah Chen' },
+const CUSTOMER_ACCOUNTS = [
+  { email: 'orthodontist@chenortho.com', label: 'Orthodontist', name: 'Dr. Sarah Chen', org: 'Chen Orthodontics' },
+  { email: 'admin@smiledso.com', label: 'DSO Admin', name: 'Mark Reynolds', org: 'Smile DSO Group' },
+];
+
+const INTERNAL_ACCOUNTS = [
+  { email: 'salesrep@solventum.com', label: 'Sales Rep', name: 'Emily Rodriguez', org: 'Solventum' },
+  { email: 'ar@solventum.com', label: 'Accounts Receivable', name: 'Lisa Park', org: 'Solventum' },
+  { email: 'csr@solventum.com', label: 'Customer Service', name: 'David Kim', org: 'Solventum' },
 ];
 
 export default function LoginPage() {
@@ -106,10 +110,27 @@ export default function LoginPage() {
 
           <div className="mt-6 border-t border-[#e7e7e7] pt-6">
             <p className="mb-3 text-center text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
-              Quick Access (Demo)
+              Customer Accounts
             </p>
             <div className="grid grid-cols-2 gap-2">
-              {TEST_ACCOUNTS.map((account) => (
+              {CUSTOMER_ACCOUNTS.map((account) => (
+                <button
+                  key={account.email}
+                  onClick={() => handleQuickLogin(account.email)}
+                  disabled={isLoading}
+                  className="rounded-md border border-[#e7e7e7] px-3 py-2 text-left transition-colors hover:border-[#05dd4d] hover:bg-[#bffde3]/30 disabled:opacity-50"
+                >
+                  <p className="text-xs font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{account.label}</p>
+                  <p className="text-[10px] text-[#6e6e6e]">{account.name}</p>
+                </button>
+              ))}
+            </div>
+
+            <p className="mb-3 mt-4 text-center text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
+              Internal Accounts
+            </p>
+            <div className="grid grid-cols-3 gap-2">
+              {INTERNAL_ACCOUNTS.map((account) => (
                 <button
                   key={account.email}
                   onClick={() => handleQuickLogin(account.email)}

@@ -1,41 +1,27 @@
-// Product catalog — all divisions
-import { reconstructive } from './reconstructive';
-import { spine } from './spine';
-import { traumaExtremities } from './trauma-extremities';
-import { cmf } from './cmf';
-import { endoscopy } from './endoscopy';
-import { healthcareSystems } from './healthcare-systems';
-import { instruments } from './instruments';
-import { medical } from './medical';
-import { neurovascular } from './neurovascular';
-import { performanceSolutions } from './performance-solutions';
-import { sustainability } from './sustainability';
+import { brackets } from './brackets';
+import { bonding } from './bonding';
+import { clarity } from './clarity';
+import { archwires } from './archwires';
+import { auxiliaries } from './auxiliaries';
+import { orthoInstruments } from './instruments';
+import { prevention } from './prevention';
 
 export const allProducts = [
-  ...reconstructive,
-  ...spine,
-  ...traumaExtremities,
-  ...cmf,
-  ...endoscopy,
-  ...healthcareSystems,
-  ...instruments,
-  ...medical,
-  ...neurovascular,
-  ...performanceSolutions,
-  ...sustainability,
+  ...brackets, ...bonding, ...clarity, ...archwires,
+  ...auxiliaries, ...orthoInstruments, ...prevention,
 ];
 
-// Re-export individual divisions for targeted imports
-export {
-  reconstructive,
-  spine,
-  traumaExtremities,
-  cmf,
-  endoscopy,
-  healthcareSystems,
-  instruments,
-  medical,
-  neurovascular,
-  performanceSolutions,
-  sustainability,
-};
+export { brackets, bonding, clarity, archwires, auxiliaries, orthoInstruments, prevention };
+
+export const getProductById = (maId) => allProducts.find((p) => p.maId === maId);
+export const getProductsByCategory = (category) => allProducts.filter((p) => p.division === category);
+
+export const productCategories = [
+  'Brackets & Tubes',
+  'Bonding',
+  'Clarity Aligners',
+  'Archwires',
+  'Auxiliaries',
+  'Instruments',
+  'Prevention',
+];

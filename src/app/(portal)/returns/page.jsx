@@ -33,14 +33,14 @@ const COLUMNS = [
 const RETURN_TYPES = ['Defective', 'Warranty', 'Wrong Item', 'Damaged'];
 
 const PRODUCT_OPTIONS = [
-  'System 8 Large Bone Power Tool Set',
-  'System 8 Small Bone Power Tool Set',
-  'Triathlon Total Knee System',
-  'Accolade II Femoral Hip Stem',
-  'Secure II Hospital Bed',
-  'T5 Prime Powered Stretcher',
-  'SAGE Prevalon Turn and Position System',
-  'System 8 SmartLife Battery Pack',
+  'Clarity Advanced Ceramic Brackets — Upper 5x5 Kit',
+  'Clarity Advanced Ceramic Brackets — Lower 5x5 Kit',
+  'Clarity Ultra Self-Ligating Brackets — Upper Kit',
+  'Transbond XT Light Cure Adhesive Syringe Kit',
+  'Nitinol Super Elastic Archwires — Upper Assortment Pack',
+  'Beta Titanium (TMA) Archwires — Assorted Pack',
+  'Ortholux Luminous LED Curing Light',
+  'Victory Series Metal Brackets — Upper 5x5 Kit',
 ];
 
 export default function ReturnsPage() {
