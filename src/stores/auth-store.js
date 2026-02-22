@@ -26,15 +26,15 @@ const MOCK_USERS = {
       { id: 'loc-002', name: 'Warehouse West', address: '500 Commerce Dr, Los Angeles, CA 90015' },
     ],
   },
-  'salesrep@stryker.com': {
+  'salesrep@solventum.com': {
     uid: 'user-003',
     name: 'Emily Rodriguez',
-    email: 'salesrep@stryker.com',
+    email: 'salesrep@solventum.com',
     firstName: 'Emily',
     lastName: 'Rodriguez',
     role: 'sales_rep',
-    organization: 'Stryker Corporation',
-    organizationId: 'org-stryker',
+    organization: 'Solventum Corporation',
+    organizationId: 'org-solventum',
     territory: 'Northeast Region',
     territoryId: 'terr-001',
   },
@@ -184,7 +184,7 @@ export const useAuthStore = create(
       setUser: (user) => set({ user }),
     }),
     {
-      name: 'stryker-auth',
+      name: 'solventum-auth',
       storage: createJSONStorage(() =>
         typeof window !== 'undefined' ? sessionStorage : { getItem: () => null, setItem: () => {}, removeItem: () => {} }
       ),

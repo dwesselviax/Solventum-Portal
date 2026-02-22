@@ -2,19 +2,20 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
 const DEFAULT_THEME = {
-  colorBlack: '#000000',
-  colorGold: '#FFB500',
-  colorTeal: '#4C7D7A',
-  colorBlue: '#0116EB',
-  colorPurple: '#7256CF',
+  colorDarkGreen: '#01332b',
+  colorBrandGreen: '#05dd4d',
+  colorTeal: '#19a591',
+  colorMediumTeal: '#1ccf93',
+  colorLightTeal: '#bffde3',
+  colorHyperlinkTeal: '#0a7b6b',
   colorSuccess: '#2E7D32',
   colorWarning: '#F9A825',
   colorError: '#C62828',
-  colorInfo: '#1565C0',
-  fontHeading: '"Nunito Sans", Arial, Helvetica, sans-serif',
-  fontBody: '"Roboto Slab", Cambria, Palatino, Georgia, serif',
-  logoUrl: '/stryker-logo.svg',
-  portalName: 'Stryker B2B Portal',
+  colorInfo: '#0a7b6b',
+  fontHeading: '"Inter", Arial, Helvetica, sans-serif',
+  fontBody: '"Inter", Arial, Helvetica, sans-serif',
+  logoUrl: '/solventum-logo.webp',
+  portalName: 'Solventum Ortho Portal',
   borderRadius: '8px',
   darkMode: false,
 };
@@ -46,7 +47,7 @@ export const useThemeStore = create(
       },
     }),
     {
-      name: 'stryker-theme',
+      name: 'solventum-theme',
       storage: createJSONStorage(() =>
         typeof window !== 'undefined' ? localStorage : { getItem: () => null, setItem: () => {}, removeItem: () => {} }
       ),
@@ -56,10 +57,12 @@ export const useThemeStore = create(
 
 function applyThemeToDOM(theme) {
   const root = document.documentElement;
-  root.style.setProperty('--color-gold', theme.colorGold);
+  root.style.setProperty('--color-dark-green', theme.colorDarkGreen);
+  root.style.setProperty('--color-brand-green', theme.colorBrandGreen);
   root.style.setProperty('--color-teal', theme.colorTeal);
-  root.style.setProperty('--color-blue', theme.colorBlue);
-  root.style.setProperty('--color-purple', theme.colorPurple);
+  root.style.setProperty('--color-medium-teal', theme.colorMediumTeal);
+  root.style.setProperty('--color-light-teal', theme.colorLightTeal);
+  root.style.setProperty('--color-hyperlink-teal', theme.colorHyperlinkTeal);
   root.style.setProperty('--color-success', theme.colorSuccess);
   root.style.setProperty('--color-warning', theme.colorWarning);
   root.style.setProperty('--color-error', theme.colorError);

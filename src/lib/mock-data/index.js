@@ -1,4 +1,4 @@
-// Stryker B2B Portal — Mock Data Index
+// Solventum B2B Portal — Mock Data Index
 // Re-exports all mock data modules for centralized access
 
 export { users, getCurrentUser } from './users';

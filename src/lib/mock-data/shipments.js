@@ -1,4 +1,4 @@
-// Mock shipments for Stryker B2B Portal
+// Mock shipments for Solventum B2B Portal
 // Statuses: Processing, Picked Up, In Transit, Out for Delivery, Delivered, Exception
 
 export const shipments = [
@@ -13,8 +13,8 @@ export const shipments = [
     actualDelivery: null,
     shipDate: '2025-01-08T14:30:00Z',
     shipFrom: {
-      name: 'Stryker Distribution Center — East',
-      street: '1000 Stryker Way',
+      name: 'Solventum Distribution Center — East',
+      street: '1000 Solventum Way',
       city: 'Portage',
       state: 'MI',
       zip: '49002',
@@ -66,8 +66,8 @@ export const shipments = [
     actualDelivery: null,
     shipDate: '2025-01-06T09:00:00Z',
     shipFrom: {
-      name: 'Stryker Distribution Center — East',
-      street: '1000 Stryker Way',
+      name: 'Solventum Distribution Center — East',
+      street: '1000 Solventum Way',
       city: 'Portage',
       state: 'MI',
       zip: '49002',
@@ -110,8 +110,8 @@ export const shipments = [
     actualDelivery: null,
     shipDate: null,
     shipFrom: {
-      name: 'Stryker Distribution Center — East',
-      street: '1000 Stryker Way',
+      name: 'Solventum Distribution Center — East',
+      street: '1000 Solventum Way',
       city: 'Portage',
       state: 'MI',
       zip: '49002',
@@ -148,8 +148,8 @@ export const shipments = [
     actualDelivery: '2024-12-12T11:45:00Z',
     shipDate: '2024-12-06T10:00:00Z',
     shipFrom: {
-      name: 'Stryker Distribution Center — East',
-      street: '1000 Stryker Way',
+      name: 'Solventum Distribution Center — East',
+      street: '1000 Solventum Way',
       city: 'Portage',
       state: 'MI',
       zip: '49002',
@@ -211,7 +211,7 @@ export const shipments = [
     actualDelivery: '2024-10-17T14:30:00Z',
     shipDate: '2024-10-08T07:00:00Z',
     shipFrom: {
-      name: 'Stryker Manufacturing — Beds',
+      name: 'Solventum Manufacturing — Beds',
       street: '3800 E Centre Ave',
       city: 'Portage',
       state: 'MI',
@@ -258,8 +258,8 @@ export const shipments = [
     actualDelivery: '2024-10-15T09:20:00Z',
     shipDate: '2024-10-10T13:00:00Z',
     shipFrom: {
-      name: 'Stryker Distribution Center — East',
-      street: '1000 Stryker Way',
+      name: 'Solventum Distribution Center — East',
+      street: '1000 Solventum Way',
       city: 'Portage',
       state: 'MI',
       zip: '49002',
@@ -304,7 +304,7 @@ export const shipments = [
     actualDelivery: '2024-09-21T15:10:00Z',
     shipDate: '2024-09-19T16:00:00Z',
     shipFrom: {
-      name: 'Stryker Distribution Center — West',
+      name: 'Solventum Distribution Center — West',
       street: '5900 Optical Ct',
       city: 'San Jose',
       state: 'CA',
@@ -351,8 +351,8 @@ export const shipments = [
     actualDelivery: null,
     shipDate: null,
     shipFrom: {
-      name: 'Stryker Distribution Center — East',
-      street: '1000 Stryker Way',
+      name: 'Solventum Distribution Center — East',
+      street: '1000 Solventum Way',
       city: 'Portage',
       state: 'MI',
       zip: '49002',

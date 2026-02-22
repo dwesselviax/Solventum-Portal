@@ -52,12 +52,12 @@ export default function QuotesPage() {
     <div>
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Quotes</h1>
-          <p className="mt-1 text-sm text-[#545857]">Create and manage quotes</p>
+          <h1 className="text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Quotes</h1>
+          <p className="mt-1 text-sm text-[#3c3e3f]">Create and manage quotes</p>
         </div>
         <button
           onClick={() => setFormOpen(true)}
-          className="flex items-center gap-2 rounded-md bg-[#4C7D7A] px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#3D6664]"
+          className="flex items-center gap-2 rounded-md bg-[#0a7b6b] px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#087a69]"
           style={{ fontFamily: 'var(--font-heading)', letterSpacing: '0.5px' }}
         >
           <Plus className="h-4 w-4" /> New Quote

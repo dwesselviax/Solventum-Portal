@@ -14,7 +14,7 @@ export default function InvoiceDetailPage({ biId }) {
   const { data: invoice, isLoading } = useInvoice(biId);
 
   if (isLoading) return <div className="space-y-6"><CardSkeleton /><CardSkeleton /><CardSkeleton /></div>;
-  if (!invoice) return <div className="py-12 text-center text-[#545857]">Invoice not found.</div>;
+  if (!invoice) return <div className="py-12 text-center text-[#3c3e3f]">Invoice not found.</div>;
 
   return (
     <div className="space-y-6">
@@ -27,11 +27,11 @@ export default function InvoiceDetailPage({ biId }) {
       />
 
       <div className="flex gap-3">
-        <button className="flex items-center gap-2 rounded-md border border-[#4C7D7A] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#4C7D7A] transition-colors hover:bg-[#F0F5F5]" style={{ fontFamily: 'var(--font-heading)' }}>
+        <button className="flex items-center gap-2 rounded-md border border-[#0a7b6b] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#0a7b6b] transition-colors hover:bg-[#f5f5f5]" style={{ fontFamily: 'var(--font-heading)' }}>
           <Download className="h-4 w-4" /> Download PDF
         </button>
         {(invoice.status === 'Open' || invoice.status === 'Overdue') && (
-          <button className="rounded-md bg-[#FFB500] px-4 py-2 text-sm font-bold uppercase tracking-wider text-black transition-colors hover:bg-[#E6A300]" style={{ fontFamily: 'var(--font-heading)' }}>
+          <button className="rounded-md bg-[#05dd4d] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#01332b] transition-colors hover:bg-[#04c443]" style={{ fontFamily: 'var(--font-heading)' }}>
             Pay Now
           </button>
         )}
@@ -41,9 +41,9 @@ export default function InvoiceDetailPage({ biId }) {
         {invoice.customer && <PartyCard role="Customer" name={invoice.customer.name} address={invoice.customer.address} />}
         {invoice.billTo && <PartyCard role="Bill To" name={invoice.billTo.name} address={invoice.billTo.address} />}
         <DetailCard title="Payment Terms">
-          <p className="text-sm text-[#545857]">Terms: <span className="font-semibold text-black">{invoice.paymentTerms || 'Net 30'}</span></p>
-          <p className="text-sm text-[#545857]">Due: <span className="font-semibold text-black">{formatDate(invoice.dueDate)}</span></p>
-          {invoice.paidDate && <p className="text-sm text-[#545857]">Paid: <span className="font-semibold text-[#2E7D32]">{formatDate(invoice.paidDate)}</span></p>}
+          <p className="text-sm text-[#3c3e3f]">Terms: <span className="font-semibold text-[#01332b]">{invoice.paymentTerms || 'Net 30'}</span></p>
+          <p className="text-sm text-[#3c3e3f]">Due: <span className="font-semibold text-[#01332b]">{formatDate(invoice.dueDate)}</span></p>
+          {invoice.paidDate && <p className="text-sm text-[#3c3e3f]">Paid: <span className="font-semibold text-[#2E7D32]">{formatDate(invoice.paidDate)}</span></p>}
         </DetailCard>
       </div>
 

@@ -34,8 +34,8 @@ export default function InvoicesPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Invoices</h1>
-        <p className="mt-1 text-sm text-[#545857]">View and manage your invoices</p>
+        <h1 className="text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Invoices</h1>
+        <p className="mt-1 text-sm text-[#3c3e3f]">View and manage your invoices</p>
       </div>
 
       <FiltersBar search={search} onSearchChange={setSearch}>

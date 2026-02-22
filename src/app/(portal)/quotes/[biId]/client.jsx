@@ -15,7 +15,7 @@ export default function QuoteDetailPage({ biId }) {
   const { data: quote, isLoading } = useQuote(biId);
 
   if (isLoading) return <div className="space-y-6"><CardSkeleton /><CardSkeleton /><CardSkeleton /></div>;
-  if (!quote) return <div className="py-12 text-center text-[#545857]">Quote not found.</div>;
+  if (!quote) return <div className="py-12 text-center text-[#3c3e3f]">Quote not found.</div>;
 
   return (
     <div className="space-y-6">
@@ -23,19 +23,19 @@ export default function QuoteDetailPage({ biId }) {
 
       <div className="flex gap-3">
         {quote.status === 'Approved' && (
-          <button className="flex items-center gap-2 rounded-md bg-[#FFB500] px-4 py-2 text-sm font-bold uppercase tracking-wider text-black transition-colors hover:bg-[#E6A300]" style={{ fontFamily: 'var(--font-heading)' }}>
+          <button className="flex items-center gap-2 rounded-md bg-[#05dd4d] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#01332b] transition-colors hover:bg-[#04c443]" style={{ fontFamily: 'var(--font-heading)' }}>
             <ShoppingCart className="h-4 w-4" /> Convert to Order
           </button>
         )}
-        <button className="flex items-center gap-2 rounded-md border border-[#4C7D7A] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#4C7D7A] transition-colors hover:bg-[#F0F5F5]" style={{ fontFamily: 'var(--font-heading)' }}>
+        <button className="flex items-center gap-2 rounded-md border border-[#0a7b6b] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#0a7b6b] transition-colors hover:bg-[#f5f5f5]" style={{ fontFamily: 'var(--font-heading)' }}>
           <FileDown className="h-4 w-4" /> Export PDF
         </button>
       </div>
 
       <DetailCard title="Quote Details">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <div><p className="text-xs font-bold uppercase text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Valid Until</p><p className="mt-1 text-sm text-black">{formatDate(quote.validUntil)}</p></div>
-          <div><p className="text-xs font-bold uppercase text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Sales Rep</p><p className="mt-1 text-sm text-black">{quote.salesRep?.name || '—'}</p></div>
+          <div><p className="text-xs font-bold uppercase text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Valid Until</p><p className="mt-1 text-sm text-[#01332b]">{formatDate(quote.validUntil)}</p></div>
+          <div><p className="text-xs font-bold uppercase text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Sales Rep</p><p className="mt-1 text-sm text-[#01332b]">{quote.salesRep?.name || '—'}</p></div>
         </div>
       </DetailCard>
 

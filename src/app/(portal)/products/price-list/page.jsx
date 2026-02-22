@@ -86,15 +86,15 @@ export default function PriceListPage() {
     <div>
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Price List</h1>
-          <p className="mt-1 text-sm text-[#545857]">
+          <h1 className="text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Price List</h1>
+          <p className="mt-1 text-sm text-[#3c3e3f]">
             {customerName ? `Pricing for ${customerName}` : 'Export product pricing as CSV'}
           </p>
         </div>
         <button
           onClick={handleExport}
           disabled={isLoading || (isSalesRep && !selectedCustomer)}
-          className="flex items-center gap-2 rounded-md bg-[#4C7D7A] px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#3D6664] disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center gap-2 rounded-md bg-[#0a7b6b] px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#087a69] disabled:opacity-50 disabled:cursor-not-allowed"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
           <Download className="h-4 w-4" />
@@ -104,13 +104,13 @@ export default function PriceListPage() {
 
       {isSalesRep && (
         <div className="mb-4">
-          <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>
+          <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
             Customer
           </label>
           <select
             value={selectedCustomer || ''}
             onChange={(e) => setSelectedCustomer(e.target.value || null)}
-            className="h-10 w-full max-w-md rounded-md border border-[#D4D4D4] bg-white px-3 text-sm text-black focus:border-[#4C7D7A] focus:outline-none focus:ring-1 focus:ring-[#4C7D7A]"
+            className="h-10 w-full max-w-md rounded-md border border-[#e7e7e7] bg-white px-3 text-sm text-[#01332b] focus:border-[#0a7b6b] focus:outline-none focus:ring-1 focus:ring-[#0a7b6b]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             <option value="">Select a customer…</option>
@@ -130,12 +130,12 @@ export default function PriceListPage() {
           {Array.from({ length: 6 }).map((_, i) => <CardSkeleton key={i} />)}
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-lg border border-[#D4D4D4] bg-white shadow-sm">
+        <div className="overflow-x-auto rounded-lg border border-[#e7e7e7] bg-white shadow-sm">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-[#D4D4D4] bg-[#F5F5F5]">
+              <tr className="border-b border-[#e7e7e7] bg-[#F5F5F5]">
                 {['Product ID', 'Product Name', 'Division', 'Category', 'SKU', 'List Price', 'Your Price', 'Availability'].map((h) => (
-                  <th key={h} className="px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>
+                  <th key={h} className="px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
                     {h}
                   </th>
                 ))}
@@ -144,20 +144,20 @@ export default function PriceListPage() {
             <tbody>
               {(products || []).map((p) => (
                 <tr key={p.maId} className="border-b border-[#F5F5F5] last:border-b-0 hover:bg-[#FAFAFA]">
-                  <td className="px-4 py-3 font-mono text-xs text-[#545857]">{p.maId}</td>
-                  <td className="px-4 py-3 font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>{p.maName}</td>
-                  <td className="px-4 py-3 text-[#545857]">{p.division}</td>
-                  <td className="px-4 py-3 text-[#545857]">{p.category}</td>
-                  <td className="px-4 py-3 font-mono text-xs text-[#545857]">{p.sku}</td>
-                  <td className="px-4 py-3 text-[#545857]">{formatCurrency(p.listPrice)}</td>
-                  <td className="px-4 py-3 font-bold text-black">{formatCurrency(p.price)}</td>
-                  <td className="px-4 py-3 text-[#545857]">{p.availability}</td>
+                  <td className="px-4 py-3 font-mono text-xs text-[#3c3e3f]">{p.maId}</td>
+                  <td className="px-4 py-3 font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{p.maName}</td>
+                  <td className="px-4 py-3 text-[#3c3e3f]">{p.division}</td>
+                  <td className="px-4 py-3 text-[#3c3e3f]">{p.category}</td>
+                  <td className="px-4 py-3 font-mono text-xs text-[#3c3e3f]">{p.sku}</td>
+                  <td className="px-4 py-3 text-[#3c3e3f]">{formatCurrency(p.listPrice)}</td>
+                  <td className="px-4 py-3 font-bold text-[#01332b]">{formatCurrency(p.price)}</td>
+                  <td className="px-4 py-3 text-[#3c3e3f]">{p.availability}</td>
                 </tr>
               ))}
             </tbody>
           </table>
           {(!products || products.length === 0) && (
-            <div className="py-12 text-center text-[#545857]">No products found matching your criteria.</div>
+            <div className="py-12 text-center text-[#3c3e3f]">No products found matching your criteria.</div>
           )}
         </div>
       )}

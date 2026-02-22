@@ -35,8 +35,8 @@ export default function DocumentationPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Product Documentation</h1>
-        <p className="mt-1 text-sm text-[#545857]">Browse manuals, guides, IFUs, and regulatory documents</p>
+        <h1 className="text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Product Documentation</h1>
+        <p className="mt-1 text-sm text-[#3c3e3f]">Browse manuals, guides, IFUs, and regulatory documents</p>
       </div>
 
       <FiltersBar search={search} onSearchChange={setSearch}>
@@ -48,18 +48,18 @@ export default function DocumentationPage() {
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {docs.map((doc) => (
-            <div key={doc.id} className="rounded-lg border border-[#D4D4D4] bg-white p-5 shadow-sm transition-all hover:shadow-md">
+            <div key={doc.id} className="rounded-lg border border-[#e7e7e7] bg-white p-5 shadow-sm transition-all hover:shadow-md">
               <div className="flex items-start gap-3">
-                <div className="rounded-lg bg-[#E3F2FD] p-2"><FileText className="h-5 w-5 text-[#1565C0]" /></div>
+                <div className="rounded-lg bg-[#bffde3] p-2"><FileText className="h-5 w-5 text-[#0a7b6b]" /></div>
                 <div className="flex-1">
-                  <span className="rounded-full bg-[#F5F5F5] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>{doc.type}</span>
-                  <h3 className="mt-1 text-sm font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>{doc.title}</h3>
-                  <p className="mt-0.5 text-xs text-[#545857]">{doc.productName}</p>
-                  <p className="mt-1 text-xs text-[#D4D4D4]">{doc.fileSize} • {doc.format}</p>
+                  <span className="rounded-full bg-[#F5F5F5] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>{doc.type}</span>
+                  <h3 className="mt-1 text-sm font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{doc.title}</h3>
+                  <p className="mt-0.5 text-xs text-[#3c3e3f]">{doc.productName}</p>
+                  <p className="mt-1 text-xs text-[#e7e7e7]">{doc.fileSize} • {doc.format}</p>
                 </div>
               </div>
               <div className="mt-3 flex gap-2">
-                <button className="flex items-center gap-1 rounded-md border border-[#D4D4D4] px-3 py-1.5 text-xs font-bold uppercase text-[#545857] transition-colors hover:bg-[#F5F5F5]" style={{ fontFamily: 'var(--font-heading)' }}>
+                <button className="flex items-center gap-1 rounded-md border border-[#e7e7e7] px-3 py-1.5 text-xs font-bold uppercase text-[#3c3e3f] transition-colors hover:bg-[#F5F5F5]" style={{ fontFamily: 'var(--font-heading)' }}>
                   <Download className="h-3 w-3" /> Download
                 </button>
               </div>
@@ -68,7 +68,7 @@ export default function DocumentationPage() {
         </div>
       )}
 
-      {!loading && docs.length === 0 && <div className="py-12 text-center text-[#545857]">No documents found.</div>}
+      {!loading && docs.length === 0 && <div className="py-12 text-center text-[#3c3e3f]">No documents found.</div>}
     </div>
   );
 }

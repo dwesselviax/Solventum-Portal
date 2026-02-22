@@ -13,18 +13,18 @@ const MOCK_REVENUE = [
 
 export function RevenueChart() {
   return (
-    <div className="rounded-lg border border-[#D4D4D4] bg-white p-6 shadow-sm">
-      <h3 className="mb-4 text-base font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Revenue (Last 6 Months)</h3>
+    <div className="rounded-lg border border-[#e7e7e7] bg-white p-6 shadow-sm">
+      <h3 className="mb-4 text-base font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Revenue (Last 6 Months)</h3>
       <ResponsiveContainer width="100%" height={240}>
         <LineChart data={MOCK_REVENUE}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#F5F5F5" />
-          <XAxis dataKey="month" tick={{ fontSize: 12, fill: '#545857' }} />
-          <YAxis tick={{ fontSize: 12, fill: '#545857' }} tickFormatter={(v) => '$' + (v / 1000) + 'k'} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#f5f5f5" />
+          <XAxis dataKey="month" tick={{ fontSize: 12, fill: '#3c3e3f' }} />
+          <YAxis tick={{ fontSize: 12, fill: '#3c3e3f' }} tickFormatter={(v) => '$' + (v / 1000) + 'k'} />
           <Tooltip
             formatter={(value) => ['$' + value.toLocaleString(), 'Revenue']}
-            contentStyle={{ borderRadius: 8, border: '1px solid #D4D4D4', fontFamily: 'var(--font-heading)' }}
+            contentStyle={{ borderRadius: 8, border: '1px solid #e7e7e7', fontFamily: 'var(--font-heading)' }}
           />
-          <Line type="monotone" dataKey="revenue" stroke="#FFB500" strokeWidth={3} dot={{ fill: '#FFB500', r: 4 }} activeDot={{ r: 6 }} />
+          <Line type="monotone" dataKey="revenue" stroke="#05dd4d" strokeWidth={3} dot={{ fill: '#01332b', r: 4 }} activeDot={{ r: 6, fill: '#05dd4d' }} />
         </LineChart>
       </ResponsiveContainer>
     </div>

@@ -81,7 +81,7 @@ export function SearchCommand() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="flex h-9 w-64 items-center gap-2 overflow-hidden rounded-md border border-[#D4D4D4] bg-[#F5F5F5] px-3 text-sm text-[#545857] transition-colors hover:bg-white"
+        className="flex h-9 w-64 items-center gap-2 overflow-hidden rounded-md border border-[#e7e7e7] bg-[#F5F5F5] px-3 text-sm text-[#3c3e3f] transition-colors hover:bg-white"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +100,7 @@ export function SearchCommand() {
         </svg>
         <span className="truncate">{placeholderText}</span>
         <kbd
-          className="pointer-events-none hidden h-5 shrink-0 select-none items-center gap-1 rounded border border-[#D4D4D4] bg-white px-1.5 font-mono text-[10px] font-medium text-[#545857] sm:inline-flex"
+          className="pointer-events-none hidden h-5 shrink-0 select-none items-center gap-1 rounded border border-[#e7e7e7] bg-white px-1.5 font-mono text-[10px] font-medium text-[#3c3e3f] sm:inline-flex"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
           <span className="text-xs">&#8984;</span>K
@@ -129,19 +129,19 @@ export function SearchCommand() {
                     onSelect={() => handleSelect(`/orders/${order.biId}`)}
                     className="cursor-pointer"
                   >
-                    <ShoppingCart className="mr-2 h-4 w-4 text-[#4C7D7A]" />
+                    <ShoppingCart className="mr-2 h-4 w-4 text-[#0a7b6b]" />
                     <div className="flex flex-1 flex-col">
                       <span
-                        className="text-sm font-medium text-black"
+                        className="text-sm font-medium text-[#01332b]"
                         style={{ fontFamily: 'var(--font-heading)' }}
                       >
                         {order.biId}
                       </span>
-                      <span className="text-xs text-[#545857]">
+                      <span className="text-xs text-[#3c3e3f]">
                         {order.biName}
                       </span>
                     </div>
-                    <span className="ml-auto flex items-center gap-1 text-xs text-[#545857]">
+                    <span className="ml-auto flex items-center gap-1 text-xs text-[#3c3e3f]">
                       {order.status}
                       <ArrowRight className="h-3 w-3" />
                     </span>
@@ -163,19 +163,19 @@ export function SearchCommand() {
                     onSelect={() => handleSelect(`/quotes/${quote.biId}`)}
                     className="cursor-pointer"
                   >
-                    <FileText className="mr-2 h-4 w-4 text-[#4C7D7A]" />
+                    <FileText className="mr-2 h-4 w-4 text-[#0a7b6b]" />
                     <div className="flex flex-1 flex-col">
                       <span
-                        className="text-sm font-medium text-black"
+                        className="text-sm font-medium text-[#01332b]"
                         style={{ fontFamily: 'var(--font-heading)' }}
                       >
                         {quote.biId}
                       </span>
-                      <span className="text-xs text-[#545857]">
+                      <span className="text-xs text-[#3c3e3f]">
                         {quote.biName}
                       </span>
                     </div>
-                    <span className="ml-auto flex items-center gap-1 text-xs text-[#545857]">
+                    <span className="ml-auto flex items-center gap-1 text-xs text-[#3c3e3f]">
                       {quote.status}
                       <ArrowRight className="h-3 w-3" />
                     </span>
@@ -197,19 +197,19 @@ export function SearchCommand() {
                     onSelect={() => handleSelect(`/invoices/${invoice.biId}`)}
                     className="cursor-pointer"
                   >
-                    <Receipt className="mr-2 h-4 w-4 text-[#4C7D7A]" />
+                    <Receipt className="mr-2 h-4 w-4 text-[#0a7b6b]" />
                     <div className="flex flex-1 flex-col">
                       <span
-                        className="text-sm font-medium text-black"
+                        className="text-sm font-medium text-[#01332b]"
                         style={{ fontFamily: 'var(--font-heading)' }}
                       >
                         {invoice.biId}
                       </span>
-                      <span className="text-xs text-[#545857]">
+                      <span className="text-xs text-[#3c3e3f]">
                         {invoice.invoiceNumber}
                       </span>
                     </div>
-                    <span className="ml-auto flex items-center gap-1 text-xs text-[#545857]">
+                    <span className="ml-auto flex items-center gap-1 text-xs text-[#3c3e3f]">
                       {invoice.status}
                       <ArrowRight className="h-3 w-3" />
                     </span>
@@ -230,19 +230,19 @@ export function SearchCommand() {
                   onSelect={() => handleSelect(`/products/${product.maId}`)}
                   className="cursor-pointer"
                 >
-                  <Package className="mr-2 h-4 w-4 text-[#4C7D7A]" />
+                  <Package className="mr-2 h-4 w-4 text-[#0a7b6b]" />
                   <div className="flex flex-1 flex-col">
                     <span
-                      className="text-sm font-medium text-black"
+                      className="text-sm font-medium text-[#01332b]"
                       style={{ fontFamily: 'var(--font-heading)' }}
                     >
                       {product.maName}
                     </span>
-                    <span className="text-xs text-[#545857]">
+                    <span className="text-xs text-[#3c3e3f]">
                       {product.maId} &middot; {product.division}
                     </span>
                   </div>
-                  <ArrowRight className="ml-auto h-3 w-3 text-[#545857]" />
+                  <ArrowRight className="ml-auto h-3 w-3 text-[#3c3e3f]" />
                 </CommandItem>
               ))}
             </CommandGroup>

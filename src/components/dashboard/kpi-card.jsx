@@ -7,13 +7,13 @@ export function KpiCard({ title, value, trend, trendLabel, icon: Icon, className
   const isPositive = trend > 0;
 
   return (
-    <div className={cn('rounded-lg border border-[#D4D4D4] bg-white p-6 shadow-sm transition-shadow hover:shadow-md', className)}>
+    <div className={cn('rounded-lg border border-[#e7e7e7] bg-white p-6 shadow-sm transition-shadow hover:shadow-md', className)}>
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>
+          <p className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
             {title}
           </p>
-          <p className="mt-2 text-3xl font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>
+          <p className="mt-2 text-3xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>
             {value}
           </p>
           {trend != null && (
@@ -29,13 +29,13 @@ export function KpiCard({ title, value, trend, trendLabel, icon: Icon, className
               >
                 {isPositive ? '+' : ''}{trend}%
               </span>
-              {trendLabel && <span className="text-xs text-[#545857]">{trendLabel}</span>}
+              {trendLabel && <span className="text-xs text-[#6e6e6e]">{trendLabel}</span>}
             </div>
           )}
         </div>
         {Icon && (
-          <div className="rounded-lg bg-[#FFF8E1] p-3">
-            <Icon className="h-6 w-6 text-[#FFB500]" />
+          <div className="rounded-lg bg-[#bffde3]/40 p-3">
+            <Icon className="h-6 w-6 text-[#01332b]" />
           </div>
         )}
       </div>

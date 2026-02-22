@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" fill="none">
+  <!-- Solventum wordmark based on brand guidelines -->
+  <!-- Green diamond/gem icon -->
+  <g transform="translate(0, 10)">
+    <!-- Diamond shape composed of facets -->
+    <path d="M50 0 L85 50 L50 100 L15 50 Z" fill="#05dd4d"/>
+    <path d="M50 0 L85 50 L50 50 Z" fill="#01332b" opacity="0.3"/>
+    <path d="M50 50 L85 50 L50 100 Z" fill="#01332b" opacity="0.15"/>
+    <path d="M50 0 L50 50 L15 50 Z" fill="#ffffff" opacity="0.2"/>
+  </g>
+  <!-- Wordmark "Solventum" -->
+  <text x="105" y="72" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700" fill="#01332b" letter-spacing="-1">
+    Solventum
+  </text>
+</svg>

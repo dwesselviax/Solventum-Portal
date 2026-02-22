@@ -95,20 +95,20 @@ export default function ConsignmentPage() {
     <div>
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Consignment Inventory</h1>
-          <p className="mt-1 text-sm text-[#545857]">View and manage consignment items at your locations</p>
+          <h1 className="text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Consignment Inventory</h1>
+          <p className="mt-1 text-sm text-[#3c3e3f]">View and manage consignment items at your locations</p>
         </div>
         <div className="flex gap-3">
           <button
             onClick={() => setTransferDialogOpen(true)}
-            className="flex items-center gap-2 rounded-md border border-[#4C7D7A] px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-[#4C7D7A] transition-colors hover:bg-[#F0F5F5]"
+            className="flex items-center gap-2 rounded-md border border-[#0a7b6b] px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-[#0a7b6b] transition-colors hover:bg-[#F0F5F5]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             <ArrowRightLeft className="h-4 w-4" /> Transfer
           </button>
           <button
             onClick={() => setRequestDialogOpen(true)}
-            className="flex items-center gap-2 rounded-md bg-[#4C7D7A] px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#3D6664]"
+            className="flex items-center gap-2 rounded-md bg-[#0a7b6b] px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#087a69]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             <Package className="h-4 w-4" /> Request New
@@ -126,12 +126,12 @@ export default function ConsignmentPage() {
       <Dialog open={requestDialogOpen} onOpenChange={setRequestDialogOpen}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle className="text-lg font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Request New Consignment</DialogTitle>
+            <DialogTitle className="text-lg font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Request New Consignment</DialogTitle>
             <DialogDescription>Request new consignment inventory for your facility.</DialogDescription>
           </DialogHeader>
           <form onSubmit={handleRequestSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="req-product" className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Product</Label>
+              <Label htmlFor="req-product" className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Product</Label>
               <Select value={requestForm.product} onValueChange={(val) => setRequestForm({ ...requestForm, product: val })} required>
                 <SelectTrigger id="req-product" className="w-full">
                   <SelectValue placeholder="Select a product" />
@@ -144,7 +144,7 @@ export default function ConsignmentPage() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="req-quantity" className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Quantity</Label>
+              <Label htmlFor="req-quantity" className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Quantity</Label>
               <Input
                 id="req-quantity"
                 type="number"
@@ -156,7 +156,7 @@ export default function ConsignmentPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="req-facility" className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Location / Facility</Label>
+              <Label htmlFor="req-facility" className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Location / Facility</Label>
               <Select value={requestForm.facility} onValueChange={(val) => setRequestForm({ ...requestForm, facility: val })} required>
                 <SelectTrigger id="req-facility" className="w-full">
                   <SelectValue placeholder="Select a facility" />
@@ -169,7 +169,7 @@ export default function ConsignmentPage() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="req-notes" className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Notes</Label>
+              <Label htmlFor="req-notes" className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Notes</Label>
               <Textarea
                 id="req-notes"
                 placeholder="Additional notes or instructions..."
@@ -181,14 +181,14 @@ export default function ConsignmentPage() {
               <button
                 type="button"
                 onClick={() => setRequestDialogOpen(false)}
-                className="rounded-md border border-[#D4D4D4] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#545857] transition-colors hover:bg-[#F5F5F5]"
+                className="rounded-md border border-[#e7e7e7] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#3c3e3f] transition-colors hover:bg-[#F5F5F5]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="rounded-md bg-[#4C7D7A] px-4 py-2 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#3D6664]"
+                className="rounded-md bg-[#0a7b6b] px-4 py-2 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#087a69]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Submit Request
@@ -202,12 +202,12 @@ export default function ConsignmentPage() {
       <Dialog open={transferDialogOpen} onOpenChange={setTransferDialogOpen}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle className="text-lg font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Transfer Consignment Item</DialogTitle>
+            <DialogTitle className="text-lg font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Transfer Consignment Item</DialogTitle>
             <DialogDescription>Transfer a consignment item to another facility.</DialogDescription>
           </DialogHeader>
           <form onSubmit={handleTransferSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="xfer-item" className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Select Item</Label>
+              <Label htmlFor="xfer-item" className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Select Item</Label>
               <Select value={transferForm.item} onValueChange={(val) => setTransferForm({ ...transferForm, item: val })} required>
                 <SelectTrigger id="xfer-item" className="w-full">
                   <SelectValue placeholder="Select an item to transfer" />
@@ -220,7 +220,7 @@ export default function ConsignmentPage() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="xfer-destination" className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Destination Facility</Label>
+              <Label htmlFor="xfer-destination" className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Destination Facility</Label>
               <Select value={transferForm.destinationFacility} onValueChange={(val) => setTransferForm({ ...transferForm, destinationFacility: val })} required>
                 <SelectTrigger id="xfer-destination" className="w-full">
                   <SelectValue placeholder="Select destination facility" />
@@ -233,7 +233,7 @@ export default function ConsignmentPage() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="xfer-notes" className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Notes</Label>
+              <Label htmlFor="xfer-notes" className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Notes</Label>
               <Textarea
                 id="xfer-notes"
                 placeholder="Transfer notes..."
@@ -245,14 +245,14 @@ export default function ConsignmentPage() {
               <button
                 type="button"
                 onClick={() => setTransferDialogOpen(false)}
-                className="rounded-md border border-[#D4D4D4] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#545857] transition-colors hover:bg-[#F5F5F5]"
+                className="rounded-md border border-[#e7e7e7] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#3c3e3f] transition-colors hover:bg-[#F5F5F5]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="rounded-md bg-[#4C7D7A] px-4 py-2 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#3D6664]"
+                className="rounded-md bg-[#0a7b6b] px-4 py-2 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#087a69]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Initiate Transfer

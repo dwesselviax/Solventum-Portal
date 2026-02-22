@@ -165,7 +165,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
       <SheetContent side="right" className="w-full sm:max-w-lg">
         <SheetHeader>
           <SheetTitle
-            className="text-lg font-bold uppercase tracking-wider text-black"
+            className="text-lg font-bold uppercase tracking-wider text-[#01332b]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             New Order
@@ -178,7 +178,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
             {/* Customer selection */}
             <div className="space-y-1.5">
               <Label
-                className="text-xs font-bold uppercase tracking-wider text-[#545857]"
+                className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Customer
@@ -200,7 +200,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
             {/* Description */}
             <div className="space-y-1.5">
               <Label
-                className="text-xs font-bold uppercase tracking-wider text-[#545857]"
+                className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Description
@@ -213,15 +213,15 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
             </div>
 
             {/* Ship-to address */}
-            <fieldset className="space-y-3 rounded-md border border-[#D4D4D4] p-3">
+            <fieldset className="space-y-3 rounded-md border border-[#e7e7e7] p-3">
               <legend
-                className="px-1 text-xs font-bold uppercase tracking-wider text-[#545857]"
+                className="px-1 text-xs font-bold uppercase tracking-wider text-[#3c3e3f]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Ship-to Address
               </legend>
               <div className="space-y-1.5">
-                <Label className="text-xs text-[#545857]">Street</Label>
+                <Label className="text-xs text-[#3c3e3f]">Street</Label>
                 <Input
                   placeholder="Street address"
                   value={shipToStreet}
@@ -230,7 +230,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
               </div>
               <div className="grid grid-cols-3 gap-2">
                 <div className="space-y-1.5">
-                  <Label className="text-xs text-[#545857]">City</Label>
+                  <Label className="text-xs text-[#3c3e3f]">City</Label>
                   <Input
                     placeholder="City"
                     value={shipToCity}
@@ -238,7 +238,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label className="text-xs text-[#545857]">State</Label>
+                  <Label className="text-xs text-[#3c3e3f]">State</Label>
                   <Input
                     placeholder="State"
                     value={shipToState}
@@ -246,7 +246,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label className="text-xs text-[#545857]">Zip</Label>
+                  <Label className="text-xs text-[#3c3e3f]">Zip</Label>
                   <Input
                     placeholder="Zip"
                     value={shipToZip}
@@ -260,7 +260,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <Label
-                  className="text-xs font-bold uppercase tracking-wider text-[#545857]"
+                  className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   Line Items
@@ -270,7 +270,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
                   variant="outline"
                   size="xs"
                   onClick={handleAddLine}
-                  className="gap-1 text-[#4C7D7A]"
+                  className="gap-1 text-[#0a7b6b]"
                 >
                   <Plus className="h-3 w-3" /> Add Line
                 </Button>
@@ -279,11 +279,11 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
               {lineItems.map((li, idx) => (
                 <div
                   key={idx}
-                  className="space-y-2 rounded-md border border-[#D4D4D4] bg-[#F5F5F5]/50 p-3"
+                  className="space-y-2 rounded-md border border-[#e7e7e7] bg-[#F5F5F5]/50 p-3"
                 >
                   <div className="flex items-center justify-between">
                     <span
-                      className="text-[11px] font-bold uppercase tracking-wider text-[#545857]"
+                      className="text-[11px] font-bold uppercase tracking-wider text-[#3c3e3f]"
                       style={{ fontFamily: 'var(--font-heading)' }}
                     >
                       Item {idx + 1}
@@ -315,7 +315,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
                   </Select>
                   <div className="grid grid-cols-2 gap-2">
                     <div className="space-y-1">
-                      <Label className="text-xs text-[#545857]">Qty</Label>
+                      <Label className="text-xs text-[#3c3e3f]">Qty</Label>
                       <Input
                         type="number"
                         min={1}
@@ -326,7 +326,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
                       />
                     </div>
                     <div className="space-y-1">
-                      <Label className="text-xs text-[#545857]">Unit Price ($)</Label>
+                      <Label className="text-xs text-[#3c3e3f]">Unit Price ($)</Label>
                       <Input
                         type="number"
                         min={0}
@@ -345,7 +345,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
             {/* Notes */}
             <div className="space-y-1.5">
               <Label
-                className="text-xs font-bold uppercase tracking-wider text-[#545857]"
+                className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Notes
@@ -360,7 +360,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
           </form>
         </ScrollArea>
 
-        <SheetFooter className="gap-2 border-t border-[#D4D4D4] px-4 pt-4">
+        <SheetFooter className="gap-2 border-t border-[#e7e7e7] px-4 pt-4">
           <Button
             type="button"
             variant="outline"
@@ -373,7 +373,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
             type="submit"
             form="order-form"
             disabled={submitting}
-            className="flex-1 bg-[#4C7D7A] font-bold uppercase tracking-wider text-white hover:bg-[#3D6664]"
+            className="flex-1 bg-[#0a7b6b] font-bold uppercase tracking-wider text-white hover:bg-[#087a69]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             {submitting ? 'Creating...' : 'Create Order'}

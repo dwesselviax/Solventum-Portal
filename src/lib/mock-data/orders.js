@@ -1,4 +1,4 @@
-// Mock orders for Stryker B2B Portal
+// Mock orders for Solventum B2B Portal
 // Various statuses: Draft, Submitted, Confirmed, Shipped, Delivered, Invoiced, Cancelled
 
 export const orders = [
@@ -20,7 +20,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -75,7 +75,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -141,7 +141,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -217,7 +217,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -282,7 +282,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -337,7 +337,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -392,7 +392,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -466,7 +466,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -521,7 +521,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -576,7 +576,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -631,7 +631,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -686,7 +686,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -740,7 +740,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -805,7 +805,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {
@@ -859,7 +859,7 @@ export const orders = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
     },
     items: [
       {

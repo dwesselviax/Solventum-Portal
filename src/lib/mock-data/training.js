@@ -1,4 +1,4 @@
-// Mock training resources for Stryker B2B Portal
+// Mock training resources for Solventum B2B Portal
 // Types: Online Course, Video, Hands-On Workshop, Webinar, Certification, In-Service
 
 export const training = [
@@ -24,10 +24,10 @@ export const training = [
     ],
     instructor: {
       name: 'Dr. James Whitfield',
-      title: 'Director of Robotic Surgery Education, Stryker',
+      title: 'Director of Robotic Surgery Education, Solventum',
     },
     nextAvailableDate: '2025-02-15T08:00:00Z',
-    location: 'Stryker Education Center, Mahwah, NJ',
+    location: 'Solventum Education Center, Mahwah, NJ',
     maxParticipants: 8,
     currentEnrollment: 5,
     cmeCredits: 24,
@@ -59,7 +59,7 @@ export const training = [
       'Understand closed-system waste management benefits',
     ],
     instructor: {
-      name: 'Stryker Clinical Educator — Assigned at scheduling',
+      name: 'Solventum Clinical Educator — Assigned at scheduling',
       title: null,
     },
     nextAvailableDate: '2025-01-25T06:00:00Z',
@@ -98,7 +98,7 @@ export const training = [
       title: 'Associate Professor of Neurosurgery, University of Washington',
     },
     nextAvailableDate: '2025-03-08T08:00:00Z',
-    location: 'Stryker Innovation Center, Flower Mound, TX',
+    location: 'Solventum Innovation Center, Flower Mound, TX',
     maxParticipants: 6,
     currentEnrollment: 3,
     cmeCredits: 8,
@@ -131,7 +131,7 @@ export const training = [
     ],
     instructor: null,
     nextAvailableDate: null,
-    location: 'Online — Stryker Learning Portal',
+    location: 'Online — Solventum Learning Portal',
     maxParticipants: null,
     currentEnrollment: null,
     cmeCredits: 6,
@@ -163,7 +163,7 @@ export const training = [
     ],
     instructor: {
       name: 'Sarah Blackwell, RN, CCRN',
-      title: 'Clinical Education Specialist, Stryker Emergency Care',
+      title: 'Clinical Education Specialist, Solventum Emergency Care',
     },
     nextAvailableDate: '2025-01-28T12:00:00Z',
     location: 'Online — Zoom Webinar',
@@ -190,7 +190,7 @@ export const training = [
       'Hoffman 3 External Fixation System',
     ],
     description:
-      'On-demand video series featuring expert surgeons demonstrating surgical techniques for Stryker trauma fixation products. Covers distal radius plating, femoral nailing, and external fixation applications.',
+      'On-demand video series featuring expert surgeons demonstrating surgical techniques for Solventum trauma fixation products. Covers distal radius plating, femoral nailing, and external fixation applications.',
     duration: '4 hours (8 videos)',
     durationMinutes: 240,
     prerequisites: [],
@@ -202,15 +202,15 @@ export const training = [
     ],
     instructor: {
       name: 'Multiple Faculty',
-      title: 'Stryker Trauma & Extremities Advisory Board',
+      title: 'Solventum Trauma & Extremities Advisory Board',
     },
     nextAvailableDate: null,
-    location: 'Online — Stryker Learning Portal',
+    location: 'Online — Solventum Learning Portal',
     maxParticipants: null,
     currentEnrollment: null,
     cmeCredits: 4,
     price: 0,
-    priceNote: 'Free for registered Stryker customers',
+    priceNote: 'Free for registered Solventum customers',
     certificateIssued: true,
     enrollmentUrl: '/training/enroll/TRN-006',
     thumbnailUrl: '/images/training/trauma-techniques.jpg',
@@ -239,7 +239,7 @@ export const training = [
     ],
     instructor: null,
     nextAvailableDate: null,
-    location: 'Online — Stryker Learning Portal',
+    location: 'Online — Solventum Learning Portal',
     maxParticipants: null,
     currentEnrollment: null,
     cmeCredits: 0,
@@ -272,10 +272,10 @@ export const training = [
     ],
     instructor: {
       name: 'Dr. James Whitfield',
-      title: 'Director of Robotic Surgery Education, Stryker',
+      title: 'Director of Robotic Surgery Education, Solventum',
     },
     nextAvailableDate: '2025-03-22T08:00:00Z',
-    location: 'Stryker Education Center, Mahwah, NJ',
+    location: 'Solventum Education Center, Mahwah, NJ',
     maxParticipants: 8,
     currentEnrollment: 2,
     cmeCredits: 16,

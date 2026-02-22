@@ -1,4 +1,4 @@
-// Mock product documentation for Stryker B2B Portal
+// Mock product documentation for Solventum B2B Portal
 // Types: User Manual, IFU, Quick Reference, Service Manual, Brochure, White Paper, Regulatory
 
 export const documentation = [
@@ -193,13 +193,13 @@ export const documentation = [
   },
   {
     id: 'DOC-010',
-    title: 'Stryker B2B Portal — Ordering and Account Management Guide',
+    title: 'Solventum B2B Portal — Ordering and Account Management Guide',
     type: 'User Manual',
     productIds: [],
     productNames: [],
     division: 'General',
     description:
-      'User guide for the Stryker B2B customer portal. Covers account setup, product search, ordering, order tracking, invoice management, consignment inventory, and subscription management.',
+      'User guide for the Solventum B2B customer portal. Covers account setup, product search, ordering, order tracking, invoice management, consignment inventory, and subscription management.',
     version: '1.0',
     language: 'en-US',
     publishDate: '2025-01-01T00:00:00Z',

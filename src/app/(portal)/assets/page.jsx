@@ -51,8 +51,8 @@ export default function AssetsPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Assets & Devices</h1>
-        <p className="mt-1 text-sm text-[#545857]">Track serialized capital assets and medical devices</p>
+        <h1 className="text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Assets & Devices</h1>
+        <p className="mt-1 text-sm text-[#3c3e3f]">Track serialized capital assets and medical devices</p>
       </div>
 
       <FiltersBar search={search} onSearchChange={setSearch}>

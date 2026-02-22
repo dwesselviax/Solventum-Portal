@@ -1,4 +1,4 @@
-// Mock quotes for Stryker B2B Portal
+// Mock quotes for Solventum B2B Portal
 // Statuses: Draft, Submitted, Approved, Rejected, Converted
 
 export const quotes = [
@@ -16,7 +16,7 @@ export const quotes = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
       phone: '+1 (269) 555-0193',
     },
     items: [
@@ -45,7 +45,7 @@ export const quotes = [
     updatedAt: '2025-01-02T09:15:00Z',
     convertedToOrderId: 'ORD-2025-0001',
     contractId: 'CTR-NWM-2024-001',
-    termsAndConditions: 'Standard Stryker Capital Equipment Terms. Installation included. 2-year warranty.',
+    termsAndConditions: 'Standard Solventum Capital Equipment Terms. Installation included. 2-year warranty.',
     notes: 'Converted to order ORD-2025-0001 on Jan 2, 2025.',
   },
   {
@@ -62,7 +62,7 @@ export const quotes = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
       phone: '+1 (269) 555-0193',
     },
     items: [
@@ -118,7 +118,7 @@ export const quotes = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
       phone: '+1 (269) 555-0193',
     },
     items: [
@@ -190,7 +190,7 @@ export const quotes = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
       phone: '+1 (269) 555-0193',
     },
     items: [
@@ -219,7 +219,7 @@ export const quotes = [
     updatedAt: '2025-01-14T16:30:00Z',
     convertedToOrderId: null,
     contractId: null,
-    termsAndConditions: 'Standard Stryker Capital Equipment Terms. 90-day evaluation period available.',
+    termsAndConditions: 'Standard Solventum Capital Equipment Terms. 90-day evaluation period available.',
     notes: 'Draft — awaiting clinical evaluation feedback from Dr. Kim.',
   },
   {
@@ -236,7 +236,7 @@ export const quotes = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
       phone: '+1 (269) 555-0193',
     },
     items: [
@@ -302,7 +302,7 @@ export const quotes = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
       phone: '+1 (269) 555-0193',
     },
     items: [
@@ -356,7 +356,7 @@ export const quotes = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
       phone: '+1 (269) 555-0193',
     },
     items: [
@@ -402,7 +402,7 @@ export const quotes = [
     salesRep: {
       id: 'USR-003',
       name: 'Emily Rodriguez',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
       phone: '+1 (269) 555-0193',
     },
     items: [

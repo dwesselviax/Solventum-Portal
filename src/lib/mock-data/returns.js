@@ -1,4 +1,4 @@
-// Mock RMA (Return Merchandise Authorization) records for Stryker B2B Portal
+// Mock RMA (Return Merchandise Authorization) records for Solventum B2B Portal
 // Statuses: Requested, Approved, In Transit, Received, Inspected, Credited, Denied
 
 export const returns = [
@@ -47,7 +47,7 @@ export const returns = [
       zip: '60639',
     },
     shipToAddress: {
-      name: 'Stryker Returns Center',
+      name: 'Solventum Returns Center',
       street: '2600 Commerce Dr',
       city: 'Portage',
       state: 'MI',
@@ -101,7 +101,7 @@ export const returns = [
       zip: '97701',
     },
     shipToAddress: {
-      name: 'Stryker Returns Center',
+      name: 'Solventum Returns Center',
       street: '2600 Commerce Dr',
       city: 'Portage',
       state: 'MI',
@@ -204,7 +204,7 @@ export const returns = [
       zip: '98104',
     },
     shipToAddress: {
-      name: 'Stryker Returns Center',
+      name: 'Solventum Returns Center',
       street: '2600 Commerce Dr',
       city: 'Portage',
       state: 'MI',

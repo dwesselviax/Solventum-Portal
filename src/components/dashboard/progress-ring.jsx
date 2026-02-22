@@ -13,7 +13,7 @@ export function ProgressRing({ value = 0, size = 120, strokeWidth = 10, label, s
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="#F5F5F5"
+          stroke="#f5f5f5"
           strokeWidth={strokeWidth}
         />
         <circle
@@ -21,7 +21,7 @@ export function ProgressRing({ value = 0, size = 120, strokeWidth = 10, label, s
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="#FFB500"
+          stroke="#05dd4d"
           strokeWidth={strokeWidth}
           strokeDasharray={circumference}
           strokeDashoffset={offset}
@@ -30,9 +30,9 @@ export function ProgressRing({ value = 0, size = 120, strokeWidth = 10, label, s
         />
       </svg>
       <div className="mt-2 text-center">
-        <p className="text-2xl font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>{value}%</p>
-        {label && <p className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>{label}</p>}
-        {sublabel && <p className="text-xs text-[#545857]">{sublabel}</p>}
+        <p className="text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{value}%</p>
+        {label && <p className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>{label}</p>}
+        {sublabel && <p className="text-xs text-[#6e6e6e]">{sublabel}</p>}
       </div>
     </div>
   );

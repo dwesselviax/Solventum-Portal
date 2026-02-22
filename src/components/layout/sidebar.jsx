@@ -49,17 +49,17 @@ export function Sidebar() {
   return (
     <aside
       className={cn(
-        'flex h-full flex-col border-r border-[#D4D4D4] bg-white transition-all duration-200',
+        'flex h-full flex-col border-r border-white/10 bg-[#01332b] transition-all duration-200',
         collapsed ? 'w-16' : 'w-[260px]'
       )}
     >
       <div className="flex-1 overflow-y-auto py-2">
         {filteredItems.map((item, index) => {
           if (item.type === 'divider') {
-            if (collapsed) return <div key={index} className="mx-3 my-2 border-t border-[#F5F5F5]" />;
+            if (collapsed) return <div key={index} className="mx-3 my-2 border-t border-white/10" />;
             return (
               <div key={index} className="mx-5 mt-4 mb-1">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-white/50" style={{ fontFamily: 'var(--font-heading)' }}>
                   {item.label}
                 </span>
               </div>
@@ -76,14 +76,14 @@ export function Sidebar() {
               className={cn(
                 'mx-2 mb-0.5 flex items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-colors',
                 isActive
-                  ? 'border-l-[3px] border-l-[#FFB500] bg-[#FFF8E1] font-bold text-black'
-                  : 'border-l-[3px] border-l-transparent text-[#333333] hover:bg-[#F5F5F5]',
+                  ? 'border-l-[3px] border-l-[#05dd4d] bg-white/10 font-bold text-white'
+                  : 'border-l-[3px] border-l-transparent text-white/75 hover:bg-white/8 hover:text-white',
                 collapsed && 'justify-center px-0'
               )}
               style={{ fontFamily: 'var(--font-heading)' }}
               title={collapsed ? item.label : undefined}
             >
-              <Icon className={cn('h-5 w-5 shrink-0', isActive ? 'text-[#FFB500]' : 'text-[#545857]')} />
+              <Icon className={cn('h-5 w-5 shrink-0', isActive ? 'text-[#05dd4d]' : 'text-white/60')} />
               {!collapsed && <span>{item.label}</span>}
             </Link>
           );
@@ -92,7 +92,7 @@ export function Sidebar() {
 
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="flex items-center justify-center border-t border-[#D4D4D4] p-3 text-[#545857] transition-colors hover:bg-[#F5F5F5]"
+        className="flex items-center justify-center border-t border-white/10 p-3 text-white/60 transition-colors hover:bg-white/8 hover:text-white"
       >
         {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
       </button>

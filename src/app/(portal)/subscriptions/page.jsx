@@ -34,8 +34,8 @@ export default function SubscriptionsPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Subscriptions</h1>
-        <p className="mt-1 text-sm text-[#545857]">Manage your recurring subscriptions</p>
+        <h1 className="text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Subscriptions</h1>
+        <p className="mt-1 text-sm text-[#3c3e3f]">Manage your recurring subscriptions</p>
       </div>
 
       <FiltersBar search={search} onSearchChange={setSearch}>

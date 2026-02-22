@@ -1,4 +1,4 @@
-// Mock products for Stryker B2B Portal
+// Mock products for Solventum B2B Portal
 // Organized by division — 11 divisions, ~160 products
 import { allProducts } from './products/index';
 

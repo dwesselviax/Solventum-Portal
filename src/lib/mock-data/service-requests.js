@@ -1,4 +1,4 @@
-// Mock service/maintenance requests for Stryker B2B Portal
+// Mock service/maintenance requests for Solventum B2B Portal
 // Statuses: Open, In Progress, Awaiting Parts, Scheduled, Completed
 
 export const serviceRequests = [
@@ -33,7 +33,7 @@ export const serviceRequests = [
     assignedTechnician: {
       name: 'David Park',
       phone: '+1 (206) 555-0177',
-      email: 'd.park@stryker.com',
+      email: 'd.park@solventum.com',
     },
     warrantyStatus: 'Under Warranty',
     estimatedCost: 0,
@@ -86,7 +86,7 @@ export const serviceRequests = [
     assignedTechnician: {
       name: 'Marcus Johnson',
       phone: '+1 (513) 555-0245',
-      email: 'm.johnson@stryker.com',
+      email: 'm.johnson@solventum.com',
     },
     warrantyStatus: 'Under Warranty',
     estimatedCost: 0,
@@ -139,7 +139,7 @@ export const serviceRequests = [
     assignedTechnician: {
       name: 'David Park',
       phone: '+1 (206) 555-0177',
-      email: 'd.park@stryker.com',
+      email: 'd.park@solventum.com',
     },
     warrantyStatus: 'Under Warranty',
     estimatedCost: 0,
@@ -187,7 +187,7 @@ export const serviceRequests = [
     assignedTechnician: {
       name: 'Marcus Johnson',
       phone: '+1 (513) 555-0245',
-      email: 'm.johnson@stryker.com',
+      email: 'm.johnson@solventum.com',
     },
     warrantyStatus: 'N/A — New Installation',
     estimatedCost: 0,

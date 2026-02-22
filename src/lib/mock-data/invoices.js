@@ -1,4 +1,4 @@
-// Mock invoices for Stryker B2B Portal
+// Mock invoices for Solventum B2B Portal
 // Statuses: Open, Paid, Overdue, Partial
 
 export const invoices = [

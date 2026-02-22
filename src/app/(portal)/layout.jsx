@@ -18,7 +18,7 @@ export default function PortalLayout({ children }) {
   if (!isAuthenticated) {
     return (
       <div className="flex h-screen items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#FFB500] border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#05dd4d] border-t-transparent" />
       </div>
     );
   }

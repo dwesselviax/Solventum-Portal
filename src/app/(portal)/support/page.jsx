@@ -6,29 +6,29 @@ import { Phone, Mail, MessageSquare, FileText, ExternalLink } from 'lucide-react
 export default function SupportPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Support</h1>
-      <p className="text-sm text-[#545857]">Get help with your Stryker B2B Portal account</p>
+      <h1 className="text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Support</h1>
+      <p className="text-sm text-[#3c3e3f]">Get help with your Solventum Ortho Portal account</p>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <DetailCard>
           <div className="text-center">
-            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#FFF8E1]">
-              <Phone className="h-6 w-6 text-[#FFB500]" />
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#bffde3]">
+              <Phone className="h-6 w-6 text-[#05dd4d]" />
             </div>
-            <h3 className="text-base font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Phone Support</h3>
-            <p className="mt-2 text-sm text-[#545857]">Mon–Fri, 8AM–6PM EST</p>
-            <p className="mt-1 text-lg font-bold text-[#4C7D7A]" style={{ fontFamily: 'var(--font-heading)' }}>1-800-253-3210</p>
+            <h3 className="text-base font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Phone Support</h3>
+            <p className="mt-2 text-sm text-[#3c3e3f]">Mon–Fri, 8AM–6PM EST</p>
+            <p className="mt-1 text-lg font-bold text-[#0a7b6b]" style={{ fontFamily: 'var(--font-heading)' }}>1-800-253-3210</p>
           </div>
         </DetailCard>
 
         <DetailCard>
           <div className="text-center">
-            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#E3F2FD]">
-              <Mail className="h-6 w-6 text-[#1565C0]" />
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#bffde3]">
+              <Mail className="h-6 w-6 text-[#0a7b6b]" />
             </div>
-            <h3 className="text-base font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Email Support</h3>
-            <p className="mt-2 text-sm text-[#545857]">Response within 24 hours</p>
-            <p className="mt-1 text-sm font-bold text-[#4C7D7A]" style={{ fontFamily: 'var(--font-heading)' }}>b2b-support@stryker.com</p>
+            <h3 className="text-base font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Email Support</h3>
+            <p className="mt-2 text-sm text-[#3c3e3f]">Response within 24 hours</p>
+            <p className="mt-1 text-sm font-bold text-[#0a7b6b]" style={{ fontFamily: 'var(--font-heading)' }}>b2b-support@solventum.com</p>
           </div>
         </DetailCard>
 
@@ -37,9 +37,9 @@ export default function SupportPage() {
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#E8F5E9]">
               <MessageSquare className="h-6 w-6 text-[#2E7D32]" />
             </div>
-            <h3 className="text-base font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Live Chat</h3>
-            <p className="mt-2 text-sm text-[#545857]">Available during business hours</p>
-            <button className="mt-2 rounded-md bg-[#4C7D7A] px-4 py-2 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#3D6664]" style={{ fontFamily: 'var(--font-heading)' }}>
+            <h3 className="text-base font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Live Chat</h3>
+            <p className="mt-2 text-sm text-[#3c3e3f]">Available during business hours</p>
+            <button className="mt-2 rounded-md bg-[#0a7b6b] px-4 py-2 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#087a69]" style={{ fontFamily: 'var(--font-heading)' }}>
               Start Chat
             </button>
           </div>
@@ -56,8 +56,8 @@ export default function SupportPage() {
             { q: 'How do I reset my password?', a: 'Click on your profile, go to Account Settings, and select "Change Password".' },
           ].map((faq, i) => (
             <div key={i} className="rounded-md border border-[#F5F5F5] p-4">
-              <h4 className="text-sm font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>{faq.q}</h4>
-              <p className="mt-1 text-sm text-[#545857]">{faq.a}</p>
+              <h4 className="text-sm font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{faq.q}</h4>
+              <p className="mt-1 text-sm text-[#3c3e3f]">{faq.a}</p>
             </div>
           ))}
         </div>

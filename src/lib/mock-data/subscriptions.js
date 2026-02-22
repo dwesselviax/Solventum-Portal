@@ -1,4 +1,4 @@
-// Mock subscriptions for Stryker B2B Portal
+// Mock subscriptions for Solventum B2B Portal
 // Statuses: Active, Paused, Cancelled
 
 export const subscriptions = [

@@ -1,4 +1,4 @@
-// Mock organizations/parties for Stryker B2B Portal
+// Mock organizations/parties for Solventum B2B Portal
 // Types: hospital, hospital_group, distributor, manufacturer, surgical_center
 
 export const parties = [
@@ -325,15 +325,15 @@ export const parties = [
   },
   {
     id: 'ORG-006',
-    name: 'Stryker Corporation',
+    name: 'Solventum Corporation',
     type: 'manufacturer',
     taxId: '38-1239420',
     dunsNumber: '005168640',
-    website: 'https://www.stryker.com',
+    website: 'https://www.solventum.com',
     primaryContact: {
       name: 'Emily Rodriguez',
       title: 'Regional Sales Manager — Pacific Northwest',
-      email: 'emily.rodriguez@stryker.com',
+      email: 'emily.rodriguez@solventum.com',
       phone: '+1 (269) 555-0193',
     },
     billingContact: null,
@@ -349,7 +349,7 @@ export const parties = [
         {
           id: 'SHIP-STR-01',
           label: 'Distribution Center — East',
-          street: '1000 Stryker Way',
+          street: '1000 Solventum Way',
           city: 'Portage',
           state: 'MI',
           zip: '49002',

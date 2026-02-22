@@ -23,7 +23,7 @@ export default function OrderDetailPage({ biId }) {
   }
 
   if (!order) {
-    return <div className="py-12 text-center text-[#545857]">Order not found.</div>;
+    return <div className="py-12 text-center text-[#3c3e3f]">Order not found.</div>;
   }
 
   return (

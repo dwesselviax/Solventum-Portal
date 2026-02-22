@@ -12,8 +12,8 @@ const TASKS = [
 
 export function TasksWidget() {
   return (
-    <div className="rounded-lg border border-[#D4D4D4] bg-white p-6 shadow-sm">
-      <h3 className="mb-4 text-base font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Action Items</h3>
+    <div className="rounded-lg border border-[#e7e7e7] bg-white p-6 shadow-sm">
+      <h3 className="mb-4 text-base font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Action Items</h3>
       <div className="space-y-3">
         {TASKS.map((task) => (
           <div key={task.id} className="flex items-start gap-3">
@@ -22,9 +22,9 @@ export function TasksWidget() {
             ) : task.priority === 'high' ? (
               <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-[#C62828]" />
             ) : (
-              <Circle className="mt-0.5 h-5 w-5 shrink-0 text-[#D4D4D4]" />
+              <Circle className="mt-0.5 h-5 w-5 shrink-0 text-[#e7e7e7]" />
             )}
-            <span className={task.done ? 'text-sm text-[#D4D4D4] line-through' : 'text-sm text-[#333333]'}>
+            <span className={task.done ? 'text-sm text-[#e7e7e7] line-through' : 'text-sm text-[#01332b]'}>
               {task.text}
             </span>
           </div>

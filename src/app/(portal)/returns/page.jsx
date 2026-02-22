@@ -81,12 +81,12 @@ export default function ReturnsPage() {
     <div>
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Returns & RMA</h1>
-          <p className="mt-1 text-sm text-[#545857]">Submit and track return merchandise authorizations</p>
+          <h1 className="text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Returns & RMA</h1>
+          <p className="mt-1 text-sm text-[#3c3e3f]">Submit and track return merchandise authorizations</p>
         </div>
         <button
           onClick={() => setDialogOpen(true)}
-          className="flex items-center gap-2 rounded-md bg-[#4C7D7A] px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#3D6664]"
+          className="flex items-center gap-2 rounded-md bg-[#0a7b6b] px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#087a69]"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
           <Plus className="h-4 w-4" /> New RMA Request
@@ -102,12 +102,12 @@ export default function ReturnsPage() {
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle className="text-lg font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>New RMA Request</DialogTitle>
+            <DialogTitle className="text-lg font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>New RMA Request</DialogTitle>
             <DialogDescription>Submit a return merchandise authorization request.</DialogDescription>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="rma-order-id" className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Order ID</Label>
+              <Label htmlFor="rma-order-id" className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Order ID</Label>
               <Input
                 id="rma-order-id"
                 placeholder="e.g. ORD-2025-0001"
@@ -117,7 +117,7 @@ export default function ReturnsPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="rma-product" className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Product</Label>
+              <Label htmlFor="rma-product" className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Product</Label>
               <Select value={formData.product} onValueChange={(val) => setFormData({ ...formData, product: val })} required>
                 <SelectTrigger id="rma-product" className="w-full">
                   <SelectValue placeholder="Select a product" />
@@ -130,7 +130,7 @@ export default function ReturnsPage() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="rma-quantity" className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Quantity</Label>
+              <Label htmlFor="rma-quantity" className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Quantity</Label>
               <Input
                 id="rma-quantity"
                 type="number"
@@ -142,7 +142,7 @@ export default function ReturnsPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="rma-return-type" className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Return Type</Label>
+              <Label htmlFor="rma-return-type" className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Return Type</Label>
               <Select value={formData.returnType} onValueChange={(val) => setFormData({ ...formData, returnType: val })} required>
                 <SelectTrigger id="rma-return-type" className="w-full">
                   <SelectValue placeholder="Select return type" />
@@ -155,7 +155,7 @@ export default function ReturnsPage() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="rma-reason" className="text-xs font-bold uppercase tracking-wider text-[#545857]" style={{ fontFamily: 'var(--font-heading)' }}>Reason</Label>
+              <Label htmlFor="rma-reason" className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Reason</Label>
               <Textarea
                 id="rma-reason"
                 placeholder="Describe the reason for return..."
@@ -168,14 +168,14 @@ export default function ReturnsPage() {
               <button
                 type="button"
                 onClick={() => setDialogOpen(false)}
-                className="rounded-md border border-[#D4D4D4] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#545857] transition-colors hover:bg-[#F5F5F5]"
+                className="rounded-md border border-[#e7e7e7] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#3c3e3f] transition-colors hover:bg-[#F5F5F5]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="rounded-md bg-[#4C7D7A] px-4 py-2 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#3D6664]"
+                className="rounded-md bg-[#0a7b6b] px-4 py-2 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#087a69]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Submit Request

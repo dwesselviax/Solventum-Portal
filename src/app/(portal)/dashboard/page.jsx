@@ -33,11 +33,11 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>
+        <h1 className="text-3xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>
           Hi, {user?.firstName || 'User'}!
         </h1>
-        <p className="mt-1 text-sm text-[#545857]">
-          Welcome to your Stryker B2B Portal — here is your overview.
+        <p className="mt-1 text-sm text-[#3c3e3f]">
+          Welcome to your Solventum Ortho Portal — here is your overview.
         </p>
       </div>
 
@@ -56,8 +56,8 @@ export default function DashboardPage() {
         <div className="lg:col-span-2">
           <RevenueChart />
         </div>
-        <div className="rounded-lg border border-[#D4D4D4] bg-white p-6 shadow-sm">
-          <h3 className="mb-6 text-base font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Monthly Goals</h3>
+        <div className="rounded-lg border border-[#e7e7e7] bg-white p-6 shadow-sm">
+          <h3 className="mb-6 text-base font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Monthly Goals</h3>
           <div className="flex flex-wrap items-center justify-center gap-6">
             <ProgressRing value={73} label="Orders" sublabel="22 of 30" />
             <ProgressRing value={85} label="Revenue" sublabel="$352k of $415k" />
@@ -72,20 +72,20 @@ export default function DashboardPage() {
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         {[
-          { href: '/quotes', label: 'New Quote', icon: MessageSquareQuote, color: '#4C7D7A' },
-          { href: '/orders', label: 'View Orders', icon: ShoppingCart, color: '#FFB500' },
-          { href: '/products', label: 'Browse Products', icon: Package, color: '#0116EB' },
-          { href: '/support', label: 'Get Support', icon: FileText, color: '#7256CF' },
+          { href: '/quotes', label: 'New Quote', icon: MessageSquareQuote, color: '#0a7b6b' },
+          { href: '/orders', label: 'View Orders', icon: ShoppingCart, color: '#19a591' },
+          { href: '/products', label: 'Browse Products', icon: Package, color: '#01332b' },
+          { href: '/support', label: 'Get Support', icon: FileText, color: '#1ccf93' },
         ].map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className="flex items-center gap-3 rounded-lg border border-[#D4D4D4] bg-white p-4 shadow-sm transition-all hover:shadow-md hover:border-[#FFB500]"
+            className="flex items-center gap-3 rounded-lg border border-[#e7e7e7] bg-white p-4 shadow-sm transition-all hover:shadow-md hover:border-[#05dd4d]"
           >
             <div className="rounded-lg p-2" style={{ backgroundColor: link.color + '15' }}>
               <link.icon className="h-5 w-5" style={{ color: link.color }} />
             </div>
-            <span className="text-sm font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>{link.label}</span>
+            <span className="text-sm font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{link.label}</span>
           </Link>
         ))}
       </div>

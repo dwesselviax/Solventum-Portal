@@ -1,4 +1,4 @@
-// Mock serialized assets for Stryker B2B Portal
+// Mock serialized assets for Solventum B2B Portal
 // Tracks installed equipment with warranty, service history, and location
 
 export const assets = [

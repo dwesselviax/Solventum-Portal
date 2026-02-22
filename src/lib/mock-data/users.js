@@ -1,4 +1,4 @@
-// Mock users for Stryker B2B Portal
+// Mock users for Solventum B2B Portal
 // Represents different customer roles and personas
 
 export const users = [
@@ -104,13 +104,13 @@ export const users = [
     firstName: 'Emily',
     lastName: 'Rodriguez',
     fullName: 'Emily Rodriguez',
-    email: 'emily.rodriguez@stryker.com',
+    email: 'emily.rodriguez@solventum.com',
     phone: '+1 (269) 555-0193',
     role: 'sales_rep',
     title: 'Regional Sales Manager — Pacific Northwest',
     organization: {
       id: 'ORG-006',
-      name: 'Stryker Corporation',
+      name: 'Solventum Corporation',
       type: 'manufacturer',
       address: {
         street: '2825 Airview Blvd',

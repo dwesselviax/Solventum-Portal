@@ -21,7 +21,7 @@ const COLUMNS = [
   { key: 'orderId', label: 'Order', sortable: true },
   { key: 'carrier', label: 'Carrier', sortable: true },
   { key: 'trackingNumber', label: 'Tracking #', sortable: true, render: (val) => (
-    <span className="font-mono text-xs text-[#4C7D7A]">{val}</span>
+    <span className="font-mono text-xs text-[#0a7b6b]">{val}</span>
   ) },
   { key: 'status', label: 'Status', sortable: true, render: (val) => <StatusBadge status={val} /> },
   { key: 'estimatedDelivery', label: 'Est. Delivery', sortable: true, render: (val) => formatDate(val) },
@@ -50,8 +50,8 @@ export default function ShipmentsPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-black" style={{ fontFamily: 'var(--font-heading)' }}>Shipments</h1>
-        <p className="mt-1 text-sm text-[#545857]">Track your shipments and deliveries</p>
+        <h1 className="text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Shipments</h1>
+        <p className="mt-1 text-sm text-[#3c3e3f]">Track your shipments and deliveries</p>
       </div>
 
       <FiltersBar search={search} onSearchChange={setSearch}>

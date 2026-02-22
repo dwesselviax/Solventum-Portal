@@ -5,10 +5,10 @@ import { getStatusColor } from '@/lib/utils/format';
 
 const colorMap = {
   success: 'bg-[#E8F5E9] text-[#2E7D32]',
-  warning: 'bg-[#FFF8E1] text-[#F9A825]',
+  warning: 'bg-[#bffde3] text-[#F9A825]',
   error: 'bg-[#FFEBEE] text-[#C62828]',
-  info: 'bg-[#E3F2FD] text-[#1565C0]',
-  neutral: 'bg-[#F5F5F5] text-[#545857]',
+  info: 'bg-[#bffde3] text-[#0a7b6b]',
+  neutral: 'bg-[#F5F5F5] text-[#3c3e3f]',
 };
 
 export function StatusBadge({ status, className }) {

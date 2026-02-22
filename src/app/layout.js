@@ -1,29 +1,24 @@
-import { Nunito_Sans, Roboto_Slab } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
 
-const nunitoSans = Nunito_Sans({
-  variable: '--font-heading',
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-});
-
-const robotoSlab = Roboto_Slab({
-  variable: '--font-body',
-  subsets: ['latin'],
-  weight: ['400'],
-});
-
 export const metadata = {
-  title: 'Stryker B2B Portal',
-  description: 'Stryker B2B Customer Portal powered by viax',
-  icons: { icon: (process.env.NEXT_PUBLIC_BASE_PATH || '') + '/stryker-logo.png' },
+  title: 'Solventum Ortho Portal',
+  description: 'Solventum Ortho Portal powered by viax',
+  icons: { icon: (process.env.NEXT_PUBLIC_BASE_PATH || '') + '/solventum-logo.svg' },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={nunitoSans.variable + ' ' + robotoSlab.variable + ' antialiased'}>
+      <head>
+        <style>{`
+          :root {
+            --font-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+            --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+          }
+        `}</style>
+      </head>
+      <body className="antialiased">
         <Providers>{children}</Providers>
       </body>
     </html>

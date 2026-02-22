@@ -1,4 +1,4 @@
-// Mock consignment inventory for Stryker B2B Portal
+// Mock consignment inventory for Solventum B2B Portal
 // Statuses: Available, Reserved, In Use, Expired, Returned
 
 export const consignment = [
