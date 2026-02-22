@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useProducts } from '@/hooks/use-products';
 import { useAuthStore } from '@/stores/auth-store';
 import { FiltersBar, FilterSelect } from '@/components/data/filters-bar';
 import { formatCurrency } from '@/lib/utils/format';
 import { CardSkeleton } from '@/components/shared/loading-skeleton';
-import { Grid3X3, List, Package, ShoppingCart, Tag, FlaskConical } from 'lucide-react';
+import { Grid3X3, List, Package, ShoppingCart, Tag, FlaskConical, Settings2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 import Link from 'next/link';
@@ -29,6 +29,7 @@ export default function ProductsPage() {
   const [viewMode, setViewMode] = useState('grid');
   const [promotionsMap, setPromotionsMap] = useState({});
   const { data: products, isLoading } = useProducts({ search, division: category });
+  const router = useRouter();
   const user = useAuthStore((s) => s.user);
   const canAddToCart = ['orthodontist', 'dso', 'sales_rep'].includes(user?.role);
 
@@ -99,6 +100,11 @@ export default function ProductsPage() {
                       <Tag className="h-3 w-3" /> Promo
                     </span>
                   )}
+                  {product.isBandProduct && (
+                    <span className="flex items-center gap-1 rounded-full bg-[#bffde3] px-2 py-0.5 text-[10px] font-bold text-[#0a7b6b]" style={{ fontFamily: 'var(--font-heading)' }}>
+                      <Settings2 className="h-3 w-3" /> Configure
+                    </span>
+                  )}
                 </div>
               </div>
               <div className="p-4">
@@ -109,15 +115,23 @@ export default function ProductsPage() {
                 <h3 className="text-sm font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{product.maName}</h3>
                 <p className="mt-1 line-clamp-2 text-xs text-[#3c3e3f]">{product.maDescription}</p>
                 <div className="mt-3 flex items-center justify-between">
-                  <span className="text-lg font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{formatCurrency(product.price)}</span>
-                  {canAddToCart && (
+                  <span className="text-lg font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{product.isBandProduct ? 'Configure to price' : formatCurrency(product.price)}</span>
+                  {canAddToCart && product.isBandProduct ? (
+                    <button
+                      className="flex items-center gap-1 rounded-md bg-[#0a7b6b] px-3 py-2 text-xs font-bold text-white transition-colors hover:bg-[#087a69]"
+                      onClick={(e) => { e.preventDefault(); router.push('/products/band-order/' + product.bandTypeId); }}
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      <Settings2 className="h-3.5 w-3.5" /> Configure
+                    </button>
+                  ) : canAddToCart ? (
                     <button
                       className="rounded-md bg-[#0a7b6b] p-2 text-white transition-colors hover:bg-[#087a69]"
                       onClick={(e) => { e.preventDefault(); toast.success('Added ' + product.maName + ' to cart'); }}
                     >
                       <ShoppingCart className="h-4 w-4" />
                     </button>
-                  )}
+                  ) : null}
                 </div>
               </div>
             </Link>
@@ -149,10 +163,15 @@ export default function ProductsPage() {
                       <Tag className="h-3 w-3" /> Promo
                     </span>
                   )}
+                  {product.isBandProduct && (
+                    <span className="flex items-center gap-1 rounded-full bg-[#bffde3] px-2 py-0.5 text-[10px] font-bold text-[#0a7b6b]" style={{ fontFamily: 'var(--font-heading)' }}>
+                      <Settings2 className="h-3 w-3" /> Configure
+                    </span>
+                  )}
                 </div>
                 <p className="mt-0.5 text-xs text-[#3c3e3f]">{product.maId} — {product.category}</p>
               </div>
-              <span className="text-lg font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{formatCurrency(product.price)}</span>
+              <span className="text-lg font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{product.isBandProduct ? 'Configure' : formatCurrency(product.price)}</span>
             </Link>
           ))}
         </div>

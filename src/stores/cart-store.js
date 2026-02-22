@@ -34,6 +34,24 @@ export const useCartStore = create(
         }
       },
 
+      addBandItem: (product, bandConfig) => {
+        const uniqueId = product.maId + '-' + Date.now();
+        set({
+          items: [
+            ...get().items,
+            {
+              productId: uniqueId,
+              productName: product.maName,
+              sku: product.sku || product.maId,
+              quantity: 1,
+              unitPrice: 0,
+              isBandOrder: true,
+              bandConfig,
+            },
+          ],
+        });
+      },
+
       removeItem: (productId) => {
         set({ items: get().items.filter((item) => item.productId !== productId) });
       },
@@ -55,7 +73,7 @@ export const useCartStore = create(
       },
 
       getItemCount: () => {
-        return get().items.reduce((sum, item) => sum + item.quantity, 0);
+        return get().items.reduce((sum, item) => sum + (item.isBandOrder ? 1 : item.quantity), 0);
       },
 
       getTotal: () => {

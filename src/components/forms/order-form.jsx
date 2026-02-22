@@ -174,7 +174,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
           <SheetDescription>Fill in the details below to create a new order.</SheetDescription>
         </SheetHeader>
 
-        <ScrollArea className="flex-1 px-4">
+        <ScrollArea className="min-h-0 flex-1 px-4">
           <form id="order-form" onSubmit={handleSubmit} className="space-y-5 pb-4">
             {/* Customer selection */}
             <div className="space-y-1.5">

@@ -2,7 +2,7 @@ import { formatDateTime } from '@/lib/utils/format';
 
 export function Timeline({ events = [] }) {
   return (
-    <div className="rounded-lg border border-[#e7e7e7] bg-white p-6 shadow-sm">
+    <div className="rounded-lg border border-[#e7e7e7] bg-white p-6 shadow-sm lg:max-h-[calc(100vh-12rem)] lg:overflow-y-auto">
       <h3 className="mb-4 text-base font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Timeline</h3>
       <div className="relative space-y-4 pl-6">
         <div className="absolute left-[9px] top-2 bottom-2 w-px bg-[#e7e7e7]" />

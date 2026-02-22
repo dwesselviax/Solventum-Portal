@@ -133,15 +133,22 @@ export default function ProductDetailPage({ maId }) {
           </div>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            {canAddToCart && (
+            {canAddToCart && product.isBandProduct ? (
+              <button
+                onClick={() => router.push('/products/band-order/' + product.bandTypeId)}
+                className="flex items-center gap-2 rounded-md bg-[#05dd4d] px-6 py-3 text-sm font-bold uppercase tracking-wider text-[#01332b] transition-colors hover:bg-[#04c443]" style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                <ShoppingCart className="h-4 w-4" /> Configure &amp; Order
+              </button>
+            ) : canAddToCart ? (
               <button
                 onClick={() => { addItem(product, 1); toast.success('Added to cart'); }}
                 className="flex items-center gap-2 rounded-md bg-[#05dd4d] px-6 py-3 text-sm font-bold uppercase tracking-wider text-[#01332b] transition-colors hover:bg-[#04c443]" style={{ fontFamily: 'var(--font-heading)' }}
               >
                 <ShoppingCart className="h-4 w-4" /> Add to Cart
               </button>
-            )}
-            {canAddToCart && (
+            ) : null}
+            {canAddToCart && !product.isBandProduct && (
               <button
                 onClick={() => toast.success('Added ' + product.maName + ' to quote request')}
                 className="flex items-center gap-2 rounded-md border border-[#0a7b6b] px-6 py-3 text-sm font-bold uppercase tracking-wider text-[#0a7b6b] transition-colors hover:bg-[#f5f5f5]" style={{ fontFamily: 'var(--font-heading)' }}
