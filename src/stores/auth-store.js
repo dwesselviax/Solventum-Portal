@@ -188,12 +188,6 @@ export const useAuthStore = create(
       storage: createJSONStorage(() =>
         typeof window !== 'undefined' ? sessionStorage : { getItem: () => null, setItem: () => {}, removeItem: () => {} }
       ),
-      onRehydrateStorage: () => () => {
-        useAuthStore.setState({ _hasHydrated: true });
-      },
     }
   )
 );
-
-// Hydration-aware selector — returns false until store has rehydrated from sessionStorage
-useAuthStore.getHasHydrated = () => useAuthStore.getState()._hasHydrated ?? false;
