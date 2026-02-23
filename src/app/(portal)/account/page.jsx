@@ -5,7 +5,10 @@ import { useAuthStore } from '@/stores/auth-store';
 import { DetailCard } from '@/components/detail/detail-card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { formatCurrency, formatDate } from '@/lib/utils/format';
-import { User, Mail, Building2, MapPin, Shield, Bell, Award, Tag, TrendingUp, Calendar } from 'lucide-react';
+import { User, Mail, Building2, MapPin, Shield, Bell, Award, Tag, TrendingUp, Calendar, Users, ChevronRight } from 'lucide-react';
+import { useTeamStore } from '@/stores/team-store';
+import { seedMembers } from '@/lib/mock-data/account-members';
+import Link from 'next/link';
 
 export default function AccountPage() {
   const { user } = useAuthStore();
@@ -14,6 +17,17 @@ export default function AccountPage() {
 
   const [contract, setContract] = useState(null);
   const [promotions, setPromotions] = useState([]);
+  const { initialize: initTeam, getMembers } = useTeamStore();
+
+  // Initialize team store
+  useEffect(() => {
+    initTeam(seedMembers);
+  }, [initTeam]);
+
+  const orgId = user?.organizationId;
+  const teamMembers = orgId ? getMembers(orgId) : [];
+  const activeTeamCount = teamMembers.filter((m) => m.status === 'active').length;
+  const pendingTeamCount = teamMembers.filter((m) => m.status === 'pending').length;
 
   const roleLabels = {
     orthodontist: 'Orthodontist',
@@ -206,6 +220,32 @@ export default function AccountPage() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </DetailCard>
+          )}
+
+          {/* Team Summary — only for orthodontist/dso */}
+          {isCustomerRole && (
+            <DetailCard title="Team Members">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E8EAF6]">
+                    <Users className="h-5 w-5 text-[#283593]" />
+                  </div>
+                  <div>
+                    <p className="text-lg font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{activeTeamCount} Active</p>
+                    {pendingTeamCount > 0 && (
+                      <p className="text-xs text-[#F57F17]">{pendingTeamCount} pending invite{pendingTeamCount !== 1 ? 's' : ''}</p>
+                    )}
+                  </div>
+                </div>
+                <Link
+                  href="/account/team"
+                  className="flex items-center gap-1 text-sm font-bold text-[#0a7b6b] transition-colors hover:text-[#01332b]"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  Manage Team <ChevronRight className="h-4 w-4" />
+                </Link>
               </div>
             </DetailCard>
           )}

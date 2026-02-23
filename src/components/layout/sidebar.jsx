@@ -10,7 +10,7 @@ import {
   Package, Truck, Receipt, UserCircle, HelpCircle, ChevronLeft,
   ChevronRight, Warehouse, HardDrive, Recycle, BookOpen,
   GraduationCap, ClipboardList, FileSpreadsheet, FlaskConical,
-  Smile, Users,
+  Smile, Users, ExternalLink,
 } from 'lucide-react';
 
 const NAV_ITEMS = [
@@ -26,6 +26,7 @@ const NAV_ITEMS = [
   { href: '/samples', label: 'Samples', icon: FlaskConical, roles: ['orthodontist', 'dso', 'sales_rep'] },
   { type: 'divider', label: 'Clinical', roles: ['orthodontist', 'dso', 'sales_rep'] },
   { href: '/clarity', label: 'Treatment Plans', icon: Smile, roles: ['orthodontist', 'dso', 'sales_rep'] },
+  { href: 'https://clarity.solventum.com', label: 'Clarity Portal', icon: ExternalLink, roles: ['orthodontist', 'dso'], external: true },
   { type: 'divider', label: 'Inventory & Assets', roles: ['orthodontist', 'dso', 'sales_rep'] },
   { href: '/consignment', label: 'Consignment', icon: Warehouse, roles: ['orthodontist', 'dso', 'sales_rep'] },
   { href: '/assets', label: 'Assets & Devices', icon: HardDrive, roles: ['orthodontist', 'dso', 'sales_rep'] },
@@ -39,6 +40,7 @@ const NAV_ITEMS = [
   { href: '/training', label: 'Training', icon: GraduationCap, roles: ['all'] },
   { type: 'divider', label: 'Account', roles: ['all'] },
   { href: '/account', label: 'My Account', icon: UserCircle, roles: ['all'] },
+  { href: '/account/team', label: 'Team', icon: Users, roles: ['orthodontist', 'dso'] },
   { href: '/support', label: 'Support', icon: HelpCircle, roles: ['all'] },
 ];
 
@@ -73,19 +75,38 @@ export function Sidebar() {
           }
 
           const Icon = item.icon;
-          const isActive = pathname === item.href || (pathname?.startsWith(item.href + '/') && !NAV_ITEMS.some((n) => n.href && n.href !== item.href && n.href.startsWith(item.href) && (pathname === n.href || pathname?.startsWith(n.href + '/'))));
+          const isActive = !item.external && (pathname === item.href || (pathname?.startsWith(item.href + '/') && !NAV_ITEMS.some((n) => n.href && n.href !== item.href && n.href.startsWith(item.href) && (pathname === n.href || pathname?.startsWith(n.href + '/')))));
+
+          const linkClass = cn(
+            'mx-2 mb-0.5 flex items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-colors',
+            isActive
+              ? 'border-l-[3px] border-l-[#05dd4d] bg-white/10 font-bold text-white'
+              : 'border-l-[3px] border-l-transparent text-white/75 hover:bg-white/8 hover:text-white',
+            collapsed && 'justify-center px-0'
+          );
+
+          if (item.external) {
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+                style={{ fontFamily: 'var(--font-heading)' }}
+                title={collapsed ? item.label : undefined}
+              >
+                <Icon className="h-5 w-5 shrink-0 text-white/60" />
+                {!collapsed && <span>{item.label}</span>}
+              </a>
+            );
+          }
 
           return (
             <Link
               key={item.href}
               href={item.href}
-              className={cn(
-                'mx-2 mb-0.5 flex items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-colors',
-                isActive
-                  ? 'border-l-[3px] border-l-[#05dd4d] bg-white/10 font-bold text-white'
-                  : 'border-l-[3px] border-l-transparent text-white/75 hover:bg-white/8 hover:text-white',
-                collapsed && 'justify-center px-0'
-              )}
+              className={linkClass}
               style={{ fontFamily: 'var(--font-heading)' }}
               title={collapsed ? item.label : undefined}
             >

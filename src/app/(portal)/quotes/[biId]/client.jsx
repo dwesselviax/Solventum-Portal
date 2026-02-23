@@ -1,6 +1,9 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useQuote } from '@/hooks/use-quotes';
+import { useAuthStore } from '@/stores/auth-store';
+import { useCommentsStore } from '@/stores/comments-store';
 import { DetailHeader } from '@/components/detail/detail-header';
 import { DetailCard } from '@/components/detail/detail-card';
 import { PartyCard } from '@/components/detail/party-card';
@@ -9,10 +12,39 @@ import { PriceSummary } from '@/components/detail/price-summary';
 import { Timeline } from '@/components/detail/timeline';
 import { CardSkeleton } from '@/components/shared/loading-skeleton';
 import { formatDate } from '@/lib/utils/format';
+import { getTimelineEventsForQuote } from '@/lib/mock-data/quote-timeline-events';
+import { seedComments } from '@/lib/mock-data/comments';
 import { ShoppingCart, FileDown } from 'lucide-react';
+import { toast } from 'sonner';
 
 export default function QuoteDetailPage({ biId }) {
   const { data: quote, isLoading } = useQuote(biId);
+  const { user } = useAuthStore();
+  const { initialize, addComment, getComments } = useCommentsStore();
+
+  // Initialize comments store with seed data on first load
+  useEffect(() => {
+    initialize(seedComments);
+  }, [initialize]);
+
+  const comments = getComments(biId);
+  const timelineEvents = getTimelineEventsForQuote(biId);
+
+  const handleAddComment = ({ text, visibility }) => {
+    if (!user) return;
+    addComment({
+      quoteId: biId,
+      author: {
+        id: user.uid,
+        name: user.name,
+        role: user.role,
+        initials: (user.firstName?.[0] || '') + (user.lastName?.[0] || ''),
+      },
+      text,
+      visibility,
+    });
+    toast.success('Comment posted');
+  };
 
   if (isLoading) return <div className="space-y-6"><CardSkeleton /><CardSkeleton /><CardSkeleton /></div>;
   if (!quote) return <div className="py-12 text-center text-[#3c3e3f]">Quote not found.</div>;
@@ -49,7 +81,12 @@ export default function QuoteDetailPage({ biId }) {
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <PriceSummary pricing={quote.pricing} />
-        <Timeline events={quote.timeline || []} />
+        <Timeline
+          events={timelineEvents}
+          comments={comments}
+          currentUser={user}
+          onAddComment={handleAddComment}
+        />
       </div>
     </div>
   );
