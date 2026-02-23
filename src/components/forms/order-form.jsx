@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
-import { Plus, Trash2 } from 'lucide-react';
+import { Plus, Trash2, MapPin } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
@@ -19,11 +19,14 @@ import {
   Select,
   SelectContent,
   SelectItem,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useProducts } from '@/hooks/use-products';
+import { useAuthStore } from '@/stores/auth-store';
+import { getAddressesByCustomerId } from '@/lib/mock-data/ship-to-addresses';
 
 const MOCK_CUSTOMERS = [
   { id: 'ORG-001', name: 'Chen Orthodontics' },
@@ -45,24 +48,62 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
   const { data: products } = useProducts();
   const [submitting, setSubmitting] = useState(false);
 
+  const user = useAuthStore((s) => s.user);
+  const isExternal = ['orthodontist', 'dso', 'ap'].includes(user?.role);
+
   const [customerId, setCustomerId] = useState('');
   const [description, setDescription] = useState('');
-  const [shipToStreet, setShipToStreet] = useState('');
-  const [shipToCity, setShipToCity] = useState('');
-  const [shipToState, setShipToState] = useState('');
-  const [shipToZip, setShipToZip] = useState('');
+  const [selectedAddressId, setSelectedAddressId] = useState('');
+  const [useCustomAddress, setUseCustomAddress] = useState(false);
+  const [customAddress, setCustomAddress] = useState({ street: '', city: '', state: '', zip: '' });
   const [notes, setNotes] = useState('');
   const [lineItems, setLineItems] = useState([{ ...EMPTY_LINE_ITEM }]);
 
+  // Auto-default customer for external roles
+  useEffect(() => {
+    if (isExternal && user?.organizationId) {
+      setCustomerId(user.organizationId);
+    }
+  }, [isExternal, user?.organizationId]);
+
+  const addresses = customerId ? getAddressesByCustomerId(customerId) : [];
+
+  // Auto-select the default address when customer changes
+  useEffect(() => {
+    if (customerId) {
+      const customerAddresses = getAddressesByCustomerId(customerId);
+      const defaultAddr = customerAddresses.find((a) => a.isDefault);
+      setSelectedAddressId(defaultAddr ? defaultAddr.id : '');
+      setUseCustomAddress(false);
+      setCustomAddress({ street: '', city: '', state: '', zip: '' });
+    } else {
+      setSelectedAddressId('');
+      setUseCustomAddress(false);
+      setCustomAddress({ street: '', city: '', state: '', zip: '' });
+    }
+  }, [customerId]);
+
+  const selectedAddress = addresses.find((a) => a.id === selectedAddressId);
+
   function resetForm() {
-    setCustomerId('');
+    if (!isExternal) setCustomerId('');
     setDescription('');
-    setShipToStreet('');
-    setShipToCity('');
-    setShipToState('');
-    setShipToZip('');
+    setSelectedAddressId('');
+    setUseCustomAddress(false);
+    setCustomAddress({ street: '', city: '', state: '', zip: '' });
     setNotes('');
     setLineItems([{ ...EMPTY_LINE_ITEM }]);
+  }
+
+  function handleAddressChange(value) {
+    if (value === '__custom__') {
+      setSelectedAddressId('');
+      setUseCustomAddress(true);
+    } else {
+      setSelectedAddressId(value);
+      setUseCustomAddress(false);
+      setCustomAddress({ street: '', city: '', state: '', zip: '' });
+    }
   }
 
   function handleAddLine() {
@@ -103,6 +144,34 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
       return;
     }
 
+    // Build shipTo from selected address or custom address
+    const shipTo = useCustomAddress
+      ? {
+          name: MOCK_CUSTOMERS.find((c) => c.id === customerId)?.name,
+          street: customAddress.street,
+          city: customAddress.city,
+          state: customAddress.state,
+          zip: customAddress.zip,
+          country: 'US',
+        }
+      : selectedAddress
+        ? {
+            name: MOCK_CUSTOMERS.find((c) => c.id === customerId)?.name,
+            street: selectedAddress.street,
+            city: selectedAddress.city,
+            state: selectedAddress.state,
+            zip: selectedAddress.zip,
+            country: selectedAddress.country,
+          }
+        : {
+            name: MOCK_CUSTOMERS.find((c) => c.id === customerId)?.name,
+            street: '',
+            city: '',
+            state: '',
+            zip: '',
+            country: 'US',
+          };
+
     setSubmitting(true);
 
     const customer = MOCK_CUSTOMERS.find((c) => c.id === customerId);
@@ -140,14 +209,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
         total: Math.round((subtotal + tax) * 100) / 100,
         currency: 'USD',
       },
-      shipTo: {
-        name: customer?.name,
-        street: shipToStreet,
-        city: shipToCity,
-        state: shipToState,
-        zip: shipToZip,
-        country: 'US',
-      },
+      shipTo,
       notes,
     };
 
@@ -184,7 +246,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
               >
                 Customer
               </Label>
-              <Select value={customerId} onValueChange={setCustomerId}>
+              <Select value={customerId} onValueChange={setCustomerId} disabled={isExternal}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a customer" />
                 </SelectTrigger>
@@ -221,40 +283,79 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
               >
                 Ship-to Address
               </legend>
-              <div className="space-y-1.5">
-                <Label className="text-xs text-[#3c3e3f]">Street</Label>
-                <Input
-                  placeholder="Street address"
-                  value={shipToStreet}
-                  onChange={(e) => setShipToStreet(e.target.value)}
-                />
-              </div>
-              <div className="grid grid-cols-3 gap-2">
-                <div className="space-y-1.5">
-                  <Label className="text-xs text-[#3c3e3f]">City</Label>
-                  <Input
-                    placeholder="City"
-                    value={shipToCity}
-                    onChange={(e) => setShipToCity(e.target.value)}
-                  />
+
+              <Select
+                value={useCustomAddress ? '__custom__' : selectedAddressId}
+                onValueChange={handleAddressChange}
+                disabled={!customerId}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder={customerId ? 'Select a ship-to address' : 'Select a customer first'} />
+                </SelectTrigger>
+                <SelectContent>
+                  {addresses.map((addr) => (
+                    <SelectItem key={addr.id} value={addr.id}>
+                      {addr.label} — {addr.street}, {addr.city}, {addr.state}
+                    </SelectItem>
+                  ))}
+                  {addresses.length > 0 && <SelectSeparator />}
+                  <SelectItem value="__custom__">Custom Address</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {/* Read-only preview card for selected saved address */}
+              {selectedAddress && !useCustomAddress && (
+                <div className="rounded-md border border-[#e7e7e7] bg-[#F5F5F5] p-3">
+                  <div className="flex items-start gap-2">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0a7b6b]" />
+                    <div className="text-sm text-[#3c3e3f]">
+                      <p className="font-medium">{selectedAddress.label}</p>
+                      <p>{selectedAddress.street}</p>
+                      <p>{selectedAddress.city}, {selectedAddress.state} {selectedAddress.zip}</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="space-y-1.5">
-                  <Label className="text-xs text-[#3c3e3f]">State</Label>
-                  <Input
-                    placeholder="State"
-                    value={shipToState}
-                    onChange={(e) => setShipToState(e.target.value)}
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <Label className="text-xs text-[#3c3e3f]">Zip</Label>
-                  <Input
-                    placeholder="Zip"
-                    value={shipToZip}
-                    onChange={(e) => setShipToZip(e.target.value)}
-                  />
-                </div>
-              </div>
+              )}
+
+              {/* Manual entry fields for custom address */}
+              {useCustomAddress && (
+                <>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs text-[#3c3e3f]">Street</Label>
+                    <Input
+                      placeholder="Street address"
+                      value={customAddress.street}
+                      onChange={(e) => setCustomAddress({ ...customAddress, street: e.target.value })}
+                    />
+                  </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    <div className="space-y-1.5">
+                      <Label className="text-xs text-[#3c3e3f]">City</Label>
+                      <Input
+                        placeholder="City"
+                        value={customAddress.city}
+                        onChange={(e) => setCustomAddress({ ...customAddress, city: e.target.value })}
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label className="text-xs text-[#3c3e3f]">State</Label>
+                      <Input
+                        placeholder="State"
+                        value={customAddress.state}
+                        onChange={(e) => setCustomAddress({ ...customAddress, state: e.target.value })}
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label className="text-xs text-[#3c3e3f]">Zip</Label>
+                      <Input
+                        placeholder="Zip"
+                        value={customAddress.zip}
+                        onChange={(e) => setCustomAddress({ ...customAddress, zip: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
             </fieldset>
 
             {/* Line items */}
