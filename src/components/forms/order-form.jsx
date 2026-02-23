@@ -207,7 +207,7 @@ export function OrderForm({ open, onOpenChange, onOrderCreated }) {
                 Description
               </Label>
               <Input
-                placeholder="e.g. Q1 Restock — Surgical Tools"
+                placeholder="e.g. Q1 Restock — Clarity Brackets"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />

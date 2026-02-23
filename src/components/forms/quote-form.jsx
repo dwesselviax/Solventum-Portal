@@ -221,7 +221,7 @@ export function QuoteForm({ open, onOpenChange, onQuoteCreated }) {
                 Description
               </Label>
               <Input
-                placeholder="e.g. Robotic Surgery Expansion Proposal"
+                placeholder="e.g. Annual Bracket Supply Agreement"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
