@@ -9,12 +9,14 @@ import { Loader2 } from 'lucide-react';
 const CUSTOMER_ACCOUNTS = [
   { email: 'orthodontist@chenortho.com', label: 'Orthodontist', name: 'Dr. Sarah Chen', org: 'Chen Orthodontics' },
   { email: 'admin@smiledso.com', label: 'DSO Admin', name: 'Mark Reynolds', org: 'Smile DSO Group' },
+  { email: 'ap@chenortho.com', label: 'Accounts Payable', name: 'Rachel Torres', org: 'Chen Orthodontics' },
 ];
 
 const INTERNAL_ACCOUNTS = [
   { email: 'salesrep@solventum.com', label: 'Sales Rep', name: 'Emily Rodriguez', org: 'Solventum' },
   { email: 'ar@solventum.com', label: 'Accounts Receivable', name: 'Lisa Park', org: 'Solventum' },
   { email: 'csr@solventum.com', label: 'Customer Service', name: 'David Kim', org: 'Solventum' },
+  { email: 'ops@solventum.com', label: 'Operations', name: 'James Chen', org: 'Solventum' },
 ];
 
 export default function LoginPage() {
@@ -129,7 +131,7 @@ export default function LoginPage() {
             <p className="mb-3 mt-4 text-center text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
               Internal Accounts
             </p>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
               {INTERNAL_ACCOUNTS.map((account) => (
                 <button
                   key={account.email}

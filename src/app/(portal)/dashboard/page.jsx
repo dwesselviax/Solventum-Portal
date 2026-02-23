@@ -129,6 +129,8 @@ export default function DashboardPage() {
     sales_rep: SalesRepView,
     ar: ARView,
     csr: CSRView,
+    operations: OperationsView,
+    ap: APView,
   }[role] || OrthodontistView;
 
   return (
@@ -249,6 +251,38 @@ function OrthodontistView({ user, orders, invoices, subscriptions, contracts, pr
           icon={FlaskConical}
         />
       </div>
+
+      {/* DSO Location Breakdown */}
+      {user?.role === 'dso' && (
+        <SectionCard title="Locations">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { name: 'Downtown Chicago', orders: 12, plans: 8, spend: '$18,400' },
+              { name: 'Schaumburg', orders: 8, plans: 5, spend: '$12,200' },
+              { name: 'Naperville', orders: 6, plans: 4, spend: '$9,800' },
+              { name: 'Evanston', orders: 4, plans: 3, spend: '$7,100' },
+            ].map(loc => (
+              <div key={loc.name} className="rounded-lg border border-[#e7e7e7] p-4">
+                <p className="text-sm font-bold text-[#01332b]" style={HEADING}>{loc.name}</p>
+                <div className="mt-2 space-y-1">
+                  <div className="flex justify-between text-xs">
+                    <span className="text-[#3c3e3f]">Orders this month</span>
+                    <span className="font-bold text-[#01332b]">{loc.orders}</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span className="text-[#3c3e3f]">Active plans</span>
+                    <span className="font-bold text-[#01332b]">{loc.plans}</span>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <span className="text-[#3c3e3f]">Monthly spend</span>
+                    <span className="font-bold text-[#0a7b6b]">{loc.spend}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </SectionCard>
+      )}
 
       {/* Contract + Tier Progress */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -895,6 +929,11 @@ function CSRView({ orders, invoices }) {
   ).length;
   const avgResolution = '2.4 days'; // mock
 
+  // Touchless order rate
+  const touchlessOrders = orders.filter(o => o.status === 'Completed' || o.status === 'Delivered').length;
+  const totalOrders = orders.length;
+  const touchlessRate = totalOrders > 0 ? Math.round((touchlessOrders / totalOrders) * 100) : 0;
+
   // Service request priority colors
   const priorityColor = {
     Critical: 'text-[#C62828] bg-[#FFEBEE]',
@@ -911,7 +950,7 @@ function CSRView({ orders, invoices }) {
   return (
     <>
       {/* KPI Cards */}
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
         <KpiCard
           title="Open Service Requests"
           value={openSRs.length}
@@ -937,6 +976,13 @@ function CSRView({ orders, invoices }) {
           trend={-18.5}
           trendLabel="faster this month"
           icon={Timer}
+        />
+        <KpiCard
+          title="Touchless Order Rate"
+          value={touchlessRate + '%'}
+          trend={5.3}
+          trendLabel="improving"
+          icon={Sparkles}
         />
       </div>
 
@@ -1056,6 +1102,153 @@ function CSRView({ orders, invoices }) {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <RecentActivity orders={orders} />
         <TasksWidget />
+      </div>
+    </>
+  );
+}
+
+// ===========================================================================
+// OPERATIONS VIEW
+// ===========================================================================
+
+function OperationsView({ user }) {
+  const [partners, setPartners] = useState([]);
+
+  useEffect(() => {
+    import('@/lib/mock-data/api-partners').then((mod) => {
+      setPartners(mod.apiPartners || mod.default || []);
+    });
+  }, []);
+
+  const activePartners = partners.filter(p => p.status === 'Active').length;
+  const pendingPartners = partners.filter(p => p.status === 'Pending').length;
+  const totalOrders = partners.reduce((sum, p) => sum + (p.usage?.ordersSubmitted || 0), 0);
+  const totalQueries = partners.reduce((sum, p) => sum + (p.usage?.catalogQueries || 0) + (p.usage?.pricingQueries || 0) + (p.usage?.statusLookups || 0), 0);
+
+  return (
+    <>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <KpiCard title="Active Partners" value={activePartners} icon={Users} />
+        <KpiCard title="Pending Onboarding" value={pendingPartners} icon={AlertTriangle} />
+        <KpiCard title="API Orders (Total)" value={totalOrders.toLocaleString()} icon={ShoppingCart} />
+        <KpiCard title="API Queries (Total)" value={totalQueries.toLocaleString()} icon={FileText} />
+      </div>
+
+      <SectionCard title="Partner Status">
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#e7e7e7]">
+                {['Partner', 'Status', 'Agreement', 'Orders', 'API Queries', 'Rate Limit'].map(h => (
+                  <th key={h} className="pb-2 pr-4 text-left text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={HEADING}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {partners.map(p => (
+                <tr key={p.id} className="border-b border-[#e7e7e7]/50 hover:bg-[#bffde3]/10">
+                  <td className="py-3 pr-4">
+                    <p className="font-semibold text-[#01332b]" style={HEADING}>{p.name}</p>
+                    <p className="text-xs text-[#3c3e3f]">{p.contact?.email}</p>
+                  </td>
+                  <td className="py-3 pr-4"><StatusBadge status={p.status} /></td>
+                  <td className="py-3 pr-4">
+                    <span className={`inline-flex rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+                      p.agreementStatus === 'Signed' ? 'bg-[#E8F5E9] text-[#2E7D32]' : 'bg-[#FFF8E1] text-[#F57F17]'
+                    }`} style={HEADING}>{p.agreementStatus}</span>
+                  </td>
+                  <td className="py-3 pr-4 text-[#01332b] font-semibold" style={HEADING}>{p.usage?.ordersSubmitted?.toLocaleString() || 0}</td>
+                  <td className="py-3 pr-4 text-[#3c3e3f]">{((p.usage?.catalogQueries || 0) + (p.usage?.pricingQueries || 0) + (p.usage?.statusLookups || 0)).toLocaleString()}</td>
+                  <td className="py-3 pr-4 text-[#3c3e3f]">{p.rateLimit?.requestsPerMinute || 0}/min</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </SectionCard>
+
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+        <QuickAction href="/partners" icon={Users} label="Manage Partners" color="#0a7b6b" />
+        <QuickAction href="/documentation" icon={FileText} label="API Documentation" color="#19a591" />
+        <QuickAction href="/support" icon={Headphones} label="Support Tickets" color="#01332b" />
+      </div>
+    </>
+  );
+}
+
+// ===========================================================================
+// AP (ACCOUNTS PAYABLE) VIEW
+// ===========================================================================
+
+function APView({ user, invoices }) {
+  const orgId = user?.organizationId;
+
+  // Filter invoices to user's org
+  const myInvoices = orgId ? invoices.filter(i => i.customer?.id === orgId) : invoices;
+  const openBalance = myInvoices
+    .filter(i => i.status === 'Open' || i.status === 'Overdue' || i.status === 'Partial')
+    .reduce((sum, i) => sum + (i.amountDue || 0), 0);
+  const overdueAmount = myInvoices
+    .filter(i => i.status === 'Overdue')
+    .reduce((sum, i) => sum + (i.amountDue || 0), 0);
+  const paidThisMonth = myInvoices
+    .filter(i => {
+      if (!i.paidDate) return false;
+      const paid = new Date(i.paidDate);
+      const now = new Date();
+      return paid.getMonth() === now.getMonth() && paid.getFullYear() === now.getFullYear();
+    })
+    .reduce((sum, i) => sum + (i.amountPaid || 0), 0);
+  const totalInvoices = myInvoices.length;
+
+  const recentInvoices = myInvoices
+    .sort((a, b) => new Date(b.createdAt || b.biCreatedAt) - new Date(a.createdAt || a.biCreatedAt))
+    .slice(0, 8);
+
+  return (
+    <>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <KpiCard title="Outstanding Balance" value={formatCurrency(openBalance)} icon={DollarSign} />
+        <KpiCard title="Overdue Amount" value={formatCurrency(overdueAmount)} trend={overdueAmount > 0 ? -1 : 0} trendLabel="needs attention" icon={AlertTriangle} />
+        <KpiCard title="Paid This Month" value={formatCurrency(paidThisMonth)} trend={15.2} trendLabel="vs last month" icon={CreditCard} />
+        <KpiCard title="Total Invoices" value={totalInvoices} icon={FileText} />
+      </div>
+
+      <SectionCard
+        title="Recent Invoices"
+        action={<Link href="/invoices" className="text-sm text-[#0a7b6b] hover:text-[#01332b]" style={HEADING}>View All</Link>}
+      >
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#e7e7e7]">
+                {['Invoice #', 'Date', 'Amount', 'Status', 'Due Date'].map(h => (
+                  <th key={h} className="pb-2 pr-4 text-left text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={HEADING}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {recentInvoices.map(inv => (
+                <tr key={inv.biId} className="border-b border-[#e7e7e7]/50 hover:bg-[#bffde3]/10">
+                  <td className="py-3 pr-4">
+                    <Link href={'/invoices/' + inv.biId} className="font-semibold text-[#0a7b6b] hover:text-[#01332b]" style={HEADING}>
+                      {inv.invoiceNumber || inv.biId}
+                    </Link>
+                  </td>
+                  <td className="py-3 pr-4 text-[#3c3e3f]">{formatDate(inv.createdAt || inv.biCreatedAt)}</td>
+                  <td className="py-3 pr-4 font-semibold text-[#01332b]" style={HEADING}>{formatCurrency(inv.pricing?.total || inv.amountDue || 0)}</td>
+                  <td className="py-3 pr-4"><StatusBadge status={inv.status} /></td>
+                  <td className="py-3 pr-4 text-[#3c3e3f]">{formatDate(inv.dueDate)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </SectionCard>
+
+      <div className="grid grid-cols-2 gap-4">
+        <QuickAction href="/invoices" icon={FileText} label="View All Invoices" color="#0a7b6b" />
+        <QuickAction href="/support" icon={Headphones} label="Contact Support" color="#01332b" />
       </div>
     </>
   );

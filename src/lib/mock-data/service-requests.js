@@ -4,6 +4,8 @@
 export const serviceRequests = [
   {
     id: 'SRV-2025-0001',
+    sfCaseId: 'SF-00087421',
+    chatTranscriptId: 'CHAT-2025-0042',
     type: 'Product Quality Complaint',
     priority: 'Critical',
     status: 'In Progress',
@@ -57,6 +59,8 @@ export const serviceRequests = [
   },
   {
     id: 'SRV-2025-0002',
+    sfCaseId: 'SF-00087356',
+    chatTranscriptId: null,
     type: 'Equipment Repair',
     priority: 'High',
     status: 'Awaiting Parts',
@@ -110,6 +114,8 @@ export const serviceRequests = [
   },
   {
     id: 'SRV-2025-0003',
+    sfCaseId: 'SF-00087298',
+    chatTranscriptId: null,
     type: 'Tech Support',
     priority: 'Standard',
     status: 'Scheduled',
@@ -161,6 +167,8 @@ export const serviceRequests = [
   },
   {
     id: 'SRV-2024-0004',
+    sfCaseId: 'SF-00085412',
+    chatTranscriptId: 'CHAT-2024-0189',
     type: 'Order Issue',
     priority: 'Standard',
     status: 'Completed',
@@ -214,6 +222,8 @@ export const serviceRequests = [
   },
   {
     id: 'SRV-2025-0005',
+    sfCaseId: 'SF-00087502',
+    chatTranscriptId: null,
     type: 'Warranty Claim',
     priority: 'Standard',
     status: 'Open',
@@ -256,6 +266,8 @@ export const serviceRequests = [
   },
   {
     id: 'SRV-2025-0006',
+    sfCaseId: 'SF-00087515',
+    chatTranscriptId: null,
     type: 'Product Quality Complaint',
     priority: 'High',
     status: 'In Progress',

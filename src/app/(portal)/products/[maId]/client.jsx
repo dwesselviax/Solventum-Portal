@@ -124,6 +124,52 @@ export default function ProductDetailPage({ maId }) {
             )}
           </div>
 
+          {/* Volume Pricing Table */}
+          {product.volumeBreaks && product.volumeBreaks.length > 0 && product.volumeBreaks[0].price > 0 && (
+            <div className="mt-4">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f] mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
+                Volume Pricing
+              </h3>
+              {['sales_rep', 'ar'].includes(user?.role) && (
+                <div className="mb-2 text-xs text-[#3c3e3f]">
+                  <span className="font-medium">List Price:</span> {formatCurrency(product.listPrice || product.price)}
+                  {contractPricing && (
+                    <>
+                      {' \u00b7 '}<span className="font-medium">Contract:</span> {formatCurrency(contractPricing.contractPrice)}
+                      {' \u00b7 '}<span className="font-medium">Discount:</span> {contractPricing.discountPercentage}% off list
+                    </>
+                  )}
+                </div>
+              )}
+              <div className="rounded-md border border-[#e7e7e7] overflow-hidden">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-[#F5F5F5] border-b border-[#e7e7e7]">
+                      <th className="px-3 py-2 text-left text-[10px] font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Quantity</th>
+                      <th className="px-3 py-2 text-left text-[10px] font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Price</th>
+                      <th className="px-3 py-2 text-left text-[10px] font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Savings</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {product.volumeBreaks.map((vb, i) => {
+                      const basePrice = product.volumeBreaks[0].price;
+                      const savings = basePrice > vb.price ? Math.round((1 - vb.price / basePrice) * 100) : 0;
+                      return (
+                        <tr key={i} className="border-b border-[#F5F5F5] last:border-b-0">
+                          <td className="px-3 py-2 text-[#01332b] font-medium">
+                            {vb.minQty}+{vb.label ? <span className="ml-1.5 text-[10px] rounded-full bg-[#bffde3] px-1.5 py-0.5 text-[#0a7b6b] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>{vb.label}</span> : ''}
+                          </td>
+                          <td className="px-3 py-2 font-bold text-[#01332b]">{formatCurrency(vb.price)}</td>
+                          <td className="px-3 py-2 text-[#0a7b6b] font-medium">{savings > 0 ? `${savings}% off` : '\u2014'}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
           <div className="mt-4 flex flex-wrap gap-2">
             {product.isSerialManaged && <span className="rounded-full bg-[#bffde3] px-3 py-1 text-xs font-bold text-[#0a7b6b]" style={{ fontFamily: 'var(--font-heading)' }}>Serialized</span>}
             {product.isBatchManaged && <span className="rounded-full bg-[#bffde3] px-3 py-1 text-xs font-bold text-[#F9A825]" style={{ fontFamily: 'var(--font-heading)' }}>Batch Managed</span>}
@@ -156,7 +202,7 @@ export default function ProductDetailPage({ maId }) {
                 <FileText className="h-4 w-4" /> Add to Quote
               </button>
             )}
-            {product.sampleEligible && (
+            {product.sampleEligible && ['orthodontist', 'dso', 'sales_rep'].includes(user?.role) && (
               <button
                 onClick={() => toast.success('Sample request submitted for ' + product.maName + '. You will receive a confirmation email shortly.')}
                 className="flex items-center gap-2 rounded-md border border-[#0a7b6b] bg-[#bffde3] px-6 py-3 text-sm font-bold uppercase tracking-wider text-[#0a7b6b] transition-colors hover:bg-[#a0f5d0]" style={{ fontFamily: 'var(--font-heading)' }}

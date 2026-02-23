@@ -5,7 +5,7 @@ import { DetailCard } from '@/components/detail/detail-card';
 import { StatusBadge } from '@/components/shared/status-badge';
 import { formatDate } from '@/lib/utils/format';
 import { FilterSelect } from '@/components/data/filters-bar';
-import { Phone, Mail, MessageSquare, ChevronDown, ChevronUp, Plus, Ticket } from 'lucide-react';
+import { Phone, Mail, MessageSquare, ChevronDown, ChevronUp, Plus, Ticket, X, Send, ExternalLink, Link2 } from 'lucide-react';
 import { toast } from 'sonner';
 
 const TICKET_TYPE_OPTIONS = [
@@ -29,11 +29,19 @@ export default function SupportPage() {
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [isLoadingTickets, setIsLoadingTickets] = useState(true);
 
+  // Chat widget state
+  const [chatOpen, setChatOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState([
+    { from: 'system', text: 'Connected to Solventum Support. How can we help you today?' },
+  ]);
+  const [chatInput, setChatInput] = useState('');
+
   // Create ticket form state
   const [ticketType, setTicketType] = useState('');
   const [ticketSubject, setTicketSubject] = useState('');
   const [ticketDescription, setTicketDescription] = useState('');
   const [ticketRelated, setTicketRelated] = useState('');
+  const [ticketRma, setTicketRma] = useState('');
 
   // Load service requests
   useEffect(() => {
@@ -57,6 +65,7 @@ export default function SupportPage() {
     setTicketSubject('');
     setTicketDescription('');
     setTicketRelated('');
+    setTicketRma('');
     setShowCreateForm(false);
   };
 
@@ -96,11 +105,28 @@ export default function SupportPage() {
             </div>
             <h3 className="text-base font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>Live Chat</h3>
             <p className="mt-2 text-sm text-[#3c3e3f]">Available during business hours</p>
-            <button className="mt-2 rounded-md bg-[#0a7b6b] px-4 py-2 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#087a69]" style={{ fontFamily: 'var(--font-heading)' }}>
-              Start Chat
+            <button
+              onClick={() => setChatOpen(true)}
+              className="mt-2 rounded-md bg-[#0a7b6b] px-4 py-2 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#087a69]"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Start Live Chat
             </button>
+            <p className="mt-1.5 flex items-center justify-center gap-1 text-[10px] text-[#0a7b6b]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#05dd4d]" /> Connected to Salesforce
+            </p>
           </div>
         </DetailCard>
+      </div>
+
+      {/* Sample request link */}
+      <div className="rounded-lg border border-[#bffde3] bg-[#bffde3]/20 p-4">
+        <p className="text-sm text-[#01332b]">
+          Need product samples?{' '}
+          <a href="/samples" className="font-bold text-[#0a7b6b] hover:underline">
+            Request Samples &rarr;
+          </a>
+        </p>
       </div>
 
       {/* Service Requests / Tickets Table */}
@@ -157,6 +183,23 @@ export default function SupportPage() {
                   className="h-10 w-full rounded-md border border-[#e7e7e7] bg-white px-3 text-sm text-[#01332b] placeholder:text-[#e7e7e7] focus:border-[#0a7b6b] focus:outline-none focus:ring-1 focus:ring-[#0a7b6b]"
                 />
               </div>
+              <div>
+                <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
+                  Link to RMA (Optional)
+                </label>
+                <select
+                  value={ticketRma}
+                  onChange={(e) => setTicketRma(e.target.value)}
+                  className="h-10 w-full rounded-md border border-[#e7e7e7] bg-white px-3 text-sm text-[#01332b] focus:border-[#0a7b6b] focus:outline-none focus:ring-1 focus:ring-[#0a7b6b]"
+                >
+                  <option value="">None</option>
+                  <option value="RMA-2025-0001">RMA-2025-0001 — Defective Brackets</option>
+                  <option value="RMA-2024-0002">RMA-2024-0002 — Wrong Archwires</option>
+                  <option value="RMA-2025-0003">RMA-2025-0003 — Expired Product</option>
+                  <option value="RMA-2024-0004">RMA-2024-0004 — Damaged in Transit</option>
+                  <option value="RMA-2025-0006">RMA-2025-0006 — Defective Brackets</option>
+                </select>
+              </div>
               <div className="sm:col-span-2">
                 <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
                   Subject <span className="text-red-500">*</span>
@@ -208,7 +251,7 @@ export default function SupportPage() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-[#e7e7e7] bg-[#F5F5F5]">
-                  {['Ticket ID', 'Subject', 'Status', 'Priority', 'Created Date'].map((h) => (
+                  {['Ticket ID', 'SF Case', 'Subject', 'Status', 'Priority', 'Created Date'].map((h) => (
                     <th key={h} className="px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
                       {h}
                     </th>
@@ -219,6 +262,16 @@ export default function SupportPage() {
                 {filteredRequests.map((sr) => (
                   <tr key={sr.id} className="border-b border-[#F5F5F5] last:border-b-0 hover:bg-[#FAFAFA]">
                     <td className="px-4 py-3 font-mono text-xs font-bold text-[#0a7b6b]">{sr.id}</td>
+                    <td className="px-4 py-3">
+                      {sr.sfCaseId ? (
+                        <span className="inline-flex items-center gap-1 rounded-full bg-[#E3F2FD] px-2 py-0.5 text-[10px] font-bold text-[#1565C0]" style={{ fontFamily: 'var(--font-heading)' }}>
+                          <Link2 className="h-3 w-3" />
+                          {sr.sfCaseId}
+                        </span>
+                      ) : (
+                        <span className="text-xs text-[#e7e7e7]">&mdash;</span>
+                      )}
+                    </td>
                     <td className="px-4 py-3 font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>{sr.subject}</td>
                     <td className="px-4 py-3"><StatusBadge status={sr.status} /></td>
                     <td className="px-4 py-3">
@@ -259,6 +312,77 @@ export default function SupportPage() {
           ))}
         </div>
       </DetailCard>
+
+      {/* Mock chat widget */}
+      {chatOpen && (
+        <div className="fixed bottom-4 right-4 z-50 flex h-96 w-80 flex-col rounded-lg border border-[#e7e7e7] bg-white shadow-2xl">
+          {/* Header */}
+          <div className="flex items-center justify-between rounded-t-lg bg-[#01332b] px-4 py-3">
+            <div className="flex items-center gap-2">
+              <MessageSquare className="h-4 w-4 text-[#05dd4d]" />
+              <span className="text-sm font-bold text-white" style={{ fontFamily: 'var(--font-heading)' }}>Live Support</span>
+            </div>
+            <button onClick={() => setChatOpen(false)} className="text-white/60 hover:text-white">
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+          {/* Salesforce indicator */}
+          <div className="flex items-center gap-1.5 border-b border-[#e7e7e7] bg-[#F5F5F5] px-4 py-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#05dd4d]" />
+            <span className="text-[10px] text-[#3c3e3f]">Synced with Salesforce Service Cloud</span>
+          </div>
+          {/* Messages */}
+          <div className="flex-1 overflow-y-auto p-3 space-y-2">
+            {chatMessages.map((msg, i) => (
+              <div key={i} className={`flex ${msg.from === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div className={`max-w-[80%] rounded-lg px-3 py-2 text-sm ${
+                  msg.from === 'user'
+                    ? 'bg-[#0a7b6b] text-white'
+                    : 'bg-[#F5F5F5] text-[#01332b]'
+                }`}>
+                  {msg.text}
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Input */}
+          <div className="border-t border-[#e7e7e7] p-3">
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && chatInput.trim()) {
+                    setChatMessages(prev => [...prev, { from: 'user', text: chatInput }]);
+                    const input = chatInput;
+                    setChatInput('');
+                    setTimeout(() => {
+                      setChatMessages(prev => [...prev, { from: 'agent', text: 'Thank you for your message. A support agent will be with you shortly. Your case has been logged in Salesforce.' }]);
+                    }, 1500);
+                  }
+                }}
+                placeholder="Type a message..."
+                className="flex-1 rounded-md border border-[#e7e7e7] px-3 py-2 text-sm focus:border-[#0a7b6b] focus:outline-none focus:ring-1 focus:ring-[#0a7b6b]"
+              />
+              <button
+                onClick={() => {
+                  if (chatInput.trim()) {
+                    setChatMessages(prev => [...prev, { from: 'user', text: chatInput }]);
+                    setChatInput('');
+                    setTimeout(() => {
+                      setChatMessages(prev => [...prev, { from: 'agent', text: 'Thank you for your message. A support agent will be with you shortly. Your case has been logged in Salesforce.' }]);
+                    }, 1500);
+                  }
+                }}
+                className="rounded-md bg-[#0a7b6b] px-3 py-2 text-white hover:bg-[#087a69]"
+              >
+                <Send className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

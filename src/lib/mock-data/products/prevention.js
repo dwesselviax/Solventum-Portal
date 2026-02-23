@@ -22,6 +22,12 @@ export const prevention = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['fluoride', 'toothpaste', 'clinpro', '5000ppm', 'caries-prevention', 'prescription'],
+    volumeBreaks: [
+      { minQty: 1, price: 12.00 },
+      { minQty: 25, price: 11.00, label: 'Volume' },
+      { minQty: 100, price: 10.00, label: 'Bulk' },
+      { minQty: 500, price: 10.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-059',
@@ -45,6 +51,12 @@ export const prevention = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['varnish', 'fluoride', 'clinpro-white', 'in-office', 'caries-prevention'],
+    volumeBreaks: [
+      { minQty: 1, price: 165.00 },
+      { minQty: 10, price: 153.00, label: 'Volume' },
+      { minQty: 50, price: 142.00, label: 'Bulk' },
+      { minQty: 100, price: 132.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-060',
@@ -68,6 +80,12 @@ export const prevention = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['sealant', 'clinpro', 'fluoride-releasing', 'pit-fissure', 'preventive'],
+    volumeBreaks: [
+      { minQty: 1, price: 85.00 },
+      { minQty: 10, price: 79.00, label: 'Volume' },
+      { minQty: 50, price: 73.00, label: 'Bulk' },
+      { minQty: 100, price: 68.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-061',
@@ -91,6 +109,12 @@ export const prevention = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['varnish', 'vanish-XT', 'glass-ionomer', 'extended-release', 'white-spot-prevention'],
+    volumeBreaks: [
+      { minQty: 1, price: 195.00 },
+      { minQty: 10, price: 181.00, label: 'Volume' },
+      { minQty: 50, price: 168.00, label: 'Bulk' },
+      { minQty: 100, price: 156.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-062',
@@ -114,5 +138,11 @@ export const prevention = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['varnish', 'clinpro-XT', 'glass-ionomer', 'protective-coating', 'demineralization'],
+    volumeBreaks: [
+      { minQty: 1, price: 178.00 },
+      { minQty: 10, price: 166.00, label: 'Volume' },
+      { minQty: 50, price: 153.00, label: 'Bulk' },
+      { minQty: 100, price: 142.00, label: 'Enterprise' },
+    ],
   },
 ];

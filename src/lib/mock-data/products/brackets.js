@@ -22,6 +22,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['ceramic', 'brackets', 'clarity', 'aesthetic', 'upper-arch', 'MBT'],
+    volumeBreaks: [
+      { minQty: 1, price: 385.00 },
+      { minQty: 10, price: 358.00, label: 'Volume' },
+      { minQty: 50, price: 331.00, label: 'Bulk' },
+      { minQty: 100, price: 308.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-002',
@@ -45,6 +51,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['ceramic', 'brackets', 'clarity', 'aesthetic', 'lower-arch', 'MBT'],
+    volumeBreaks: [
+      { minQty: 1, price: 375.00 },
+      { minQty: 10, price: 349.00, label: 'Volume' },
+      { minQty: 50, price: 323.00, label: 'Bulk' },
+      { minQty: 100, price: 300.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-003',
@@ -68,6 +80,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['ceramic', 'self-ligating', 'clarity-ultra', 'aesthetic', 'upper-arch'],
+    volumeBreaks: [
+      { minQty: 1, price: 420.00 },
+      { minQty: 10, price: 391.00, label: 'Volume' },
+      { minQty: 50, price: 361.00, label: 'Bulk' },
+      { minQty: 100, price: 336.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-004',
@@ -91,6 +109,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['ceramic', 'self-ligating', 'clarity-ultra', 'aesthetic', 'lower-arch'],
+    volumeBreaks: [
+      { minQty: 1, price: 415.00 },
+      { minQty: 10, price: 386.00, label: 'Volume' },
+      { minQty: 50, price: 357.00, label: 'Bulk' },
+      { minQty: 100, price: 332.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-005',
@@ -114,6 +138,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['metal', 'brackets', 'victory', 'twin', 'standard', 'MBT'],
+    volumeBreaks: [
+      { minQty: 1, price: 180.00 },
+      { minQty: 10, price: 167.00, label: 'Volume' },
+      { minQty: 50, price: 155.00, label: 'Bulk' },
+      { minQty: 100, price: 144.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-006',
@@ -137,6 +167,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['metal', 'brackets', 'victory', 'twin', 'small'],
+    volumeBreaks: [
+      { minQty: 1, price: 182.00 },
+      { minQty: 10, price: 169.00, label: 'Volume' },
+      { minQty: 50, price: 157.00, label: 'Bulk' },
+      { minQty: 100, price: 146.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-007',
@@ -160,6 +196,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['metal', 'brackets', 'victory', 'low-profile', 'anterior'],
+    volumeBreaks: [
+      { minQty: 1, price: 192.00 },
+      { minQty: 10, price: 179.00, label: 'Volume' },
+      { minQty: 50, price: 165.00, label: 'Bulk' },
+      { minQty: 100, price: 154.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-008',
@@ -183,6 +225,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['metal', 'self-ligating', 'smartclip', 'NiTi-clip', 'low-friction'],
+    volumeBreaks: [
+      { minQty: 1, price: 350.00 },
+      { minQty: 10, price: 326.00, label: 'Volume' },
+      { minQty: 50, price: 301.00, label: 'Bulk' },
+      { minQty: 100, price: 280.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-009',
@@ -206,6 +254,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['metal', 'brackets', 'mini', 'uni-twin', 'compact'],
+    volumeBreaks: [
+      { minQty: 1, price: 148.00 },
+      { minQty: 10, price: 138.00, label: 'Volume' },
+      { minQty: 50, price: 127.00, label: 'Bulk' },
+      { minQty: 100, price: 118.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-010',
@@ -229,6 +283,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['metal', 'brackets', 'APC', 'flash-free', 'pre-coated', 'victory'],
+    volumeBreaks: [
+      { minQty: 1, price: 212.00 },
+      { minQty: 10, price: 197.00, label: 'Volume' },
+      { minQty: 50, price: 182.00, label: 'Bulk' },
+      { minQty: 100, price: 170.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-011',
@@ -252,6 +312,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['buccal-tube', 'molar', 'bondable', '1st-molar', 'convertible'],
+    volumeBreaks: [
+      { minQty: 1, price: 85.00 },
+      { minQty: 10, price: 79.00, label: 'Volume' },
+      { minQty: 50, price: 73.00, label: 'Bulk' },
+      { minQty: 100, price: 68.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-012',
@@ -275,6 +341,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['buccal-tube', 'molar', 'bondable', '2nd-molar'],
+    volumeBreaks: [
+      { minQty: 1, price: 82.00 },
+      { minQty: 10, price: 76.00, label: 'Volume' },
+      { minQty: 50, price: 71.00, label: 'Bulk' },
+      { minQty: 100, price: 66.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-013',
@@ -298,6 +370,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['molar-band', '1st-molar', 'pre-welded', 'stainless-steel'],
+    volumeBreaks: [
+      { minQty: 1, price: 65.00 },
+      { minQty: 10, price: 60.00, label: 'Volume' },
+      { minQty: 50, price: 56.00, label: 'Bulk' },
+      { minQty: 100, price: 52.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-014',
@@ -321,6 +399,12 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['molar-band', '2nd-molar', 'pre-welded', 'narrow'],
+    volumeBreaks: [
+      { minQty: 1, price: 62.00 },
+      { minQty: 10, price: 58.00, label: 'Volume' },
+      { minQty: 50, price: 53.00, label: 'Bulk' },
+      { minQty: 100, price: 50.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-015',
@@ -344,5 +428,11 @@ export const brackets = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['metal', 'brackets', 'mini-diamond', 'twin', 'rotational-control'],
+    volumeBreaks: [
+      { minQty: 1, price: 162.00 },
+      { minQty: 10, price: 151.00, label: 'Volume' },
+      { minQty: 50, price: 139.00, label: 'Bulk' },
+      { minQty: 100, price: 130.00, label: 'Enterprise' },
+    ],
   },
 ];

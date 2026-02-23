@@ -22,6 +22,12 @@ export const archwires = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['archwire', 'NiTi', 'nitinol', 'superelastic', 'alignment'],
+    volumeBreaks: [
+      { minQty: 1, price: 28.00 },
+      { minQty: 25, price: 26.00, label: 'Volume' },
+      { minQty: 100, price: 24.00, label: 'Bulk' },
+      { minQty: 500, price: 22.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-033',
@@ -45,6 +51,12 @@ export const archwires = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['archwire', 'NiTi', 'super-elastic', 'alignment', 'crowding'],
+    volumeBreaks: [
+      { minQty: 1, price: 32.00 },
+      { minQty: 25, price: 30.00, label: 'Volume' },
+      { minQty: 100, price: 28.00, label: 'Bulk' },
+      { minQty: 500, price: 26.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-034',
@@ -68,6 +80,12 @@ export const archwires = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['archwire', 'NiTi', 'heat-activated', 'thermoelastic', 'ultra-light'],
+    volumeBreaks: [
+      { minQty: 1, price: 38.00 },
+      { minQty: 25, price: 35.00, label: 'Volume' },
+      { minQty: 100, price: 33.00, label: 'Bulk' },
+      { minQty: 500, price: 30.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-035',
@@ -91,6 +109,12 @@ export const archwires = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['archwire', 'beta-titanium', 'finishing', 'formable', 'intermediate'],
+    volumeBreaks: [
+      { minQty: 1, price: 45.00 },
+      { minQty: 25, price: 42.00, label: 'Volume' },
+      { minQty: 100, price: 39.00, label: 'Bulk' },
+      { minQty: 500, price: 36.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-036',
@@ -114,6 +138,12 @@ export const archwires = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['archwire', 'stainless-steel', 'working', 'finishing', 'full-stiffness'],
+    volumeBreaks: [
+      { minQty: 1, price: 18.00 },
+      { minQty: 25, price: 17.00, label: 'Volume' },
+      { minQty: 100, price: 15.00, label: 'Bulk' },
+      { minQty: 500, price: 14.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-037',
@@ -137,6 +167,12 @@ export const archwires = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['retainer-wire', 'lingual', 'dead-soft', 'braided', 'retention'],
+    volumeBreaks: [
+      { minQty: 1, price: 22.00 },
+      { minQty: 25, price: 20.00, label: 'Volume' },
+      { minQty: 100, price: 19.00, label: 'Bulk' },
+      { minQty: 500, price: 18.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-038',
@@ -160,6 +196,12 @@ export const archwires = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['archwire', 'TMA', 'beta-titanium', 'finishing', 'segmental-mechanics'],
+    volumeBreaks: [
+      { minQty: 1, price: 42.00 },
+      { minQty: 25, price: 39.00, label: 'Volume' },
+      { minQty: 100, price: 36.00, label: 'Bulk' },
+      { minQty: 500, price: 34.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-039',
@@ -183,5 +225,11 @@ export const archwires = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['archwire', 'copper-NiTi', 'heat-activated', 'CuNiTi', 'consistent-force'],
+    volumeBreaks: [
+      { minQty: 1, price: 40.00 },
+      { minQty: 25, price: 37.00, label: 'Volume' },
+      { minQty: 100, price: 34.00, label: 'Bulk' },
+      { minQty: 500, price: 32.00, label: 'Enterprise' },
+    ],
   },
 ];

@@ -33,6 +33,12 @@ export const bands = [
     leadTimeDays: 5,
     minOrderQuantity: 1,
     tags: ['bands', 'molar', 'first molar', 'orthodontic bands'],
+    volumeBreaks: [
+      { minQty: 1, price: 0 },
+      { minQty: 25, price: 0, label: 'Volume' },
+      { minQty: 100, price: 0, label: 'Bulk' },
+      { minQty: 500, price: 0, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-BAND-002',
@@ -68,6 +74,12 @@ export const bands = [
     leadTimeDays: 5,
     minOrderQuantity: 1,
     tags: ['bands', 'molar', 'second molar', 'orthodontic bands'],
+    volumeBreaks: [
+      { minQty: 1, price: 0 },
+      { minQty: 25, price: 0, label: 'Volume' },
+      { minQty: 100, price: 0, label: 'Bulk' },
+      { minQty: 500, price: 0, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-BAND-003',
@@ -103,6 +115,12 @@ export const bands = [
     leadTimeDays: 5,
     minOrderQuantity: 1,
     tags: ['bands', 'molar', 'general purpose', 'hard temper', 'orthodontic bands'],
+    volumeBreaks: [
+      { minQty: 1, price: 0 },
+      { minQty: 25, price: 0, label: 'Volume' },
+      { minQty: 100, price: 0, label: 'Bulk' },
+      { minQty: 500, price: 0, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-BAND-004',
@@ -138,6 +156,12 @@ export const bands = [
     leadTimeDays: 5,
     minOrderQuantity: 1,
     tags: ['bands', 'molar', 'general purpose', 'regular temper', 'orthodontic bands'],
+    volumeBreaks: [
+      { minQty: 1, price: 0 },
+      { minQty: 25, price: 0, label: 'Volume' },
+      { minQty: 100, price: 0, label: 'Bulk' },
+      { minQty: 500, price: 0, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-BAND-005',
@@ -173,6 +197,12 @@ export const bands = [
     leadTimeDays: 5,
     minOrderQuantity: 1,
     tags: ['bands', 'molar', 'pedodontic', 'pediatric', 'orthodontic bands'],
+    volumeBreaks: [
+      { minQty: 1, price: 0 },
+      { minQty: 25, price: 0, label: 'Volume' },
+      { minQty: 100, price: 0, label: 'Bulk' },
+      { minQty: 500, price: 0, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-BAND-006',
@@ -206,6 +236,12 @@ export const bands = [
     leadTimeDays: 5,
     minOrderQuantity: 1,
     tags: ['bands', 'bicuspid', 'proportional', 'orthodontic bands'],
+    volumeBreaks: [
+      { minQty: 1, price: 0 },
+      { minQty: 25, price: 0, label: 'Volume' },
+      { minQty: 100, price: 0, label: 'Bulk' },
+      { minQty: 500, price: 0, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-BAND-007',
@@ -240,6 +276,12 @@ export const bands = [
     leadTimeDays: 5,
     minOrderQuantity: 1,
     tags: ['bands', 'bicuspid', 'general purpose', 'orthodontic bands'],
+    volumeBreaks: [
+      { minQty: 1, price: 0 },
+      { minQty: 25, price: 0, label: 'Volume' },
+      { minQty: 100, price: 0, label: 'Bulk' },
+      { minQty: 500, price: 0, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-BAND-008',
@@ -273,5 +315,11 @@ export const bands = [
     leadTimeDays: 5,
     minOrderQuantity: 1,
     tags: ['bands', 'bicuspid', 'contoured', 'orthodontic bands'],
+    volumeBreaks: [
+      { minQty: 1, price: 0 },
+      { minQty: 25, price: 0, label: 'Volume' },
+      { minQty: 100, price: 0, label: 'Bulk' },
+      { minQty: 500, price: 0, label: 'Enterprise' },
+    ],
   },
 ];

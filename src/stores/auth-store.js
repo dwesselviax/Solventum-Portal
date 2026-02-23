@@ -54,6 +54,26 @@ const MOCK_USERS = {
     organization: 'Solventum Corporation',
     organizationId: 'ORG-SOL',
   },
+  'ops@solventum.com': {
+    uid: 'user-006',
+    name: 'James Chen',
+    email: 'ops@solventum.com',
+    firstName: 'James',
+    lastName: 'Chen',
+    role: 'operations',
+    organization: 'Solventum Corporation',
+    organizationId: 'ORG-SOL',
+  },
+  'ap@chenortho.com': {
+    uid: 'user-007',
+    name: 'Rachel Torres',
+    email: 'ap@chenortho.com',
+    firstName: 'Rachel',
+    lastName: 'Torres',
+    role: 'ap',
+    organization: 'Chen Orthodontics',
+    organizationId: 'ORG-001',
+  },
 };
 
 export const useAuthStore = create(

@@ -22,6 +22,12 @@ export const orthoInstruments = [
     minOrderQuantity: 1,
     sampleEligible: false,
     tags: ['gauge', 'bracket-positioning', 'measurement', 'stainless-steel', 'placement'],
+    volumeBreaks: [
+      { minQty: 1, price: 85.00 },
+      { minQty: 10, price: 79.00, label: 'Volume' },
+      { minQty: 50, price: 73.00, label: 'Bulk' },
+      { minQty: 100, price: 68.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-051',
@@ -45,6 +51,12 @@ export const orthoInstruments = [
     minOrderQuantity: 1,
     sampleEligible: false,
     tags: ['plier', 'adhesive-removing', 'debonding', 'carbide', 'cleanup'],
+    volumeBreaks: [
+      { minQty: 1, price: 145.00 },
+      { minQty: 10, price: 135.00, label: 'Volume' },
+      { minQty: 50, price: 125.00, label: 'Bulk' },
+      { minQty: 100, price: 116.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-052',
@@ -68,6 +80,12 @@ export const orthoInstruments = [
     minOrderQuantity: 1,
     sampleEligible: false,
     tags: ['plier', 'bracket-removing', 'debonding', 'ceramic', 'metal'],
+    volumeBreaks: [
+      { minQty: 1, price: 155.00 },
+      { minQty: 10, price: 144.00, label: 'Volume' },
+      { minQty: 50, price: 133.00, label: 'Bulk' },
+      { minQty: 100, price: 124.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-053',
@@ -91,6 +109,12 @@ export const orthoInstruments = [
     minOrderQuantity: 1,
     sampleEligible: false,
     tags: ['plier', 'band-removing', 'molar-band', 'posterior', 'lever-action'],
+    volumeBreaks: [
+      { minQty: 1, price: 135.00 },
+      { minQty: 10, price: 126.00, label: 'Volume' },
+      { minQty: 50, price: 116.00, label: 'Bulk' },
+      { minQty: 100, price: 108.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-054',
@@ -114,6 +138,12 @@ export const orthoInstruments = [
     minOrderQuantity: 1,
     sampleEligible: false,
     tags: ['organizer', 'bonding-kit', 'chairside', 'tray', 'setup'],
+    volumeBreaks: [
+      { minQty: 1, price: 65.00 },
+      { minQty: 10, price: 60.00, label: 'Volume' },
+      { minQty: 50, price: 56.00, label: 'Bulk' },
+      { minQty: 100, price: 52.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-055',
@@ -137,6 +167,12 @@ export const orthoInstruments = [
     minOrderQuantity: 1,
     sampleEligible: false,
     tags: ['forceps', 'bracket-placement', 'direct-bond', 'reverse-action', 'precision'],
+    volumeBreaks: [
+      { minQty: 1, price: 120.00 },
+      { minQty: 10, price: 112.00, label: 'Volume' },
+      { minQty: 50, price: 103.00, label: 'Bulk' },
+      { minQty: 100, price: 96.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-056',
@@ -160,6 +196,12 @@ export const orthoInstruments = [
     minOrderQuantity: 1,
     sampleEligible: false,
     tags: ['needle-holder', 'mathieu', 'ligation', 'ligature', 'ratchet'],
+    volumeBreaks: [
+      { minQty: 1, price: 95.00 },
+      { minQty: 10, price: 88.00, label: 'Volume' },
+      { minQty: 50, price: 82.00, label: 'Bulk' },
+      { minQty: 100, price: 76.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-057',
@@ -183,5 +225,11 @@ export const orthoInstruments = [
     minOrderQuantity: 1,
     sampleEligible: false,
     tags: ['curing-light', 'LED', 'ortholux', 'cordless', 'high-intensity'],
+    volumeBreaks: [
+      { minQty: 1, price: 1250.00 },
+      { minQty: 5, price: 1163.00, label: 'Volume' },
+      { minQty: 20, price: 1075.00, label: 'Bulk' },
+      { minQty: 50, price: 1000.00, label: 'Enterprise' },
+    ],
   },
 ];

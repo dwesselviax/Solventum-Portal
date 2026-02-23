@@ -23,3 +23,6 @@ export { notifications, getNotificationsByRole, getUnreadCount } from './notific
 export { quoteTimelineEvents, getTimelineEventsForQuote } from './quote-timeline-events';
 export { seedComments, getCommentsByQuoteId } from './comments';
 export { seedMembers, getMembersByOrganization, getMemberById, ACCESS_TYPES, NOTIFICATION_TYPES, NOTIFICATION_CHANNELS } from './account-members';
+export { shipToAddresses, getAddressesByCustomerId } from './ship-to-addresses';
+export { marketingMaterials, materialTypes, materialChannels, getMaterialsByType, getMaterialsByChannel, searchMaterials } from './marketing-materials';
+export { apiPartners, getPartnerById, getPartnersByStatus, API_PERMISSIONS } from './api-partners';

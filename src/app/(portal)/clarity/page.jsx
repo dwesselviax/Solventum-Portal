@@ -7,7 +7,7 @@ import { StatusBadge } from '@/components/shared/status-badge';
 import { FiltersBar, FilterSelect } from '@/components/data/filters-bar';
 import { formatDate } from '@/lib/utils/format';
 import { TableSkeleton } from '@/components/shared/loading-skeleton';
-import { ChevronDown, ChevronUp, Calendar, ClipboardList, Package, StickyNote } from 'lucide-react';
+import { ChevronDown, ChevronUp, Calendar, ClipboardList, Package, StickyNote, ExternalLink } from 'lucide-react';
 
 const STATUS_OPTIONS = [
   { value: 'Submitted', label: 'Submitted' },
@@ -218,6 +218,23 @@ export default function ClarityPage() {
                     <ChevronDown className="h-5 w-5 shrink-0 text-[#3c3e3f]" />
                   )}
                 </button>
+
+                {/* Open in Clarity Portal - hidden for sales_rep */}
+                {role !== 'sales_rep' && (
+                  <div className="flex items-center gap-2 px-6 pb-2">
+                    <a
+                      href={`https://clarity.solventum.com/cases/${plan.caseNumber}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-md border border-[#0a7b6b] px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-[#0a7b6b] transition-colors hover:bg-[#bffde3]/30"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <ExternalLink className="h-3.5 w-3.5" />
+                      Open in Clarity Portal
+                    </a>
+                  </div>
+                )}
 
                 {/* Mobile badges */}
                 <div className="flex items-center gap-2 px-6 pb-3 sm:hidden">

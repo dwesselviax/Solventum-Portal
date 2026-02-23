@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { DataTable } from '@/components/data/data-table';
 import { FiltersBar, FilterSelect } from '@/components/data/filters-bar';
 import { StatusBadge } from '@/components/shared/status-badge';
 import { formatDate } from '@/lib/utils/format';
 import { TableSkeleton } from '@/components/shared/loading-skeleton';
-import { Plus } from 'lucide-react';
+import { Plus, Camera, X, ImagePlus } from 'lucide-react';
 import { toast } from 'sonner';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
@@ -28,9 +28,10 @@ const COLUMNS = [
   { key: 'orderId', label: 'Order Ref', sortable: true },
   { key: 'status', label: 'Status', sortable: true, render: (val) => <StatusBadge status={val} /> },
   { key: 'submittedDate', label: 'Submitted', sortable: true, render: (val) => formatDate(val) },
+  { key: 'photos', label: 'Photos', sortable: false, render: (val) => val?.length > 0 ? <Camera className="h-4 w-4 text-[#0a7b6b]" /> : null },
 ];
 
-const RETURN_TYPES = ['Defective', 'Warranty', 'Wrong Item', 'Damaged'];
+const RETURN_TYPES = ['Defective', 'Warranty', 'Wrong Item', 'Damaged', 'Defective / Broken'];
 
 const PRODUCT_OPTIONS = [
   'Clarity Advanced Ceramic Brackets — Upper 5x5 Kit',
@@ -55,6 +56,7 @@ export default function ReturnsPage() {
     quantity: '',
     reason: '',
     returnType: '',
+    photos: [],
   });
 
   useEffect(() => {
@@ -70,11 +72,49 @@ export default function ReturnsPage() {
     });
   }, [search, statusFilter]);
 
+  // Clean up object URLs when photos change or component unmounts
+  useEffect(() => {
+    return () => {
+      formData.photos.forEach((p) => URL.revokeObjectURL(p.preview));
+    };
+  }, [formData.photos]);
+
+  const handlePhotoSelect = useCallback((e) => {
+    const files = Array.from(e.target.files || []);
+    if (formData.photos.length + files.length > 5) {
+      toast.error('Maximum 5 photos allowed');
+      e.target.value = '';
+      return;
+    }
+    const newPhotos = files.map((file) => ({
+      file,
+      name: file.name,
+      size: file.size,
+      preview: URL.createObjectURL(file),
+      type: file.type,
+    }));
+    setFormData((prev) => ({ ...prev, photos: [...prev.photos, ...newPhotos] }));
+    e.target.value = '';
+  }, [formData.photos.length]);
+
+  const removePhoto = useCallback((index) => {
+    setFormData((prev) => {
+      const removed = prev.photos[index];
+      if (removed?.preview) URL.revokeObjectURL(removed.preview);
+      return { ...prev, photos: prev.photos.filter((_, i) => i !== index) };
+    });
+  }, []);
+
+  const resetForm = () => {
+    formData.photos.forEach((p) => URL.revokeObjectURL(p.preview));
+    setFormData({ orderId: '', product: '', quantity: '', reason: '', returnType: '', photos: [] });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     toast.success('RMA request submitted successfully');
     setDialogOpen(false);
-    setFormData({ orderId: '', product: '', quantity: '', reason: '', returnType: '' });
+    resetForm();
   };
 
   return (
@@ -163,6 +203,42 @@ export default function ReturnsPage() {
                 onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
                 required
               />
+            </div>
+            <div className="space-y-2">
+              <Label className="text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>Photos (Optional)</Label>
+              <label
+                className="flex cursor-pointer items-center gap-2 rounded-md border border-dashed border-[#e7e7e7] px-4 py-3 text-sm text-[#3c3e3f] transition-colors hover:border-[#0a7b6b] hover:bg-[#F5F5F5]"
+              >
+                <ImagePlus className="h-4 w-4 text-[#0a7b6b]" />
+                <span>Add photos{formData.photos.length > 0 ? ` (${formData.photos.length}/5)` : ''}</span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  className="hidden"
+                  onChange={handlePhotoSelect}
+                />
+              </label>
+              {formData.photos.length > 0 && (
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {formData.photos.map((photo, idx) => (
+                    <div key={idx} className="group relative">
+                      <img
+                        src={photo.preview}
+                        alt={photo.name}
+                        className="h-16 w-16 rounded-md border border-[#e7e7e7] object-cover"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removePhoto(idx)}
+                        className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#01332b] text-white opacity-0 transition-opacity group-hover:opacity-100"
+                      >
+                        <X className="h-3 w-3" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             <DialogFooter>
               <button

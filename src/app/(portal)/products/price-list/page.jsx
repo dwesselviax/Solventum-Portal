@@ -8,7 +8,7 @@ import { FiltersBar, FilterSelect } from '@/components/data/filters-bar';
 import { CardSkeleton } from '@/components/shared/loading-skeleton';
 import { formatCurrency, formatDate } from '@/lib/utils/format';
 import { fetchParties } from '@/lib/api/parties';
-import { Download, AlertTriangle } from 'lucide-react';
+import { Download, AlertTriangle, BarChart3 } from 'lucide-react';
 import { toast } from 'sonner';
 
 const CATEGORY_OPTIONS = [
@@ -30,6 +30,7 @@ export default function PriceListPage() {
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [contracts, setContracts] = useState([]);
   const [promotionsMap, setPromotionsMap] = useState({});
+  const [showFullCost, setShowFullCost] = useState(false);
   const { data: products, isLoading } = useProducts({ search, division: category });
 
   const isSalesRep = user?.role === 'sales_rep';
@@ -119,7 +120,7 @@ export default function PriceListPage() {
     return user?.organization || null;
   }, [isSalesRep, selectedCustomer, customers, user?.organization]);
 
-  if (user?.role === 'ar' || user?.role === 'csr') return null;
+  if (user?.role === 'csr') return null;
 
   const customerOptions = customers.map((c) => ({
     value: c.id,
@@ -137,7 +138,9 @@ export default function PriceListPage() {
     }
 
     // Custom CSV export with contract price column
-    const headers = ['Product ID', 'Product Name', 'Category', 'SKU', 'List Price', 'Contract Price', 'Contract/Tier', 'Availability'];
+    const baseHeaders = ['Product ID', 'Product Name', 'Category', 'SKU', 'List Price', 'Contract Price', 'Contract/Tier', 'Availability'];
+    const fullCostHeaders = showFullCost ? ['Discount %', 'Margin', 'Vol Qty 1', 'Vol Price 1', 'Vol Qty 2', 'Vol Price 2', 'Vol Qty 3', 'Vol Price 3', 'Vol Qty 4', 'Vol Price 4'] : [];
+    const headers = [...baseHeaders, ...fullCostHeaders];
     const escapeField = (value) => {
       const str = value == null ? '' : String(value);
       if (str.includes(',') || str.includes('"') || str.includes('\n')) {
@@ -148,7 +151,7 @@ export default function PriceListPage() {
     const rows = products.map((p) => {
       const cPrice = contractPricingMap[p.maId];
       const tierLabel = activeContract ? `${activeContract.tierLevel} -${activeContract.discountPercentage}%` : '';
-      return [
+      const baseRow = [
         p.maId,
         p.maName,
         p.division,
@@ -157,7 +160,26 @@ export default function PriceListPage() {
         cPrice != null ? cPrice.toFixed(2) : '',
         tierLabel,
         p.availability || '',
-      ].map(escapeField).join(',');
+      ];
+      if (showFullCost) {
+        const listP = p.listPrice || 0;
+        const contractP = cPrice != null ? cPrice : p.price;
+        const discountPct = listP > 0 ? Math.round((1 - contractP / listP) * 100) : 0;
+        const margin = listP > 0 ? (listP - contractP).toFixed(2) : '0.00';
+        const vbFields = [];
+        const vb = p.volumeBreaks || [];
+        for (let vi = 0; vi < 4; vi++) {
+          if (vb[vi]) {
+            vbFields.push(vb[vi].minQty + '+');
+            vbFields.push(vb[vi].price.toFixed(2));
+          } else {
+            vbFields.push('');
+            vbFields.push('');
+          }
+        }
+        baseRow.push(discountPct + '%', margin, ...vbFields);
+      }
+      return baseRow.map(escapeField).join(',');
     });
     const csv = [headers.join(','), ...rows].join('\n');
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -185,15 +207,31 @@ export default function PriceListPage() {
             {customerName ? `Pricing for ${customerName}` : 'Export product pricing as CSV'}
           </p>
         </div>
-        <button
-          onClick={handleExport}
-          disabled={isLoading || (isSalesRep && !selectedCustomer)}
-          className="flex items-center gap-2 rounded-md bg-[#0a7b6b] px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#087a69] disabled:opacity-50 disabled:cursor-not-allowed"
-          style={{ fontFamily: 'var(--font-heading)' }}
-        >
-          <Download className="h-4 w-4" />
-          Export Price List
-        </button>
+        <div className="flex items-center gap-2">
+          {['sales_rep', 'ar'].includes(user?.role) && (
+            <button
+              onClick={() => setShowFullCost(!showFullCost)}
+              className={`flex items-center gap-2 rounded-md border px-4 py-2.5 text-sm font-bold transition-colors ${
+                showFullCost
+                  ? 'border-[#0a7b6b] bg-[#bffde3] text-[#0a7b6b]'
+                  : 'border-[#e7e7e7] text-[#3c3e3f] hover:bg-[#F5F5F5]'
+              }`}
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              <BarChart3 className="h-4 w-4" />
+              {showFullCost ? 'Full Cost View' : 'Contract View'}
+            </button>
+          )}
+          <button
+            onClick={handleExport}
+            disabled={isLoading || (isSalesRep && !selectedCustomer)}
+            className="flex items-center gap-2 rounded-md bg-[#0a7b6b] px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#087a69] disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            <Download className="h-4 w-4" />
+            Export Price List
+          </button>
+        </div>
       </div>
 
       {/* Contract expiration warning banner */}
@@ -243,7 +281,7 @@ export default function PriceListPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-[#e7e7e7] bg-[#F5F5F5]">
-                {['Product ID', 'Product Name', 'Category', 'SKU', 'List Price', 'Contract/Tier', 'Contract Price', 'Availability'].map((h) => (
+                {[...['Product ID', 'Product Name', 'Category', 'SKU', 'List Price', 'Contract/Tier', 'Contract Price'], ...(showFullCost ? ['Discount %', 'Margin'] : []), 'Availability'].map((h) => (
                   <th key={h} className="px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
                     {h}
                   </th>
@@ -282,6 +320,18 @@ export default function PriceListPage() {
                     <td className="px-4 py-3 font-bold text-[#01332b]">
                       {cPrice != null ? formatCurrency(cPrice) : <span className="font-normal text-[#3c3e3f]">{formatCurrency(p.price)}</span>}
                     </td>
+                    {showFullCost && (() => {
+                      const listP = p.listPrice || 0;
+                      const contractP = cPrice != null ? cPrice : p.price;
+                      const discountPct = listP > 0 ? Math.round((1 - contractP / listP) * 100) : 0;
+                      const margin = listP > 0 ? listP - contractP : 0;
+                      return (
+                        <>
+                          <td className="px-4 py-3 text-[#0a7b6b] font-medium">{discountPct > 0 ? `${discountPct}%` : '\u2014'}</td>
+                          <td className="px-4 py-3 font-medium text-[#01332b]">{margin > 0 ? formatCurrency(margin) : '\u2014'}</td>
+                        </>
+                      );
+                    })()}
                     <td className="px-4 py-3 text-[#3c3e3f]">{p.availability}</td>
                   </tr>
                 );

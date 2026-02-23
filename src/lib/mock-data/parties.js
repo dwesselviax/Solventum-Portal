@@ -61,6 +61,7 @@ export const parties = [
     accountStatus: 'Active',
     createdAt: '2021-06-15T00:00:00Z',
     salesRepId: 'USR-003',
+    locations: null,
   },
   {
     id: 'ORG-002',
@@ -132,6 +133,12 @@ export const parties = [
     accountStatus: 'Active',
     createdAt: '2019-03-01T00:00:00Z',
     salesRepId: 'USR-003',
+    locations: [
+      { id: 'LOC-001', name: 'Downtown Chicago', address: { street: '4500 W Diversey Ave', city: 'Chicago', state: 'IL', zip: '60639' }, shipToId: 'ADDR-004' },
+      { id: 'LOC-002', name: 'Schaumburg', address: { street: '1601 N Roselle Rd', city: 'Schaumburg', state: 'IL', zip: '60195' }, shipToId: 'ADDR-005' },
+      { id: 'LOC-003', name: 'Naperville', address: { street: '2244 S Washington St', city: 'Naperville', state: 'IL', zip: '60565' }, shipToId: 'ADDR-006' },
+      { id: 'LOC-004', name: 'Evanston', address: { street: '820 Davis St', city: 'Evanston', state: 'IL', zip: '60201' }, shipToId: 'ADDR-007' },
+    ],
   },
   {
     id: 'ORG-003',
@@ -203,6 +210,7 @@ export const parties = [
     accountStatus: 'Active',
     createdAt: '2022-01-10T00:00:00Z',
     salesRepId: 'USR-003',
+    locations: null,
   },
   {
     id: 'ORG-004',
@@ -263,6 +271,10 @@ export const parties = [
     accountStatus: 'Active',
     createdAt: '2023-09-20T00:00:00Z',
     salesRepId: 'USR-003',
+    locations: [
+      { id: 'LOC-005', name: 'Loop Office', address: { street: '100 W Monroe St', city: 'Chicago', state: 'IL', zip: '60603' }, shipToId: 'ADDR-010' },
+      { id: 'LOC-006', name: 'North Side', address: { street: '3542 N Clark St', city: 'Chicago', state: 'IL', zip: '60657' }, shipToId: 'ADDR-011' },
+    ],
   },
   {
     id: 'ORG-005',
@@ -323,6 +335,7 @@ export const parties = [
     accountStatus: 'Active',
     createdAt: '2023-04-01T00:00:00Z',
     salesRepId: 'USR-003',
+    locations: null,
   },
   {
     id: 'ORG-SOL',
@@ -385,6 +398,7 @@ export const parties = [
     accountStatus: 'Active',
     createdAt: '2024-04-01T00:00:00Z',
     salesRepId: null,
+    locations: null,
   },
 ];
 

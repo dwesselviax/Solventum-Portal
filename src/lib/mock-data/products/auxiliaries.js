@@ -22,6 +22,12 @@ export const auxiliaries = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['elastomeric', 'ligature', 'AlastiK', 'color', 'modules'],
+    volumeBreaks: [
+      { minQty: 1, price: 18.00 },
+      { minQty: 25, price: 17.00, label: 'Volume' },
+      { minQty: 100, price: 15.00, label: 'Bulk' },
+      { minQty: 500, price: 14.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-041',
@@ -45,6 +51,12 @@ export const auxiliaries = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['separator', 'AlastiK', 'elastomeric', 'molar-band', 'interproximal'],
+    volumeBreaks: [
+      { minQty: 1, price: 15.00 },
+      { minQty: 25, price: 14.00, label: 'Volume' },
+      { minQty: 100, price: 13.00, label: 'Bulk' },
+      { minQty: 500, price: 12.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-042',
@@ -68,6 +80,12 @@ export const auxiliaries = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['ligature', 'stainless-steel', 'wire', 'metal', 'full-engagement'],
+    volumeBreaks: [
+      { minQty: 1, price: 12.00 },
+      { minQty: 25, price: 11.00, label: 'Volume' },
+      { minQty: 100, price: 10.00, label: 'Bulk' },
+      { minQty: 500, price: 10.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-043',
@@ -91,6 +109,12 @@ export const auxiliaries = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['coil-spring', 'NiTi', 'space-opening', 'space-closing', 'superelastic'],
+    volumeBreaks: [
+      { minQty: 1, price: 35.00 },
+      { minQty: 25, price: 33.00, label: 'Volume' },
+      { minQty: 100, price: 30.00, label: 'Bulk' },
+      { minQty: 500, price: 28.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-044',
@@ -114,6 +138,12 @@ export const auxiliaries = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['elastic-chain', 'power-chain', 'space-closure', 'elastomeric', 'continuous'],
+    volumeBreaks: [
+      { minQty: 1, price: 14.00 },
+      { minQty: 25, price: 13.00, label: 'Volume' },
+      { minQty: 100, price: 12.00, label: 'Bulk' },
+      { minQty: 500, price: 11.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-045',
@@ -137,6 +167,12 @@ export const auxiliaries = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['hooks', 'kobayashi', 'elastic-attachment', 'interarch', 'ball-hook'],
+    volumeBreaks: [
+      { minQty: 1, price: 22.00 },
+      { minQty: 25, price: 20.00, label: 'Volume' },
+      { minQty: 100, price: 19.00, label: 'Bulk' },
+      { minQty: 500, price: 18.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-046',
@@ -160,6 +196,12 @@ export const auxiliaries = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['power-thread', 'elastomeric', 'diastema', 'tooth-movement', 'thread'],
+    volumeBreaks: [
+      { minQty: 1, price: 16.00 },
+      { minQty: 25, price: 15.00, label: 'Volume' },
+      { minQty: 100, price: 14.00, label: 'Bulk' },
+      { minQty: 500, price: 13.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-047',
@@ -183,6 +225,12 @@ export const auxiliaries = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['crimpable', 'hooks', 'elastic-attachment', 'archwire', 'stainless-steel'],
+    volumeBreaks: [
+      { minQty: 1, price: 28.00 },
+      { minQty: 25, price: 26.00, label: 'Volume' },
+      { minQty: 100, price: 24.00, label: 'Bulk' },
+      { minQty: 500, price: 22.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-048',
@@ -206,6 +254,12 @@ export const auxiliaries = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['rotation', 'wedge', 'elastomeric', 'derotation', 'alignment'],
+    volumeBreaks: [
+      { minQty: 1, price: 19.00 },
+      { minQty: 25, price: 18.00, label: 'Volume' },
+      { minQty: 100, price: 16.00, label: 'Bulk' },
+      { minQty: 500, price: 15.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-049',
@@ -229,5 +283,11 @@ export const auxiliaries = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['AlastiK', 'power-sticks', 'ligature', 'dispensing', 'elastomeric'],
+    volumeBreaks: [
+      { minQty: 1, price: 20.00 },
+      { minQty: 25, price: 19.00, label: 'Volume' },
+      { minQty: 100, price: 17.00, label: 'Bulk' },
+      { minQty: 500, price: 16.00, label: 'Enterprise' },
+    ],
   },
 ];

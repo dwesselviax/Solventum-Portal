@@ -22,6 +22,12 @@ export const bonding = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['adhesive', 'transbond', 'light-cure', 'bonding', 'bracket-bonding'],
+    volumeBreaks: [
+      { minQty: 1, price: 95.00 },
+      { minQty: 10, price: 88.00, label: 'Volume' },
+      { minQty: 50, price: 82.00, label: 'Bulk' },
+      { minQty: 100, price: 76.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-017',
@@ -45,6 +51,12 @@ export const bonding = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['primer', 'transbond', 'light-cure', 'bonding', 'enamel'],
+    volumeBreaks: [
+      { minQty: 1, price: 42.00 },
+      { minQty: 25, price: 39.00, label: 'Volume' },
+      { minQty: 100, price: 36.00, label: 'Bulk' },
+      { minQty: 500, price: 34.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-018',
@@ -68,6 +80,12 @@ export const bonding = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['primer', 'self-etching', 'transbond-plus', 'bonding', 'simplified'],
+    volumeBreaks: [
+      { minQty: 1, price: 185.00 },
+      { minQty: 10, price: 172.00, label: 'Volume' },
+      { minQty: 50, price: 159.00, label: 'Bulk' },
+      { minQty: 100, price: 148.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-019',
@@ -91,6 +109,12 @@ export const bonding = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['primer', 'moisture-insensitive', 'transbond-MIP', 'saliva-tolerant', 'bonding'],
+    volumeBreaks: [
+      { minQty: 1, price: 52.00 },
+      { minQty: 25, price: 48.00, label: 'Volume' },
+      { minQty: 100, price: 45.00, label: 'Bulk' },
+      { minQty: 500, price: 42.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-020',
@@ -114,6 +138,12 @@ export const bonding = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['APC', 'flash-free', 'pre-coated', 'adhesive', 'bonding-system'],
+    volumeBreaks: [
+      { minQty: 1, price: 280.00 },
+      { minQty: 10, price: 260.00, label: 'Volume' },
+      { minQty: 50, price: 241.00, label: 'Bulk' },
+      { minQty: 100, price: 224.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-021',
@@ -137,6 +167,12 @@ export const bonding = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['adhesive', 'indirect-bonding', 'sondhi', 'rapid-set', 'dual-cure'],
+    volumeBreaks: [
+      { minQty: 1, price: 165.00 },
+      { minQty: 10, price: 153.00, label: 'Volume' },
+      { minQty: 50, price: 142.00, label: 'Bulk' },
+      { minQty: 100, price: 132.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-022',
@@ -160,6 +196,12 @@ export const bonding = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['adhesive', 'concise', 'light-cure', 'multi-purpose', 'retainer-bonding'],
+    volumeBreaks: [
+      { minQty: 1, price: 78.00 },
+      { minQty: 10, price: 73.00, label: 'Volume' },
+      { minQty: 50, price: 67.00, label: 'Bulk' },
+      { minQty: 100, price: 62.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-023',
@@ -183,6 +225,12 @@ export const bonding = [
     minOrderQuantity: 1,
     sampleEligible: false,
     tags: ['cement', 'relyX', 'self-adhesive', 'band-cementation', 'resin'],
+    volumeBreaks: [
+      { minQty: 1, price: 195.00 },
+      { minQty: 10, price: 181.00, label: 'Volume' },
+      { minQty: 50, price: 168.00, label: 'Bulk' },
+      { minQty: 100, price: 156.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-024',
@@ -206,6 +254,12 @@ export const bonding = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['attachment', 'clarity', 'aligner', 'composite', 'aesthetic'],
+    volumeBreaks: [
+      { minQty: 1, price: 125.00 },
+      { minQty: 10, price: 116.00, label: 'Volume' },
+      { minQty: 50, price: 108.00, label: 'Bulk' },
+      { minQty: 100, price: 100.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-025',
@@ -229,5 +283,11 @@ export const bonding = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['adhesive', 'chemical-cure', 'indirect-bonding', 'transbond-IDB', 'no-light'],
+    volumeBreaks: [
+      { minQty: 1, price: 88.00 },
+      { minQty: 10, price: 82.00, label: 'Volume' },
+      { minQty: 50, price: 76.00, label: 'Bulk' },
+      { minQty: 100, price: 70.00, label: 'Enterprise' },
+    ],
   },
 ];

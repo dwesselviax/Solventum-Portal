@@ -119,17 +119,19 @@ export function Topbar() {
       <div className="flex items-center gap-4">
         <SearchCommand />
 
-        <button
-          onClick={() => router.push('/cart')}
-          className="relative shrink-0 rounded-md p-2 text-white/80 transition-colors hover:bg-white/10"
-        >
-          <ShoppingCart className="h-5 w-5" />
-          {itemCount > 0 && (
-            <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#0a7b6b] text-[10px] font-bold text-white">
-              {itemCount > 99 ? '99+' : itemCount}
-            </span>
-          )}
-        </button>
+        {!['ar', 'operations'].includes(role) && (
+          <button
+            onClick={() => router.push('/cart')}
+            className="relative shrink-0 rounded-md p-2 text-white/80 transition-colors hover:bg-white/10"
+          >
+            <ShoppingCart className="h-5 w-5" />
+            {itemCount > 0 && (
+              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#0a7b6b] text-[10px] font-bold text-white">
+                {itemCount > 99 ? '99+' : itemCount}
+              </span>
+            )}
+          </button>
+        )}
 
         {/* Notifications dropdown */}
         <DropdownMenu>

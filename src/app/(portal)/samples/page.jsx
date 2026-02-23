@@ -28,13 +28,6 @@ export default function SamplesPage() {
   const router = useRouter();
   const role = user?.role;
 
-  // Redirect unauthorized roles
-  useEffect(() => {
-    if (user && !['orthodontist', 'dso', 'sales_rep'].includes(role)) {
-      router.push('/dashboard');
-    }
-  }, [user, role, router]);
-
   const [samples, setSamples] = useState([]);
   const [sampleableIds, setSampleableIds] = useState([]);
   const [products, setProducts] = useState([]);
@@ -152,6 +145,14 @@ export default function SamplesPage() {
     setShippingAddress({ street: '', suite: '', city: '', state: '', zip: '' });
     setNotes('');
     setSelectedCustomer('');
+  }
+
+  if (['ar', 'csr', 'operations', 'ap'].includes(user?.role)) {
+    return (
+      <div className="py-12 text-center">
+        <p className="text-sm text-[#3c3e3f]">You do not have access to sample requests.</p>
+      </div>
+    );
   }
 
   if (loading) {

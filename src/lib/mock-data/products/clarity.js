@@ -22,6 +22,12 @@ export const clarity = [
     minOrderQuantity: 1,
     sampleEligible: false,
     tags: ['aligner', 'clarity', 'clear-aligner', 'digital', 'full-treatment'],
+    volumeBreaks: [
+      { minQty: 1, price: 2400.00 },
+      { minQty: 5, price: 2270.00, label: 'Volume' },
+      { minQty: 20, price: 2140.00, label: 'Bulk' },
+      { minQty: 50, price: 1920.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-027',
@@ -45,6 +51,12 @@ export const clarity = [
     minOrderQuantity: 1,
     sampleEligible: false,
     tags: ['retainer', 'clarity', 'clear', 'retention', 'post-treatment'],
+    volumeBreaks: [
+      { minQty: 1, price: 450.00 },
+      { minQty: 10, price: 419.00, label: 'Volume' },
+      { minQty: 50, price: 387.00, label: 'Bulk' },
+      { minQty: 100, price: 360.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-028',
@@ -68,6 +80,12 @@ export const clarity = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['ceramic', 'clarity-advanced', 'full-arch', 'aesthetic', 'bracket-system'],
+    volumeBreaks: [
+      { minQty: 1, price: 520.00 },
+      { minQty: 10, price: 484.00, label: 'Volume' },
+      { minQty: 50, price: 447.00, label: 'Bulk' },
+      { minQty: 100, price: 416.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-029',
@@ -91,6 +109,12 @@ export const clarity = [
     minOrderQuantity: 1,
     sampleEligible: true,
     tags: ['ceramic', 'clarity-ultra', 'self-ligating', 'full-arch', 'aesthetic'],
+    volumeBreaks: [
+      { minQty: 1, price: 580.00 },
+      { minQty: 10, price: 539.00, label: 'Volume' },
+      { minQty: 50, price: 499.00, label: 'Bulk' },
+      { minQty: 100, price: 464.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-030',
@@ -114,6 +138,12 @@ export const clarity = [
     minOrderQuantity: 1,
     sampleEligible: false,
     tags: ['attachments', 'clarity', 'aligner', 'precision', 'templates'],
+    volumeBreaks: [
+      { minQty: 1, price: 320.00 },
+      { minQty: 10, price: 298.00, label: 'Volume' },
+      { minQty: 50, price: 275.00, label: 'Bulk' },
+      { minQty: 100, price: 256.00, label: 'Enterprise' },
+    ],
   },
   {
     maId: 'PRD-031',
@@ -137,5 +167,11 @@ export const clarity = [
     minOrderQuantity: 1,
     sampleEligible: false,
     tags: ['digital', 'indirect-bonding', 'clarity', '3D-printed', 'workflow'],
+    volumeBreaks: [
+      { minQty: 1, price: 1800.00 },
+      { minQty: 5, price: 1700.00, label: 'Volume' },
+      { minQty: 20, price: 1600.00, label: 'Bulk' },
+      { minQty: 50, price: 1440.00, label: 'Enterprise' },
+    ],
   },
 ];

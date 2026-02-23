@@ -2,6 +2,13 @@
 // Types: volume | standard | custom
 // Statuses: Active | Pending | Expired | Cancelled
 
+export const tierThresholds = {
+  Bronze: { minSpend: 0, discount: 5 },
+  Silver: { minSpend: 50000, discount: 10 },
+  Gold: { minSpend: 150000, discount: 15 },
+  Platinum: { minSpend: 500000, discount: 22 },
+};
+
 export const contracts = [
   {
     id: 'CTR-001',
@@ -24,6 +31,10 @@ export const contracts = [
     terms: 'Net 30',
     autoRenew: true,
     notes: 'Gold tier pricing based on annual volume commitment. Dr. Chen has been a loyal customer since 2023. Eligible for upgrade to Platinum at $75K annual spend.',
+    scheduledChanges: [
+      { id: 'SC-001', productId: 'PRD-001', productName: 'Clarity Advanced Ceramic Brackets', currentPrice: 323.00, newPrice: 310.00, effectiveDate: '2026-07-01', status: 'Pending', createdBy: 'Emily Rodriguez', notes: 'Loyalty adjustment for Gold tier renewal' },
+    ],
+    renewal: { period: 'annual', nextRenewalDate: '2026-03-31', autoRenew: true, stackWindow: '60 days' },
     createdAt: '2025-03-15T00:00:00Z',
     updatedAt: '2026-01-10T00:00:00Z',
   },
@@ -54,6 +65,11 @@ export const contracts = [
     terms: 'Net 45',
     autoRenew: true,
     notes: 'Custom DSO agreement covering 12 locations. Quarterly volume review with dedicated account manager. Includes complimentary on-site training for new staff. Negotiated extended payment terms due to multi-location scale.',
+    scheduledChanges: [
+      { id: 'SC-002', productId: 'PRD-026', productName: 'Clarity Aligners Starter Kit', currentPrice: 1170.00, newPrice: 1100.00, effectiveDate: '2026-04-01', status: 'Pending', createdBy: 'Emily Rodriguez', notes: 'Q2 volume incentive for DSO expansion' },
+      { id: 'SC-003', productId: 'PRD-040', productName: 'APC Flash-Free Adhesive Brackets', currentPrice: 257.40, newPrice: 245.00, effectiveDate: '2026-04-01', status: 'Pending', createdBy: 'Emily Rodriguez', notes: 'Bundled discount with aligner kit promotion' },
+    ],
+    renewal: { period: 'biennial', nextRenewalDate: '2026-12-31', autoRenew: true, stackWindow: '90 days' },
     createdAt: '2024-11-15T00:00:00Z',
     updatedAt: '2026-02-01T00:00:00Z',
   },
@@ -77,6 +93,8 @@ export const contracts = [
     terms: 'Net 30',
     autoRenew: false,
     notes: 'Standard Silver tier contract. Expiring within 60 days — renewal discussion scheduled for March. Practice is growing and may qualify for Gold tier on renewal based on projected volume increase.',
+    scheduledChanges: [],
+    renewal: { period: 'annual', nextRenewalDate: '2026-04-14', autoRenew: false, stackWindow: '30 days' },
     createdAt: '2025-04-01T00:00:00Z',
     updatedAt: '2026-01-20T00:00:00Z',
   },
@@ -103,6 +121,8 @@ export const contracts = [
     terms: 'Net 30',
     autoRenew: true,
     notes: 'Gold tier volume contract. Metro Dental is expanding their orthodontic services across their general practice network. Tracking well above minimum commitment.',
+    scheduledChanges: [],
+    renewal: { period: 'annual', nextRenewalDate: '2026-06-30', autoRenew: true, stackWindow: '30 days' },
     createdAt: '2025-06-10T00:00:00Z',
     updatedAt: '2026-02-05T00:00:00Z',
   },
@@ -125,6 +145,8 @@ export const contracts = [
     terms: 'Net 30',
     autoRenew: false,
     notes: 'Pending renewal for Bronze tier. Lakeside is a smaller family practice exploring expanded Solventum product usage. Previous contract expired 2026-03-31. Sales rep Emily Rodriguez is working with Dr. Nakamura on potential upgrade to Silver tier with increased volume commitment.',
+    scheduledChanges: [],
+    renewal: { period: 'annual', nextRenewalDate: '2027-03-31', autoRenew: false, stackWindow: '30 days' },
     createdAt: '2026-02-10T00:00:00Z',
     updatedAt: '2026-02-18T00:00:00Z',
   },
