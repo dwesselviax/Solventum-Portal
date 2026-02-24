@@ -29,7 +29,7 @@ const COLUMNS = [
 
 export default function ShipmentsPage() {
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState([]);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -37,7 +37,7 @@ export default function ShipmentsPage() {
   useEffect(() => {
     import('@/lib/mock-data/shipments').then((mod) => {
       let result = [...(mod.shipments || [])];
-      if (statusFilter) result = result.filter((s) => s.status === statusFilter);
+      if (statusFilter.length > 0) result = result.filter((s) => statusFilter.includes(s.status));
       if (search) {
         const q = search.toLowerCase();
         result = result.filter((s) => s.id?.toLowerCase().includes(q) || s.trackingNumber?.toLowerCase().includes(q) || s.orderId?.toLowerCase().includes(q));

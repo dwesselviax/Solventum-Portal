@@ -33,7 +33,7 @@ const COLUMNS = [
 
 export default function OrdersPage() {
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState([]);
   const [formOpen, setFormOpen] = useState(false);
   const [localOrders, setLocalOrders] = useState([]);
   const { data: orders, isLoading } = useOrders({ search, status: statusFilter });

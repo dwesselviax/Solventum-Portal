@@ -91,7 +91,7 @@ export default function ContractsPage() {
   const [contractsData, setContractsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState([]);
   const [expandedId, setExpandedId] = useState(null);
   const [activeTab, setActiveTab] = useState('pricing');
 
@@ -129,8 +129,8 @@ export default function ContractsPage() {
     if (isExternal && user?.organizationId) {
       list = list.filter((c) => c.customerId === user.organizationId);
     }
-    if (statusFilter) {
-      list = list.filter((c) => c.status === statusFilter);
+    if (statusFilter.length > 0) {
+      list = list.filter((c) => statusFilter.includes(c.status));
     }
     if (search) {
       const q = search.toLowerCase();

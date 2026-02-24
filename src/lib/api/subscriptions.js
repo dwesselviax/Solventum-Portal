@@ -4,7 +4,7 @@ export async function fetchSubscriptions(filters = {}) {
   if (useMock()) {
     const { subscriptions } = await import('@/lib/mock-data/subscriptions');
     let result = [...subscriptions];
-    if (filters.status) result = result.filter((s) => s.status === filters.status);
+    if (filters.status?.length > 0) result = result.filter((s) => filters.status.includes(s.status));
     if (filters.search) {
       const q = filters.search.toLowerCase();
       result = result.filter((s) => s.biId.toLowerCase().includes(q) || s.biName?.toLowerCase().includes(q));

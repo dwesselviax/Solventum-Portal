@@ -4,8 +4,8 @@ export async function fetchProducts(filters = {}) {
   if (useMock()) {
     const { products } = await import('@/lib/mock-data/products');
     let result = [...products];
-    if (filters.division) result = result.filter((p) => p.division === filters.division);
-    if (filters.category) result = result.filter((p) => p.category === filters.category);
+    if (filters.division?.length > 0) result = result.filter((p) => filters.division.includes(p.division));
+    if (filters.category?.length > 0) result = result.filter((p) => filters.category.includes(p.category));
     if (filters.search) {
       const s = filters.search.toLowerCase();
       result = result.filter((p) => p.maName.toLowerCase().includes(s) || p.maDescription?.toLowerCase().includes(s));

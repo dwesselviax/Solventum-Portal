@@ -25,7 +25,7 @@ const STATUS_FILTER_OPTIONS = [
 
 export default function SupportPage() {
   const [serviceRequests, setServiceRequests] = useState([]);
-  const [statusFilter, setStatusFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState([]);
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [isLoadingTickets, setIsLoadingTickets] = useState(true);
 
@@ -51,8 +51,8 @@ export default function SupportPage() {
     });
   }, []);
 
-  const filteredRequests = statusFilter
-    ? serviceRequests.filter((sr) => sr.status === statusFilter)
+  const filteredRequests = statusFilter.length > 0
+    ? serviceRequests.filter((sr) => statusFilter.includes(sr.status))
     : serviceRequests;
 
   const handleCreateTicket = () => {
@@ -289,7 +289,7 @@ export default function SupportPage() {
               </tbody>
             </table>
             {filteredRequests.length === 0 && (
-              <div className="py-8 text-center text-sm text-[#3c3e3f]">No tickets found{statusFilter ? ' with this status' : ''}.</div>
+              <div className="py-8 text-center text-sm text-[#3c3e3f]">No tickets found{statusFilter.length > 0 ? ' with this status' : ''}.</div>
             )}
           </div>
         )}

@@ -27,7 +27,7 @@ const COLUMNS = [
 
 export default function InvoicesPage() {
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState([]);
   const { data: invoices, isLoading } = useInvoices({ search, status: statusFilter });
   const router = useRouter();
 

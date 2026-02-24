@@ -15,14 +15,14 @@ const TYPE_OPTIONS = [
 
 export default function TrainingPage() {
   const [search, setSearch] = useState('');
-  const [typeFilter, setTypeFilter] = useState(null);
+  const [typeFilter, setTypeFilter] = useState([]);
   const [resources, setResources] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     import('@/lib/mock-data/training').then((mod) => {
       let result = [...(mod.training || [])];
-      if (typeFilter) result = result.filter((t) => t.type === typeFilter);
+      if (typeFilter.length > 0) result = result.filter((t) => typeFilter.includes(t.type));
       if (search) {
         const s = search.toLowerCase();
         result = result.filter((t) => t.title?.toLowerCase().includes(s) || t.description?.toLowerCase().includes(s));

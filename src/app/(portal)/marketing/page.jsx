@@ -59,8 +59,8 @@ export default function MarketingMaterialsPage() {
 
   // Filter state
   const [search, setSearch] = useState('');
-  const [typeFilter, setTypeFilter] = useState(null);
-  const [channelFilter, setChannelFilter] = useState(null);
+  const [typeFilter, setTypeFilter] = useState([]);
+  const [channelFilter, setChannelFilter] = useState([]);
 
   // Co-branded request dialog state
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -77,11 +77,11 @@ export default function MarketingMaterialsPage() {
 
   const filteredMaterials = useMemo(() => {
     let result = materials;
-    if (typeFilter) {
-      result = result.filter((m) => m.type === typeFilter);
+    if (typeFilter.length > 0) {
+      result = result.filter((m) => typeFilter.includes(m.type));
     }
-    if (channelFilter) {
-      result = result.filter((m) => m.channel === channelFilter);
+    if (channelFilter.length > 0) {
+      result = result.filter((m) => channelFilter.includes(m.channel));
     }
     if (search) {
       const q = search.toLowerCase();

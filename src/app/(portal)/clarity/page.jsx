@@ -77,7 +77,7 @@ export default function ClarityPage() {
   const [parties, setParties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState([]);
   const [expandedId, setExpandedId] = useState(null);
   const [selectedCustomer, setSelectedCustomer] = useState('');
 
@@ -99,8 +99,8 @@ export default function ClarityPage() {
     if (role === 'sales_rep' && selectedCustomer) {
       result = result.filter((p) => p.organizationId === selectedCustomer);
     }
-    if (statusFilter) {
-      result = result.filter((p) => p.status === statusFilter);
+    if (statusFilter.length > 0) {
+      result = result.filter((p) => statusFilter.includes(p.status));
     }
     if (search) {
       const q = search.toLowerCase();

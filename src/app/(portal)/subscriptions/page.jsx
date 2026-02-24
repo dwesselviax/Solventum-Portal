@@ -27,7 +27,7 @@ const COLUMNS = [
 
 export default function SubscriptionsPage() {
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState([]);
   const { data: subscriptions, isLoading } = useSubscriptions({ search, status: statusFilter });
   const router = useRouter();
 

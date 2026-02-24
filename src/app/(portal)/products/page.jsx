@@ -25,7 +25,7 @@ const CATEGORY_OPTIONS = [
 export default function ProductsPage() {
   const searchParams = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('search') || '');
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState([]);
   const [viewMode, setViewMode] = useState('grid');
   const [promotionsMap, setPromotionsMap] = useState({});
   const { data: products, isLoading } = useProducts({ search, division: category });

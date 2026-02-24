@@ -46,7 +46,7 @@ const PRODUCT_OPTIONS = [
 
 export default function ReturnsPage() {
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState([]);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -62,7 +62,7 @@ export default function ReturnsPage() {
   useEffect(() => {
     import('@/lib/mock-data/returns').then((mod) => {
       let result = [...(mod.returns || [])];
-      if (statusFilter) result = result.filter((r) => r.status === statusFilter);
+      if (statusFilter.length > 0) result = result.filter((r) => statusFilter.includes(r.status));
       if (search) {
         const s = search.toLowerCase();
         result = result.filter((r) => r.id?.toLowerCase().includes(s) || r.productName?.toLowerCase().includes(s));

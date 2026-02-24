@@ -4,7 +4,7 @@ export async function fetchQuotes(filters = {}) {
   if (useMock()) {
     const { quotes } = await import('@/lib/mock-data/quotes');
     let result = [...quotes];
-    if (filters.status) result = result.filter((q) => q.status === filters.status);
+    if (filters.status?.length > 0) result = result.filter((q) => filters.status.includes(q.status));
     if (filters.search) {
       const s = filters.search.toLowerCase();
       result = result.filter((q) => q.biId.toLowerCase().includes(s) || q.biName?.toLowerCase().includes(s));

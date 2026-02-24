@@ -16,14 +16,14 @@ const TYPE_OPTIONS = [
 
 export default function DocumentationPage() {
   const [search, setSearch] = useState('');
-  const [typeFilter, setTypeFilter] = useState(null);
+  const [typeFilter, setTypeFilter] = useState([]);
   const [docs, setDocs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     import('@/lib/mock-data/documentation').then((mod) => {
       let result = [...(mod.documentation || [])];
-      if (typeFilter) result = result.filter((d) => d.type === typeFilter);
+      if (typeFilter.length > 0) result = result.filter((d) => typeFilter.includes(d.type));
       if (search) {
         const s = search.toLowerCase();
         result = result.filter((d) => d.title?.toLowerCase().includes(s) || d.productNames?.join(', ').toLowerCase().includes(s));

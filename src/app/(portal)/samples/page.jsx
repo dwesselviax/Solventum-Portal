@@ -36,7 +36,7 @@ export default function SamplesPage() {
 
   // Filter state
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState([]);
 
   // Form state
   const [formOpen, setFormOpen] = useState(false);
@@ -72,8 +72,8 @@ export default function SamplesPage() {
 
   const filteredSamples = useMemo(() => {
     let result = samples;
-    if (statusFilter) {
-      result = result.filter((s) => s.status === statusFilter);
+    if (statusFilter.length > 0) {
+      result = result.filter((s) => statusFilter.includes(s.status));
     }
     if (search) {
       const q = search.toLowerCase();

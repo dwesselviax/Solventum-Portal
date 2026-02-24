@@ -47,7 +47,7 @@ const FACILITY_OPTIONS = [
 
 export default function ConsignmentPage() {
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState([]);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [requestDialogOpen, setRequestDialogOpen] = useState(false);
@@ -67,7 +67,7 @@ export default function ConsignmentPage() {
   useEffect(() => {
     import('@/lib/mock-data/consignment').then((mod) => {
       let result = [...(mod.consignment || [])];
-      if (statusFilter) result = result.filter((c) => c.status === statusFilter);
+      if (statusFilter.length > 0) result = result.filter((c) => statusFilter.includes(c.status));
       if (search) {
         const s = search.toLowerCase();
         result = result.filter((c) => c.productName?.toLowerCase().includes(s) || c.serialNumber?.toLowerCase().includes(s) || c.id?.toLowerCase().includes(s));

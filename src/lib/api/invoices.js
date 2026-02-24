@@ -4,7 +4,7 @@ export async function fetchInvoices(filters = {}) {
   if (useMock()) {
     const { invoices } = await import('@/lib/mock-data/invoices');
     let result = [...invoices];
-    if (filters.status) result = result.filter((i) => i.status === filters.status);
+    if (filters.status?.length > 0) result = result.filter((i) => filters.status.includes(i.status));
     if (filters.search) {
       const s = filters.search.toLowerCase();
       result = result.filter((i) => i.biId.toLowerCase().includes(s) || i.invoiceNumber?.toLowerCase().includes(s));

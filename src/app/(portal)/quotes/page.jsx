@@ -32,7 +32,7 @@ const COLUMNS = [
 
 export default function QuotesPage() {
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState([]);
   const [formOpen, setFormOpen] = useState(false);
   const [localQuotes, setLocalQuotes] = useState([]);
   const { data: quotes, isLoading } = useQuotes({ search, status: statusFilter });

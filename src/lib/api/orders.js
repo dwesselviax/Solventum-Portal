@@ -6,7 +6,7 @@ export async function fetchOrders(filters = {}) {
   if (useMock()) {
     const { orders } = await import('@/lib/mock-data/orders');
     let result = [...orders];
-    if (filters.status) result = result.filter((o) => o.status === filters.status);
+    if (filters.status?.length > 0) result = result.filter((o) => filters.status.includes(o.status));
     if (filters.search) {
       const s = filters.search.toLowerCase();
       result = result.filter((o) => o.biId.toLowerCase().includes(s) || o.biName?.toLowerCase().includes(s));

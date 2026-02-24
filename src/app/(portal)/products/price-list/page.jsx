@@ -25,7 +25,7 @@ export default function PriceListPage() {
   const router = useRouter();
   const user = useAuthStore((s) => s.user);
   const [search, setSearch] = useState('');
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [contracts, setContracts] = useState([]);

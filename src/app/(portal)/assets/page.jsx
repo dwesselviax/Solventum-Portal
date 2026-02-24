@@ -30,7 +30,7 @@ const COLUMNS = [
 
 export default function AssetsPage() {
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState([]);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -38,7 +38,7 @@ export default function AssetsPage() {
   useEffect(() => {
     import('@/lib/mock-data/assets').then((mod) => {
       let result = [...(mod.assets || [])];
-      if (statusFilter) result = result.filter((a) => a.status === statusFilter);
+      if (statusFilter.length > 0) result = result.filter((a) => statusFilter.includes(a.status));
       if (search) {
         const s = search.toLowerCase();
         result = result.filter((a) => a.productName?.toLowerCase().includes(s) || a.serialNumber?.toLowerCase().includes(s) || a.id?.toLowerCase().includes(s));
