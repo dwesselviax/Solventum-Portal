@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useAuthStore } from '@/stores/auth-store';
 import { useThemeStore } from '@/stores/theme-store';
 import { Loader2 } from 'lucide-react';
@@ -46,9 +47,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#01332b]">
+    <div className="flex min-h-screen justify-center bg-[#01332b] pt-10">
       <div className="w-full max-w-md">
-        <div className="mb-8 flex justify-center">
+        <div className="mb-4 flex justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${logoUrl || '/solventum-logo.webp'}`}
@@ -57,11 +58,11 @@ export default function LoginPage() {
           />
         </div>
 
-        <div className="rounded-lg border border-white/10 bg-white p-8 shadow-lg">
-          <h1 className="mb-2 text-center text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>
+        <div className="rounded-lg border border-white/10 bg-white p-6 shadow-lg">
+          <h1 className="mb-1 text-center text-2xl font-bold text-[#01332b]" style={{ fontFamily: 'var(--font-heading)' }}>
             Sign In
           </h1>
-          <p className="mb-6 text-center text-sm text-[#3c3e3f]">
+          <p className="mb-4 text-center text-sm text-[#3c3e3f]">
             Access your Solventum Ortho Portal
           </p>
 
@@ -71,9 +72,9 @@ export default function LoginPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3">
             <div>
-              <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
+              <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
                 Email Address
               </label>
               <input
@@ -81,13 +82,13 @@ export default function LoginPage() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="you@company.com"
-                className="h-12 w-full rounded-md border border-[#e7e7e7] bg-white px-4 text-base text-[#01332b] placeholder:text-[#cbcbcb] focus:border-[#0a7b6b] focus:outline-none focus:ring-2 focus:ring-[#0a7b6b]/20"
+                className="h-9 w-full rounded-md border border-[#e7e7e7] bg-white px-3 text-sm text-[#01332b] placeholder:text-[#cbcbcb] focus:border-[#0a7b6b] focus:outline-none focus:ring-2 focus:ring-[#0a7b6b]/20"
                 style={{ fontFamily: 'var(--font-body)' }}
                 required
               />
             </div>
             <div>
-              <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
+              <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
                 Password
               </label>
               <input
@@ -95,7 +96,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
-                className="h-12 w-full rounded-md border border-[#e7e7e7] bg-white px-4 text-base text-[#01332b] placeholder:text-[#cbcbcb] focus:border-[#0a7b6b] focus:outline-none focus:ring-2 focus:ring-[#0a7b6b]/20"
+                className="h-9 w-full rounded-md border border-[#e7e7e7] bg-white px-3 text-sm text-[#01332b] placeholder:text-[#cbcbcb] focus:border-[#0a7b6b] focus:outline-none focus:ring-2 focus:ring-[#0a7b6b]/20"
                 style={{ fontFamily: 'var(--font-body)' }}
                 required
               />
@@ -103,18 +104,18 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="flex h-12 w-full items-center justify-center rounded-md bg-[#01332b] text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#01332b]/90 disabled:opacity-50"
+              className="flex h-9 w-full items-center justify-center rounded-md bg-[#01332b] text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#01332b]/90 disabled:opacity-50"
               style={{ fontFamily: 'var(--font-heading)', letterSpacing: '0.5px' }}
             >
               {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : 'Sign In'}
             </button>
           </form>
 
-          <div className="mt-6 border-t border-[#e7e7e7] pt-6">
-            <p className="mb-3 text-center text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
+          <div className="mt-4 border-t border-[#e7e7e7] pt-4">
+            <p className="mb-2 text-center text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
               Customer Accounts
             </p>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-2">
               {CUSTOMER_ACCOUNTS.map((account) => (
                 <button
                   key={account.email}
@@ -128,7 +129,7 @@ export default function LoginPage() {
               ))}
             </div>
 
-            <p className="mb-3 mt-4 text-center text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
+            <p className="mb-2 mt-3 text-center text-xs font-bold uppercase tracking-wider text-[#3c3e3f]" style={{ fontFamily: 'var(--font-heading)' }}>
               Internal Accounts
             </p>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -145,9 +146,13 @@ export default function LoginPage() {
               ))}
             </div>
           </div>
+
+          <div className="mt-4 border-t border-[#e7e7e7] pt-3 text-center">
+            <Link href="/catalog" className="text-sm font-semibold text-[#0a7b6b] hover:underline" style={{ fontFamily: 'var(--font-heading)' }}>Browse Product Catalog &amp; Pricing</Link>
+          </div>
         </div>
 
-        <p className="mt-4 text-center text-xs text-white/60">
+        <p className="mt-2 text-center text-xs text-white/60">
           Powered by <span className="font-semibold">viax</span> Revenue Execution
         </p>
       </div>
